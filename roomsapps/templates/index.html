@@ -1,8 +1,12 @@
+{% load static %} {% comment %} to load static {% endcomment %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title> Easy Rooms</title>
+    <title>Easy Rooms</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> {# asking the width of devices #}
+    <link rel="stylesheet" href="{% static 'script/bootstrap.min.css' %}"> <!-- linking bootstrap css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" /> <!-- linking custom css-->
 </head>
 <body>
 
