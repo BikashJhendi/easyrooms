@@ -16,3 +16,13 @@ def about_us(request):
 def rooms(request):
     return render(request, 'rooms.html')
 
+
+# login.html views
+def login(request):
+    return render(request, 'login.html')
+
+
+# signup.html views
+def signup(request):
+    return render(request, 'signup.html')
+
