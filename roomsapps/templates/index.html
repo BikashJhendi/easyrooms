@@ -13,6 +13,44 @@
 <body>
 
 
+<!--/ nav start /-->
+<nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
+    <div class="container-fluid">
+        <a class="navbar-brand js-scroll" href="{% url 'index' %}">Easy Rooms</a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+                data-target="#navbar_home" aria-controls="navbar_home" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span></span>  <!-- to create the line while mini -->
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="navbar-collapse collapse justify-content-end" id="navbar_home">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll active" href="{% url 'index' %}">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link js-scroll" href="{% url 'rooms' %}">Rooms</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link js-scroll" href="{% url 'aboutUs' %}">About</a>
+                </li>
+
+                <li class="nav-item">
+                    <button class="btn rounded-pill" type="button">
+{#                        <a href="{% url 'login' %}" class="nav-link js-scroll" > Login </a>#}
+                    </button>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+<!--/ nav end /-->
 
 
 

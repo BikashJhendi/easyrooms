@@ -20,5 +20,7 @@ from roomsapps import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name="index"),
-    path('aboutUs', views.about_us, name="aboutUs")
+    path('aboutUs', views.about_us, name="aboutUs"),
+    path('rooms', views.rooms, name='rooms'),
+
 ]
