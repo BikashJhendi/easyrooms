@@ -6,61 +6,452 @@
     <meta charset="UTF-8">
     <title>Easy Rooms</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"> {# asking the width of devices #}
-    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}"> <!-- linking bootstrap css-->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" /> <!-- linking custom css-->
+
+    <!-- CSS here -->
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slicknav.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/all.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/themify-icons.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/nice-select.css' %}">
+    <!-- CSS here -->
+
 </head>
 
 <body>
 
+<!-- Header Start -->
+<header>
+    <div class="header-area header-transparent">
+        <div class="main-header header-sticky">
+            <div class="container">
+                <div class="menu-wrapper d-flex align-items-center justify-content-between">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <a href="{% url 'index' %}">Easy Rooms</a>
+                    </div>
+                    <!-- Logo -->
 
-<!--/ nav start /-->
-<nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
-    <div class="container-fluid">
-        <a class="navbar-brand js-scroll" href="{% url 'index' %}">Easy Rooms</a>
-        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-                data-target="#navbar_home" aria-controls="navbar_home" aria-expanded="false"
-                aria-label="Toggle navigation">
-            <span></span>  <!-- to create the line while minimize -->
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
 
-{#        navbar list start #}
-        <div class="navbar-collapse collapse justify-content-end" id="navbar_home">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link js-scroll active" href="{% url 'index' %}">Home</a>
-                </li>
+                    <!-- nav bar -->
+                    <div class="main-menu f-right d-none d-lg-block">
+                        <nav>
+                            <ul id="navigation">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="#">Rooms</a></li>
+                                <li><a href="#">About Us</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- nav bar -->
 
-                <li class="nav-item">
-                    <a class="nav-link js-scroll" href="{% url 'rooms' %}">Rooms</a>
-                </li>
+                    <!-- Header-btn -->
+                    <div class="header-btn d-none d-lg-block f-right">
+                        <a href="#" class="btnOnly">Login</a>
+                    </div>
+                    <!-- Header-btn -->
 
-                <li class="nav-item">
-                    <a class="nav-link js-scroll" href="{% url 'aboutUs' %}">About Us</a>
-                </li>
+                    <!-- Mobile Menu -->
+                    <div class="col-12">
+                        <div class="mobile_menu d-block d-lg-none"></div>
+                    </div>
+                    <!-- Mobile Menu -->
 
-{#                <li class="nav-item">#}
-{#                    <button class="btn rounded-pill" type="button">#}
-{#                        <a href="{% url 'login' %}" class="nav-link js-scroll" > Login </a>#}
-{#                    </button>#}
-{#                </li>#}
-            </ul>
-
+                </div>
+            </div>
         </div>
-{#        navbar list end #}
-
     </div>
-</nav>
-<!--/ nav end /-->
+
+</header>
+<!-- Header End -->
 
 
+<main>
+    <!-- Home search -->
+    <div class="intro main_bg main-overly">
+        <div class="intro_one main-overly  intro_height1 d-flex align-items-center">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-10 col-lg-10">
+                        <!-- Search Caption -->
+                        <div class="main__caption pt-100">
+                            <h1>Explore Nepal</h1>
+                            <p>Let's uncover the best places to live.</p>
+                        </div>
+                        <!-- Search Caption End -->
 
+                        <!--Search form -->
+                        <form action="#" class="search-box mb-100">
+                            <div class="input-form">
+                                <input type="text" placeholder="Enter cities name...">
+                            </div>
+
+                            <div class="select-form">
+                                <div class="select-items">
+                                    <select name="select" id="select1">
+                                        <option value="">Select Place</option>
+                                        <option value="">Kathmandu</option>
+                                        <option value="">Pokhara</option>
+                                        <option value="">Butwal</option>
+                                        <option value="">Bhaktapur</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="search-form">
+                                <a href="#" class="btnOnly"><i class="ti-search"></i>Search</a>
+                            </div>
+                        </form>
+                        <!--Search form End -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Home search End -->
+
+    <!-- Rooms Locations 01-->
+    <div class="roomsLocation border-bottom section-padding40">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Tittle -->
+                    <div class="section-tittle text-center mb-80">
+                        <h2>Explore top cities</h2>
+                        <p>Let's uncover the best places to rent rooms.</p>
+                    </div>
+                    <!-- Tittle End -->
+                </div>
+            </div>
+
+            <!-- Locations Img -->
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="roomsLocationArea mb-30">
+                        <div class="location-img">
+                            <img src="{% static 'img/front.jpg' %}" alt="">
+                        </div>
+                        <div class="location-details">
+                            <p>Pokhara</p>
+                            <a href="#" class="location-btn">65 <i class="ti-plus"></i>Rooms</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="roomsLocationArea mb-30">
+                        <div class="location-img">
+                            <img src="{% static 'img/front.jpg' %}" alt="">
+                        </div>
+                        <div class="location-details">
+                            <p>Butwal</p>
+                            <a href="#" class="location-btn">65 <i class="ti-plus"></i>Rooms</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="roomsLocationArea mb-30">
+                        <div class="location-img">
+                            <img src="{% static 'img/front.jpg' %}" alt="">
+                        </div>
+                        <div class="location-details">
+                            <p>Bhaktapur</p>
+                            <a href="#" class="location-btn">65 <i class="ti-plus"></i>Rooms</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="roomsLocationArea mb-30">
+                        <div class="location-img">
+                            <img src="{% static 'img/front.jpg' %}" alt="">
+                        </div>
+                        <div class="location-details">
+                            <p>Kathmandu</p>
+                            <a href="#" class="location-btn">65 <i class="ti-plus"></i>Rooms</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Locations Img End -->
+        </div>
+    </div>
+    <!-- Rooms Locations End -->
+
+
+    <!-- Rooms Areas  -->
+    <div class="rooms-area  border-bottom section-padding40 fix">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Section Tittle -->
+                    <div class="section-tittle text-center mb-80">
+                        <h2>Rooms</h2>
+                        <p>Let's uncover the best places to stay.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rooms-active">
+
+                <!-- Single Room Added Start -->
+                <div class="roomsBox pb-20">
+                    <div class="roomsCard">
+                        <!-- Room Img -->
+                        <div class="roomsImg overlay1">
+                            <a href="#"><img src="{% static 'img/front.jpg' %}" alt=""></a>
+                            <div class="img-text">
+                                <span>RS.</span> <!-- Price -->
+                                <span>Rent</span> <!-- Rent Status -->
+                            </div>
+                        </div>
+                        <!-- Room Img End -->
+
+                        <!-- Room Address -->
+                        <div class="rooms_caption">
+                            <h3><a href="#">123, Kathmandu</a></h3> <!-- rooms address -->
+                            <p>One Rooms</p> <!-- Describe about rooms -->
+                        </div>
+                        <!-- Room Address End -->
+
+                        <!-- Room Footer -->
+                        <div class="roomsBoxFooter d-flex justify-content-between align-items-center">
+                            <div class="roomsFooterLocation">
+                                <h3>Kathmandu</h3>
+                            </div>
+
+
+                            <div class="">
+                                <a href="#" class="btnOnly">Rent</a>
+                            </div>
+                        </div>
+                        <!-- Room Footer End -->
+
+                    </div>
+                </div>
+                <!-- Single Room Added End -->
+
+                <!-- Single Room Added Start -->
+                <div class="roomsBox pb-20">
+                    <div class="roomsCard">
+
+                        <!-- Room Img -->
+                        <div class="roomsImg overlay1">
+                            <a href="#"><img src="{% static 'img/front.jpg' %}" alt=""></a>
+                            <div class="img-text">
+                                <span>RS.</span> <!-- Price -->
+                                <span>Rent</span> <!-- Rent Status -->
+                            </div>
+                        </div>
+                        <!-- Room Img End -->
+
+                        <!-- Room Address -->
+                        <div class="rooms_caption">
+                            <h3><a href="#">123, Kathmandu</a></h3> <!-- rooms address -->
+                            <p>One Rooms</p> <!-- Describe about rooms -->
+                        </div>
+                        <!-- Room Address End -->
+
+                        <!-- Room Footer -->
+                        <div class="roomsBoxFooter d-flex justify-content-between align-items-center">
+                            <div class="roomsFooterLocation">
+                                <h3>Kathmandu</h3>
+                            </div>
+
+
+                            <div class="">
+                                <a href="#" class="btnOnly">Rent</a>
+                            </div>
+                        </div>
+                        <!-- Room Footer End -->
+
+                    </div>
+                </div>
+                <!-- Single Room Added End -->
+
+                <!-- Single Room Added Start -->
+                <div class="roomsBox pb-20">
+                    <div class="roomsCard">
+
+                        <!-- Room Img -->
+                        <div class="roomsImg overlay1">
+                            <a href="#"><img src="{% static 'img/front.jpg' %}" alt=""></a>
+                            <div class="img-text">
+                                <span>RS.</span> <!-- Price -->
+                                <span>Rent</span> <!-- Rent Status -->
+                            </div>
+                        </div>
+                        <!-- Room Img End -->
+
+                        <!-- Room Address -->
+                        <div class="rooms_caption">
+                            <h3><a href="#">123, Kathmandu</a></h3> <!-- rooms address -->
+                            <p>One Rooms</p> <!-- Describe about rooms -->
+                        </div>
+                        <!-- Room Address End -->
+
+                        <!-- Room Footer -->
+                        <div class="roomsBoxFooter d-flex justify-content-between align-items-center">
+                            <div class="roomsFooterLocation">
+                                <h3>Kathmandu</h3>
+                            </div>
+
+
+                            <div class="">
+                                <a href="#" class="btnOnly">Rent</a>
+                            </div>
+                        </div>
+                        <!-- Room Footer End -->
+
+                    </div>
+                </div>
+                <!-- Single Room Added End -->
+
+                <!-- Single Room Added Start -->
+                <div class="roomsBox pb-20">
+                    <div class="roomsCard">
+
+                        <!-- Room Img -->
+                        <div class="roomsImg overlay1">
+                            <a href="#"><img src="{% static 'img/front.jpg' %}" alt=""></a>
+                            <div class="img-text">
+                                <span>RS.</span> <!-- Price -->
+                                <span>Rent</span> <!-- Rent Status -->
+                            </div>
+                        </div>
+                        <!-- Room Img End -->
+
+                        <!-- Room Address -->
+                        <div class="rooms_caption">
+                            <h3><a href="#">123, Kathmandu</a></h3> <!-- rooms address -->
+                            <p>One Rooms</p> <!-- Describe about rooms -->
+                        </div>
+                        <!-- Room Address End -->
+
+                        <!-- Room Footer -->
+                        <div class="roomsBoxFooter d-flex justify-content-between align-items-center">
+                            <div class="roomsFooterLocation">
+                                <h3>Kathmandu</h3>
+                            </div>
+
+
+                            <div class="">
+                                <a href="#" class="btnOnly">Rent</a>
+                            </div>
+                        </div>
+                        <!-- Room Footer End -->
+
+                    </div>
+                </div>
+                <!-- Single Room Added End -->
+
+            </div>
+        </div>
+    </div>
+    <!-- Rooms Areas End -->
+
+
+    <!-- Social Media Link -->
+    <section class="socialMedia-area">
+        <div class="container">
+            <div class="wants-wrapper w-padding2">
+                <div class="row justify-content-between">
+                    <div class="col-xl-8 col-lg-8 col-md-7">
+                        <div class="socialMedia-caption socialMedia-caption2">
+                            <p>Easy rooms will completely reduce the old tiresome process of physical travel for the search of room.
+                                Without such burden, the clients will get all facilities of <a href="index.html" target="_blank">www.easyrooms.com</a>
+                                in a single click.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-5">
+                        <div class="footer-social f-right sm-left">
+                            <a href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.google.com/gmail/about/#" target="_blank"><i class="fab fa-google"></i></a>
+                            <a href="https://www.instagram.com/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Social Media Link -->
+</main>
+
+<!-- footer Copyright -->
+<footer>
+    <div class="footer-copyright">
+        <div class="footer-bottom-area">
+            <div class="container">
+                <div class="footer-border">
+                    <div class="row d-flex justify-content-between align-items-center">
+                        <div class="col-xl-12 col-lg-12 ">
+                            <div class="footer-copy-right">
+                                <p>Copyright &copy; All rights reserved to
+                                    <a href="index.html" target="_blank">Easy Rooms</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- footer Copyright -->
+
+
+<!-- Scroll Up -->
+<div id="backToTop" >
+    <a title="Move To Top" href="#">
+        <i class="fas fa-level-up-alt"></i>
+    </a>
+</div>
+<!-- Scroll Up -->
 
 
 {% comment %} javascript link {% endcomment %}
+<!-- JS here -->
+
+<script src="{% static 'js/modernizr-3.5.0.min.js' %}"></script>
+<!-- Jquery, Popper, Bootstrap -->
+<script src="{% static 'bootstrap/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'bootstrap/popper.min.js' %}"></script>
 <script src="{% static 'bootstrap/bootstrap.min.js' %}"></script>
+
+
+<!-- Jquery Mobile Menu -->
+<script src="{% static 'js/jquery.slicknav.min.js' %}"></script>
+
+<!-- Jquery Slick , Owl-Carousel Plugins -->
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/slick.min.js' %}"></script>
+
+<!-- One Page, Animated-HeadLin -->
+<script src="{% static 'js/wow.min.js' %}"></script>
+<script src="{% static 'js/animated.headline.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+
+<!-- Date Picker -->
+<script src="{% static 'js/gijgo.min.js' %}"></script>
+
+<!-- Nice-select, sticky -->
+<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'js/jquery.sticky.js' %}"></script>
+
+<!-- Progress -->
+<script src="{% static 'js/jquery.barfiller.js' %}"></script>
+
+
+<!-- Jquery Plugins, main Jquery -->
+<script src="{% static 'js/plugins.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
 
 {% comment %} end of javascript link {% endcomment %}
 </body>
