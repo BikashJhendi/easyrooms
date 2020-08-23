@@ -1,3 +1,6 @@
 .idea
 venv
 __pycache__
+roomsapps\__pycache__
+roomsapps\migrations\__pycache__
+easyrooms\__pycache__
