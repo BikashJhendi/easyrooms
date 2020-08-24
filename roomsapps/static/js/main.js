@@ -273,4 +273,6 @@
   $('#bar5').barfiller();
   $('#bar6').barfiller();
 
+
+
 })(jQuery);
