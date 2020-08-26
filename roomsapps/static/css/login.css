@@ -1,9 +1,10 @@
 /*//////////////////////////////////////////////////////////////////
 [ RESTYLE TAG ]*/
 
+
 * {
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 	box-sizing: border-box;
 }
 
@@ -18,7 +19,7 @@ a {
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
-	margin: 0px;
+	margin: 0;
 	transition: all 0.4s;
 	-webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
@@ -37,7 +38,7 @@ a:hover {
 
 /*---------------------------------------------*/
 h1,h2,h3,h4,h5,h6 {
-	margin: 0px;
+	margin: 0;
 }
 
 p {
@@ -45,11 +46,11 @@ p {
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
-	margin: 0px;
+	margin: 0;
 }
 
 ul, li {
-	margin: 0px;
+	margin: 0;
 	list-style-type: none;
 }
 
@@ -141,6 +142,8 @@ iframe {
 .limiter {
   width: 100%;
   margin: 0 auto;
+  position: relative;
+  padding-top: 50px;
 }
 
 .container-login100 {
@@ -165,10 +168,10 @@ iframe {
   overflow: hidden;
   padding: 77px 55px 33px 55px;
 
-  box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
-  -o-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+  -o-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
   -ms-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
@@ -259,7 +262,7 @@ iframe {
   width: 100%;
   position: absolute;
   top: 16px;
-  left: 0px;
+  left: 0;
   padding-left: 5px;
 
   -webkit-transition: all 0.4s;
@@ -393,8 +396,6 @@ iframe {
   }
 }
 
-
-
 /*------------------------------------------------------------------
 [ Alert validate ]*/
 
@@ -416,7 +417,7 @@ iframe {
   -ms-transform: translateY(-50%);
   -o-transform: translateY(-50%);
   transform: translateY(-50%);
-  right: 0px;
+  right: 0;
   pointer-events: none;
 
   font-family: "Rubik", sans-serif;;
