@@ -4,17 +4,18 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>EasyRooms SignUp</title>
+    <title>Easy Rooms</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"> {# asking the width of devices #}
 
     <!-- CSS here -->
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/signup.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/signUp.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/slicknav.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/all.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/themify-icons.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/nice-select.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/header2.css' %}">
+{#    <link rel="stylesheet" type="text/css" href="{% static 'css/nice-select.css' %}">#}
     <!-- CSS here -->
 
 </head>
@@ -22,10 +23,10 @@
 <body>
 
 <!-- Header Start -->
-<header>
-    <div class="header-area header-transparent">
-        <div class="main-header header-sticky">
-            <div class="container">
+<div class = "nav">
+    <div class="header-area1 header-transparent">
+        <div class="main-header1 header-sticky">
+            <div class="container-fluid">
                 <div class="menu-wrapper d-flex align-items-center justify-content-between">
                     <!-- Logo -->
                     <div class="logo">
@@ -33,14 +34,13 @@
                     </div>
                     <!-- Logo -->
 
-
                     <!-- nav bar -->
                     <div class="main-menu f-right d-none d-lg-block">
                         <nav>
                             <ul id="navigation">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="#">Rooms</a></li>
-                                <li><a href="#">About Us</a></li>
+                                <li><a href="{% url 'index'%}">Home</a></li>
+                                <li><a href="{% url 'rooms' %}">Rooms</a></li>
+                                <li><a href="{% url 'aboutUs' %}">About Us</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -48,7 +48,8 @@
 
                     <!-- Header-btn -->
                     <div class="header-btn d-none d-lg-block f-right">
-                        <a href="#" class="btnOnly">Login</a>
+                        <a href="{% url 'login' %}" class="btnOnly">Login</a>
+                        <a href="{% url 'signup' %}" class="btnOnly">Signup</a>
                     </div>
                     <!-- Header-btn -->
 
@@ -63,8 +64,8 @@
         </div>
     </div>
 
-</header>
-<!-- Header End -->
+</div>
+
 
 
 <main>
