@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/all.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/themify-icons.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/nice-select.css' %}">
+{#    <link rel="stylesheet" type="text/css" href="{% static 'css/nice-select.css' %}">#}
     <!-- CSS here -->
 
 </head>
@@ -25,7 +25,7 @@
 <header>
     <div class="header-area header-transparent">
         <div class="main-header header-sticky">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="menu-wrapper d-flex align-items-center justify-content-between">
                     <!-- Logo -->
                     <div class="logo">
@@ -33,14 +33,13 @@
                     </div>
                     <!-- Logo -->
 
-
                     <!-- nav bar -->
                     <div class="main-menu f-right d-none d-lg-block">
                         <nav>
                             <ul id="navigation">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="#">Rooms</a></li>
-                                <li><a href="#">About Us</a></li>
+                                <li><a href="{% url 'index'%}">Home</a></li>
+                                <li><a href="{% url 'rooms' %}">Rooms</a></li>
+                                <li><a href="{% url 'aboutUs' %}">About Us</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -48,7 +47,8 @@
 
                     <!-- Header-btn -->
                     <div class="header-btn d-none d-lg-block f-right">
-                        <a href="#" class="btnOnly">Login</a>
+                        <a href="{% url 'login' %}" class="btnOnly">Login</a>
+                        <a href="{% url 'signup' %}" class="btnOnly">Signup</a>
                     </div>
                     <!-- Header-btn -->
 
@@ -85,18 +85,6 @@
                         <form action="#" class="search-box mb-100">
                             <div class="input-form">
                                 <input type="text" placeholder="Enter cities name...">
-                            </div>
-
-                            <div class="select-form">
-                                <div class="select-items">
-                                    <select name="select" id="select1">
-                                        <option value="">Select Place</option>
-                                        <option value="">Kathmandu</option>
-                                        <option value="">Pokhara</option>
-                                        <option value="">Butwal</option>
-                                        <option value="">Bhaktapur</option>
-                                    </select>
-                                </div>
                             </div>
 
                             <div class="search-form">
