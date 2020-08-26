@@ -1,0 +1,119 @@
+{% load static %} {% comment %} to load static {% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Post Rooms</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {# asking the width of devices #}
+
+    <!-- CSS here -->
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slicknav.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/all.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/themify-icons.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/nice-select.css' %}">
+     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css ">
+
+
+    <!-- CSS here -->
+
+</head>
+
+<body>
+<div class="container">
+
+    <section class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Add a Room</h3>
+        </div>
+        <div class="panel-body">
+
+            <form>
+
+                <!-- form-group // -->
+
+                <div class="form-group">
+                    <label for="name" class="col-sm-3 control-label">Title</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Title">
+                    </div>
+                </div> <!-- form-group // -->
+                <div class="form-group">
+                    <label for="name" class="col-sm-3 control-label">Customer Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Your name">
+                    </div>
+                </div> <!-- form-group // -->
+
+                <div class="form-group">
+                    <label for="name" class="col-sm-3 control-label">Contact No</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="your number">
+                    </div>
+                </div> <!-- form-group // -->
+
+
+                <div class="form-group">
+                    <label for="tech" class="col-sm-3 control-label">District</label>
+                    <div class="col-sm-9">
+                            <select class="form-control">
+                                <option value="">Kathmandu</option>
+                                <option value="">Bhaktapur</option>
+                                <option value="">Lalitpur</option>
+                                <option value="">Pokhara</option>
+                            </select>
+                    </div>
+                </div> <!-- form-group // -->
+                <div class="form-group">
+                    <label for="name" class="col-sm-3 control-label">Address</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Address">
+                    </div>
+                </div> <!-- form-group // -->
+
+                <div class="form-group">
+                    <label for="name" class="col-sm-3 control-label">Price</label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" name="name" id="name" placeholder="Price">
+                    </div>
+                </div> <!-- form-group // -->
+                <div class="form-group">
+                    <label for="about" class="col-sm-3 control-label">Description</label>
+                    <div class="col-sm-9">
+                            <textarea class="form-control"></textarea>
+                    </div>
+                </div> <!-- form-group // -->
+
+                <div class="form-group">
+                    <label for="name" class="col-sm-3 control-label">Images</label>
+                    <div class="col-sm-9">
+                        <label class="control-label small" for="file_img">Rooms (jpg/png):</label> <input type="file" name="file_img">
+                        <label class="control-label small" for="file_img">Rooms (jpg/png):</label> <input type="file" name="file_img">
+                        <label class="control-label small" for="file_img">Rooms (jpg/png):</label> <input type="file" name="file_img">
+                    </div>
+
+                </div> <!-- form-group // -->
+
+                <hr>
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-9">
+                        <button type="submit" class="btn btn-primary">ADD</button>
+                    </div>
+                </div> <!-- form-group // -->
+            </form>
+
+        </div><!-- panel-body // -->
+    </section><!-- panel// -->
+
+
+</div> <!-- container// -->
+
+
+
+</body>
+
+</html>
