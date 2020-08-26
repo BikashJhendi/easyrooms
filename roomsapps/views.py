@@ -26,3 +26,6 @@ def login(request):
 def signup(request):
     return render(request, 'signup.html')
 
+
+def post_room(request):
+    return render(request, 'postroom.html')
