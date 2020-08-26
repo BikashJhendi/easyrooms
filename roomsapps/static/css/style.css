@@ -538,6 +538,15 @@ hr {
     flex-wrap: wrap;
     align-items: center;
 }
+
+.header-area .menu-wrapper .logo a {
+    font-size: 30px;
+}
+
+.header-area .menu-wrapper .logo a:hover {
+    color: #b367ff;
+}
+
 @media only screen and (min-width: 1200px) and (max-width: 1600px) {
     .header-area .menu-wrapper .main-menu {
         margin-right: 30px;
@@ -608,6 +617,12 @@ hr {
     font-size: 18px;
     padding-right: 9px;
 }
+
+.header-btn .btnOnly {
+    margin-right: 10px;
+    padding: 15px 30px;
+}
+
 .header-sticky.sticky-bar {
     background: #3b2774;
 }
@@ -792,12 +807,12 @@ hr {
     }
 }
 .intro form.search-box .input-form {
-    width: 44%;
+    width: 77%;
     overflow: hidden;
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
     .intro form.search-box .input-form {
-        width: 55%;
+        width: 100%;
     }
 }
 @media (max-width: 575px) {
@@ -838,30 +853,6 @@ hr {
         font-size: 13px;
     }
 }
-.intro form.search-box .select-form {
-    width: 33%;
-}
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-    .intro form.search-box .select-form {
-        width: 43%;
-    }
-}
-@media (max-width: 575px) {
-    .intro form.search-box .select-form {
-        width: 100%;
-    }
-}
-.intro form.search-box .select-form .nice-select {
-    width: 100%;
-    height: 60px;
-    background: #fff;
-    padding: 11px 19px 11px 25px;
-    color: #140c40;
-    line-height: 42px;
-    border: 0;
-    border-radius: 6px;
-    font-size: 17px;
-}
 @media (max-width: 575px) {
     .intro form.search-box .select-form .nice-select {
         margin-bottom: 20px;
@@ -889,7 +880,7 @@ hr {
     margin-top: 0;
     right: 28px;
     content: "\f0dd";
-    font-family: "Font Awesome 5 Free";
+    font-family: serif;
     position: absolute;
     font-weight: 700;
     transform: rotate(0deg);
@@ -1085,7 +1076,7 @@ hr {
     margin: 0 15px;
 }
 .rooms-area .roomsCard {
-    box-shadow: 0px 6px 6px 0px rgba(2, 25, 65, 0.08);
+    box-shadow: 0 6px 6px 0 rgba(2, 25, 65, 0.08);
     border-radius: 10px;
     -webkit-transition: 0.4s;
     -moz-transition: 0.4s;
@@ -1093,7 +1084,7 @@ hr {
     transition: 0.4s;
 }
 .rooms-area .roomsCard:hover {
-    box-shadow: 0px 8px 8px 0px rgba(2, 25, 65, 0.08);
+    box-shadow: 0 8px 8px 0 rgba(2, 25, 65, 0.08);
 }
 .rooms-area .roomsImg img {
     width: 100%;
@@ -1113,7 +1104,7 @@ hr {
     padding: 7px 15px;
     border-radius: 5px;
     text-transform: uppercase;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 2px solid rgba(179, 103, 255, 1);
 }
 .rooms-area .rooms_caption {
     padding: 47px 18px 16px 22px;
@@ -1163,7 +1154,7 @@ hr {
     display: inline-block;
 }
 .rooms-area .roomsBox {
-    margin: 0px 5px 30px 5px !important;
+    margin: 0 5px 30px 5px !important;
 }
 .rooms-active button.slick-arrow {
     position: absolute;
