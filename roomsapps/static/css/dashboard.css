@@ -1,0 +1,36 @@
+#navigation
+{
+    background: #1e7e34;
+}
+
+.navbar-inverse {
+    background-color: #3b2774;
+    border-color: #3b2774;
+    border-radius: 0px;
+}
+
+.navbar-btn {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    float: right;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #FFFFFF;
+    font-size: 25px;
+    font-family: "Corbel Light";
+    font-weight: bold;
+}
+
+@media (min-width: 768px){
+.navbar-nav
+{
+    float: left;
+    margin: 0px 0px 0px 900px;
+}
+}
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+    color: #fff;
+    background-color: #b367ff;
+}
