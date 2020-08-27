@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from roomsapps.forms import RegisterForms
+from roomsapps.models import UserReg
 
 
 # Create your views here.
@@ -29,3 +31,15 @@ def signup(request):
 
 def post_room(request):
     return render(request, 'postroom.html')
+
+
+def register(request):
+    if request.method == "POST":
+        form = RegisterForms(request.POST, request.FILES)
+        form.save()
+        print('Register Successful')
+        return render(request, 'login.html')
+    form = RegisterForms()
+    return render(request, 'signup.html', {'form': form})
+
+

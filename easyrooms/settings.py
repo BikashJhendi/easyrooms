@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'easyrooms.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'easyrooms',
+        'USER': 'root',
+        'HOST': 'localhost',
+        'PASSWORD': '',
+        'PORT': '3306'
     }
 }
 
