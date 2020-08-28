@@ -1,7 +1,5 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-
-# from roomsapps.models import UserReg
 from account.models import UsersAccount
 
 

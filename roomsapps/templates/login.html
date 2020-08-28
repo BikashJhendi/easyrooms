@@ -77,19 +77,31 @@
         <div class="wrap-login100">
             {% block content %}
 
-                <form class="login100-form validate-form" method="POST" action="/login/success">
+                <form class="login100-form validate-form" method="POST">
                     {% csrf_token %}
                     <span class="login100-form-title p-b-26">
 						Welcome
 					</span>
 
-                    {% for message in messages %}
-                        <div class="message col-12 alert-success">
-                            <i class="fas fa-check-circle" size="32*32"></i>
-                            <strong>  {{ message }} </strong>
-                        </div>
-                    {% endfor %}
+                    {#                    {% for message in messages %}#}
+                    {#                        <div class="message col-12 alert-success">#}
+                    {#                            <i class="fas fa-check-circle"></i>#}
+                    {#                            <strong>  {{ message }} </strong>#}
+                    {#                        </div>#}
+                    {#                    {% endfor %}#}
 
+
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for msg in messages %}
+                                <li>
+                                    <div class="alert alert-{{ msg.level_tag }}" role="alert">
+                                        {{ msg.message }}
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
 
                     <div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
                         <input class="input100" type="text" name="email">
