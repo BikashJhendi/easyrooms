@@ -81,7 +81,7 @@
                             <div class="main-box2">
                                 <div class="labels-top">
                                     {% block content %}
-                                        <form method="POST" enctype="multipart/form-data" action="/createdUser">
+                                        <form method="POST" enctype="multipart/form-data">
                                             {% csrf_token %}
 
                                             {% if form.errors %}

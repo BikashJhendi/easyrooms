@@ -7,11 +7,12 @@ urlpatterns = [
     path('', views.index, name="index"),
     path('aboutUs', views.about_us, name="aboutUs"),
     path('rooms', views.rooms, name='rooms'),
-    path('login', views.login, name='login'),
-    path('signup', views.signup, name='signup'),
+    # path('login', views.login_page, name='login'),
+    # path('signup', views.signup, name='signup'),
     path('postRoom', views.post_room, name='postRoom'),
-    path('createdUser', views.user_registration, name='createNewUsers'),
+    path('signup', views.user_registration, name='signup'),
+
     path('login/userRooms', views.user_rooms, name='userRooms'),
-    path('login/success', views.user_login, name='userLoginSuccess'),  # problem here tomorrow fix up
+    path('login', views.user_login, name='login'),  # problem here tomorrow fix up
     path('logout', views.user_logout, name='logout'),
 ]

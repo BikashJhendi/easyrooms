@@ -53,8 +53,8 @@
                         {#                        <a href="{% url 'signup' %}" class="btnOnly">Signup</a>#}
                         <span>
                             {% if request.user.is_authenticated %}
-                                <p> Hello, {{ request.user.username }}</p> |
-                                <a href="{% url 'userLogout' %}"> Logout </a>
+                                <p style="background-color: white;"> Hello, {{ request.user.username }}</p> |
+                                <a href="{% url 'logout' %}"> Logout </a>
 
                             {% else %}
 
