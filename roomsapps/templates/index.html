@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}">
 {#    <link rel="stylesheet" type="text/css" href="{% static 'css/nice-select.css' %}">#}
     <!-- CSS here -->
+    <script src="{% static 'js/search.js' %}"></script>
 
 </head>
 
@@ -80,13 +81,11 @@
                             <p>Let's uncover the best places to live.</p>
                         </div>
                         <!-- Search Caption End -->
-
                         <!--Search form -->
                         <form action="#" class="search-box mb-100">
                             <div class="input-form">
-                                <input type="text" placeholder="Enter cities name...">
+                                <input type="search" placeholder="Enter cities name..." id="searchRoom" onchange="search()">
                             </div>
-
                             <div class="search-form">
                                 <a href="#" class="btnOnly"><i class="ti-search"></i>Search</a>
                             </div>
