@@ -10,5 +10,8 @@ urlpatterns = [
     path('login', views.login, name='login'),
     path('signup', views.signup, name='signup'),
     path('postRoom', views.post_room, name='postRoom'),
-    path('create', views.register, name='create')
+    path('createdUser', views.user_registration, name='createNewUsers'),
+    path('login/userRooms', views.user_rooms, name='userRooms'),
+    path('login/success', views.user_login, name='userLoginSuccess'),  # problem here tomorrow fix up
+    path('logout', views.user_logout, name='logout'),
 ]
