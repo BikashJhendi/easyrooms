@@ -16,4 +16,7 @@ urlpatterns = [
     path('logout', views.user_logout, name='logout'),  # logout url
 
     path('login/userRooms', views.user_rooms, name='userRooms'),
+    path('login/admin', views.dashboard, name='dashboard'),
+
+    path('login/redirect', views.verification_page, name='redirect'),
 ]

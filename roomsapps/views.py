@@ -1,4 +1,7 @@
+from django.contrib.auth.models import Group
 from django.shortcuts import render, redirect
+from django.urls import reverse
+
 from roomsapps.forms import RegistrationForms
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -26,16 +29,6 @@ def rooms(request):
     return render(request, 'rooms.html')
 
 
-# login.html views
-# def login_page(request):
-#     return render(request, 'login.html')
-
-
-# signup.html views
-# def signup(request):
-#     return render(request, 'signup.html')
-
-
 # users Registration views
 @unauthenticated_user
 def user_registration(request):
@@ -51,7 +44,7 @@ def user_registration(request):
     return render(request, 'signup.html', {'form': form})
 
 
-# login views
+# login views and verifications
 @unauthenticated_user
 def user_login(request):
     if request.method == 'POST':
@@ -62,8 +55,7 @@ def user_login(request):
 
         if user is not None:
             login(request, user)
-            return redirect('userRooms')
-
+            return redirect('redirect')
         else:
             messages.info(request, 'Username or Password is incorrect.')
 
@@ -79,13 +71,38 @@ def user_logout(request):
 
 #
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['users'])
+@allowed_users(allowed_roles=['user'])
 def post_room(request):
     return render(request, 'postroom.html')
 
 
 #
 @login_required(login_url='login')
-# @allowed_users(allowed_roles=['admins'])
+@allowed_users(allowed_roles=['user'])
 def user_rooms(request):
+
     return render(request, 'users/users_rooms.html')
+
+
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['admin'])
+def dashboard(request):
+    return render(request, 'admindashboard.html')
+
+
+# redirecting the users
+@login_required(login_url='login')
+def verification_page(request):
+    group = request.user.groups.filter(user=request.user)[0]
+    if group.name == "admin":
+        return HttpResponseRedirect(reverse('dashboard'))
+    elif group.name == "staff":
+        return HttpResponseRedirect(reverse('rooms'))
+    elif group.name == "user":
+        return HttpResponseRedirect(reverse('userRooms'))
+    else:
+        return HttpResponseRedirect(reverse('redirect'))
+
+    context = {}
+    return render(request, 'redirect.html', context)
+
