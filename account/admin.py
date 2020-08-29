@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from account.models import UsersAccount
+from django.contrib.auth.models import Group
 
 
 # Register your models here.
@@ -17,3 +18,6 @@ class AccountAdminDisplay(UserAdmin):
 
 
 admin.site.register(UsersAccount, AccountAdminDisplay)
+# admin.site.unregister(Group)
+# admin.site.register(Group)
+

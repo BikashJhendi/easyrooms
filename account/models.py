@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.core.validators import MinValueValidator, MaxValueValidator
 
 
@@ -36,7 +36,7 @@ class MyAccountManager(BaseUserManager):
 
 
 # custom user models
-class UsersAccount(AbstractBaseUser):
+class UsersAccount(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(verbose_name='email', max_length=60, unique=True)
     username = models.CharField(max_length=120, unique=True)
     date_joined = models.DateTimeField(verbose_name='date joined', auto_now=True)
@@ -61,4 +61,7 @@ class UsersAccount(AbstractBaseUser):
         return self.is_admin
 
     def has_module_perms(self, app_label):
+        return True
+
+    def get_group_permissions(self, obj=None):
         return True
