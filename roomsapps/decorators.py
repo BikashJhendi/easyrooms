@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import redirect
 
 
-# to stop the login users to go back at pages
+# to stop the login users to go back at non login pages
 def unauthenticated_user(view_func):
     def wrapper_func(request, *args, **kwargs):
         if request.user.is_authenticated:
@@ -25,7 +25,8 @@ def allowed_users(allowed_roles=[]):
             if group in allowed_roles:
                 return view_func(request, *args, *kwargs)
             else:
-                return HttpResponse(' Unauthorized Access!!! You can'+'t access any of this pages. ')
+                return HttpResponse(" Unauthorized Access!!! You can't access this pages. ")
+
         return wrapper_func
 
     return decorator

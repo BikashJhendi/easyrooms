@@ -16,19 +16,88 @@ def index(request):
     return render(request, 'index.html')
 
 
-# aboutUs.html views
-@unauthenticated_user
-def about_us(request):
-    return render(request, 'aboutUs.html')
-
-
 # rooms.html views
 @unauthenticated_user
 def rooms(request):
     return render(request, 'rooms.html')
 
 
-# users Registration views
+# aboutUs.html views
+@unauthenticated_user
+def about_us(request):
+    return render(request, 'aboutUs.html')
+
+
+# privacy.html views
+@unauthenticated_user
+def privacy(request):
+    return render(request, 'privacy.html')
+
+
+# login usersPages rooms  views
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['userGroup'])
+def user_rooms(request):
+    return render(request, 'usersPages/users_rooms.html')
+
+
+# login usersPages  post room  views
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['userGroup'])
+def post_room(request):
+    return render(request, 'usersPages/post_room.html')
+
+
+# login usersPages about  views
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['userGroup'])
+def users_about_us(request):
+    return render(request, 'usersPages/users_aboutUs.html')
+
+
+# login usersPages about  views
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['userGroup'])
+def user_profile(request):
+    return render(request, 'usersPages/user_profile.html')
+
+
+# login usersPages rooms details views
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['userGroup'])
+def user_rooms_details(request):
+    return render(request, 'usersPages/rooms_details.html')
+
+
+# adminPages login dashboard  views
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['adminGroup'])
+def dashboard_admin(request):
+    return render(request, 'adminPages/admindashboard.html')
+
+
+# adminPages login room details views
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['adminGroup'])
+def dashboard_rooms(request):
+    return render(request, 'adminPages/roomdashboard.html')
+
+
+# adminPages login usersPages details views
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['adminGroup'])
+def dashboard_users(request):
+    return render(request, 'adminPages/userdashboard.html')
+
+
+# adminPages login profile views
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['adminGroup'])
+def admin_profile(request):
+    return render(request, 'adminPages/admin_profile.html')
+
+
+# usersPages Registration views
 @unauthenticated_user
 def user_registration(request):
     form = RegistrationForms()
@@ -66,33 +135,13 @@ def user_login(request):
     return render(request, 'login.html', context)
 
 
-# user logout views
+# user logout html views
 def user_logout(request):
     logout(request)
     return redirect('login')
 
 
-#
-@login_required(login_url='login')
-@allowed_users(allowed_roles=['user'])
-def post_room(request):
-    return render(request, 'postroom.html')
-
-
-#
-@login_required(login_url='login')
-@allowed_users(allowed_roles=['user'])
-def user_rooms(request):
-    return render(request, 'users/users_rooms.html')
-
-
-@login_required(login_url='login')
-@allowed_users(allowed_roles=['admin'])
-def dashboard(request):
-    return render(request, 'admindashboard.html')
-
-
-# redirecting the users
+# redirecting the usersPages (views)
 @login_required(login_url='login')
 def verification_page(request):
     group = request.user.groups.filter(user=request.user)[0]

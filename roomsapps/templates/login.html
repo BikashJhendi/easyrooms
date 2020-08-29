@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Easy Rooms</title>
+    <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {# asking the width of devices #}
 
@@ -83,14 +83,6 @@
 						Welcome
 					</span>
 
-                    {#                    {% for message in messages %}#}
-                    {#                        <div class="message col-12 alert-success">#}
-                    {#                            <i class="fas fa-check-circle"></i>#}
-                    {#                            <strong>  {{ message }} </strong>#}
-                    {#                        </div>#}
-                    {#                    {% endfor %}#}
-
-
                     {% if messages %}
                         <ul class="messages">
                             {% for msg in messages %}
@@ -126,13 +118,8 @@
                     </div>
 
                     <div class="text-center p-t-115">
-                        <span class="txt1">
-							Don’t have an account?
-						</span>
-
-                        <a class="txt2" href="{% url 'signup' %}">
-                            Sign Up
-                        </a>
+                        <span class="txt1"> Don’t have an account? </span>
+                        <a class="txt2" href="{% url 'signup' %}">Sign Up</a>
                     </div>
                 </form>
 
