@@ -1,5 +1,19 @@
 
 
+/*Profile */
+.nav .header-area1 .main-header1 .menu-wrapper .header-profile .row {
+    /*margin: 0 0px;*/
+}
+
+.nav .header-area1 .main-header1 .menu-wrapper .header-profile .profile-icon p {
+    color: #fff;
+}
+
+.nav .header-area1 .main-header1 .menu-wrapper .header-profile .profile-icon p:hover {
+    color: #b367ff;
+    cursor: pointer;
+}
+
 /* after navbar use this */
 .test1 {
     position: relative;

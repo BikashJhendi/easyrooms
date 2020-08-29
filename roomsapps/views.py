@@ -1,32 +1,34 @@
 from django.shortcuts import render, redirect
 from roomsapps.forms import RegistrationForms
 from django.contrib.auth import authenticate, login, logout
-from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
-# messages.set_level(request, messages.success)
-# messages.set_level(request, messages.info)
+from .decorators import unauthenticated_user, allowed_users
 
 
 # Create your views here.
 # index.html views
+@unauthenticated_user
 def index(request):
     return render(request, 'index.html')
 
 
 # aboutUs.html views
+@unauthenticated_user
 def about_us(request):
     return render(request, 'aboutUs.html')
 
 
 # rooms.html views
+@unauthenticated_user
 def rooms(request):
     return render(request, 'rooms.html')
 
 
 # login.html views
-def login_page(request):
-    return render(request, 'login.html')
+# def login_page(request):
+#     return render(request, 'login.html')
 
 
 # signup.html views
@@ -34,17 +36,8 @@ def login_page(request):
 #     return render(request, 'signup.html')
 
 
-#
-def post_room(request):
-    return render(request, 'postroom.html')
-
-
-#
-def user_rooms(request):
-    return render(request, 'users/users_rooms.html')
-
-
 # users Registration views
+@unauthenticated_user
 def user_registration(request):
     form = RegistrationForms()
 
@@ -59,8 +52,8 @@ def user_registration(request):
 
 
 # login views
+@unauthenticated_user
 def user_login(request):
-    context = {}
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
@@ -74,6 +67,7 @@ def user_login(request):
         else:
             messages.info(request, 'Username or Password is incorrect.')
 
+    context = {}
     return render(request, 'login.html', context)
 
 
@@ -81,3 +75,17 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect('login')
+
+
+#
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['users'])
+def post_room(request):
+    return render(request, 'postroom.html')
+
+
+#
+@login_required(login_url='login')
+# @allowed_users(allowed_roles=['admins'])
+def user_rooms(request):
+    return render(request, 'users/users_rooms.html')
