@@ -1,7 +1,6 @@
 from django.contrib.auth.models import Group
 from django.shortcuts import render, redirect
 from django.urls import reverse
-
 from roomsapps.forms import RegistrationForms
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -37,9 +36,13 @@ def user_registration(request):
     if request.POST:
         form = RegistrationForms(request.POST)
         if form.is_valid():
-            form.save()
-            user = form.cleaned_data.get('username')
-            messages.success(request, 'Account was created successfully. With the username of:  ' + user)
+            user = form.save()
+            username = form.cleaned_data.get('username')
+
+            group = Group.objects.get(name='userGroup')
+            user.groups.add(group)
+
+            messages.success(request, 'Account was created successfully. With the username of:  ' + username)
             return redirect('login')
     return render(request, 'signup.html', {'form': form})
 
@@ -80,7 +83,6 @@ def post_room(request):
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['user'])
 def user_rooms(request):
-
     return render(request, 'users/users_rooms.html')
 
 
@@ -94,15 +96,12 @@ def dashboard(request):
 @login_required(login_url='login')
 def verification_page(request):
     group = request.user.groups.filter(user=request.user)[0]
-    if group.name == "admin":
+    if group.name == "adminGroup":
         return HttpResponseRedirect(reverse('dashboard'))
-    elif group.name == "staff":
-        return HttpResponseRedirect(reverse('rooms'))
-    elif group.name == "user":
+    elif group.name == "userGroup":
         return HttpResponseRedirect(reverse('userRooms'))
     else:
         return HttpResponseRedirect(reverse('redirect'))
 
     context = {}
     return render(request, 'redirect.html', context)
-
