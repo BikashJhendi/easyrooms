@@ -10,3 +10,5 @@ class RegistrationForms(UserCreationForm):
         model = UsersAccount
         fields = ("email", "username", "fullName", "contactNo", "password1")
         # fields = '__all__'
+
+

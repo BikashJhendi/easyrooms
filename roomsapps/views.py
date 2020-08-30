@@ -108,8 +108,10 @@ def user_registration(request):
             user = form.save()
             username = form.cleaned_data.get('username')
 
+            # setting groups type for currently register users
             group = Group.objects.get(name='userGroup')
             user.groups.add(group)
+            ####
 
             messages.success(request, 'Account was created successfully. With the username of:  ' + username)
             return redirect('login')
