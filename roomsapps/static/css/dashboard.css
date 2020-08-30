@@ -43,4 +43,13 @@
     float: right;
 
 }
-
+#profile label
+{
+    font-size: 15px;
+    font-family: Corbel;
+    padding-left: 30px;
+}
+#profile input[type="text"]
+{
+    width: 300px;
+}
