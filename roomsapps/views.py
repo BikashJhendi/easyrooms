@@ -146,7 +146,7 @@ def user_logout(request):
 def verification_page(request):
     group = request.user.groups.filter(user=request.user)[0]
     if group.name == "adminGroup":
-        return HttpResponseRedirect(reverse('dashboard'))
+        return HttpResponseRedirect(reverse('dashboardAdmin'))
     elif group.name == "userGroup":
         return HttpResponseRedirect(reverse('userRooms'))
     else:
