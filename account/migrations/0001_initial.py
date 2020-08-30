@@ -8,7 +8,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('auth', '0013_remove_group_admin'),
+        ('auth', '0001_initial'),
     ]
 
     operations = [
