@@ -5,17 +5,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Easy Rooms</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"> {# asking the width of devices #}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {# asking the width of devices #}
 
     <!-- CSS here -->
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/slicknav.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/all.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/themify-icons.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}">
-{#    <link rel="stylesheet" type="text/css" href="{% static 'css/nice-select.css' %}">#}
+    {#    <link rel="stylesheet" type="text/css" href="{% static 'css/nice-select.css' %}">#}
     <!-- CSS here -->
+    <script src="{% static 'js/search.js' %}"></script>
 
 </head>
 
@@ -37,7 +39,7 @@
                     <div class="main-menu f-right d-none d-lg-block">
                         <nav>
                             <ul id="navigation">
-                                <li><a href="{% url 'index'%}">Home</a></li>
+                                <li><a href="{% url 'index' %}">Home</a></li>
                                 <li><a href="{% url 'rooms' %}">Rooms</a></li>
                                 <li><a href="{% url 'aboutUs' %}">About Us</a></li>
                             </ul>
@@ -80,13 +82,12 @@
                             <p>Let's uncover the best places to live.</p>
                         </div>
                         <!-- Search Caption End -->
-
                         <!--Search form -->
                         <form action="#" class="search-box mb-100">
                             <div class="input-form">
-                                <input type="text" placeholder="Enter cities name...">
+                                <input type="search" placeholder="Enter cities name..." id="searchRoom"
+                                       onchange="search()">
                             </div>
-
                             <div class="search-form">
                                 <a href="#" class="btnOnly"><i class="ti-search"></i>Search</a>
                             </div>
@@ -351,9 +352,10 @@
                 <div class="row justify-content-between">
                     <div class="col-xl-8 col-lg-8 col-md-7">
                         <div class="socialMedia-caption socialMedia-caption2">
-                            <p>Easy rooms will completely reduce the old tiresome process of physical travel for the search of room.
-                                Without such burden, the clients will get all facilities of <a href="index.html" target="_blank">www.easyrooms.com</a>
-                                in a single click.
+                            <p>Easy rooms will completely reduce the old tiresome process of physical travel for the
+                                search of room.
+                                Without such burden, the clients will get all facilities of<a href="{% url 'index'%}" target="_blank">www.easyrooms.com</a>
+                                in a single click. Also check our <a href="{% url 'privacy' %}" target="_blank">privacy policy </a>
                             </p>
                         </div>
                     </div>
@@ -382,7 +384,7 @@
                         <div class="col-xl-12 col-lg-12 ">
                             <div class="footer-copy-right">
                                 <p>Copyright &copy; All rights reserved to
-                                    <a href="index.html" target="_blank">Easy Rooms</a>
+                                    <a href="{% url 'privacy' %}"target="_blank">Easy Rooms</a>
                                 </p>
                             </div>
                         </div>
@@ -396,7 +398,7 @@
 
 
 <!-- Scroll Up Start -->
-<div id="backToTop" >
+<div id="backToTop">
     <a title="Move To Top" href="#">
         <i class="fas fa-level-up-alt"></i>
     </a>
