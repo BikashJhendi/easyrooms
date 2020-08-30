@@ -34,3 +34,9 @@
     color: #fff;
     background-color: #b367ff;
 }
+
+#profile
+{
+    background: red;
+    float: left;
+}
