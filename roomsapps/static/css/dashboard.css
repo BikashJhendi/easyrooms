@@ -34,3 +34,59 @@
     color: #fff;
     background-color: #b367ff;
 }
+
+#profile
+{
+    height: 550px;
+    width: 900px;
+    background: red;
+    float: right;
+
+}
+#heading
+{
+    background: #FFFFFF;
+    border-bottom: 1px solid gray;
+}
+#heading h2
+{
+    font-family: Corbel;
+    margin-left: 10px;
+
+}
+#form
+{
+    margin-top: 20px;
+}
+
+
+#profile label
+{
+    font-size: 15px;
+    font-family: Corbel;
+}
+
+#profile label[for="lname"]
+{
+
+}
+
+#email
+{
+    width: 50px;
+}
+
+
+#profile input[type="submit"]
+{
+    width: 100px;
+    font-family: Consolas;
+    float: right;
+    margin-right: 35px;
+
+}
+#profile input[type="text"],input[type="password"]
+{
+    width: 100%;
+    height: 40px;
+}
