@@ -35,11 +35,36 @@
     background-color: #b367ff;
 }
 
+#image-main
+{
+    width: 300px;
+    height: 320px;
+    float: left;
+    margin-left: -120px;
+
+}
+
+#image {
+    background: red;
+    width: 300px;
+    height: 275px;
+    float: left;
+}
+
+
+#but
+{
+    background: white;
+    float: left;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
 #profile
 {
     height: 550px;
     width: 900px;
-    background: red;
+    background: white;
     float: right;
 
 }
