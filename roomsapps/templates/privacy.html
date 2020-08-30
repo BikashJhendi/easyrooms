@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Easy Rooms</title>
+    <title>Privacy Policy</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"> {# asking the width of devices #}
 
     <!-- CSS here -->
@@ -69,17 +69,29 @@
 </div>
 <!-- Header End -->
 
- <div class="Privacy">
+ <div class="privacy">
 		 Privacy Policy
 		</div>
 	<div class="container">
 
         <div class="border-container">
 			<p class="paragraph">
-Personal data, or personal information as it is sometimes called, is data that relates to or is capable of identifying a living person. Our members privacy is very important to us and we do all we can to protect it.			</p>
+Personal data, or personal information as it is sometimes called, is data that relates to or is capable of identifying a living person. Our members privacy is very important to us and we do all we can to protect it.
+            </p>
+
+             <h2 class="heading">Information we collect and how we use it</h2>
+			<p class="paragraph">
+We will collect information about you when you open an account, register with this website, place an order for services, or contact our Customer Service. The type of information we may collect includes your name, age, main activity, postal address, email address and phone number so that we can contact you if we need to. We may also collect information about how you use this website using cookies (Cookies are codes, made up of letters and numbers, which most internet sites will ask your computer to store to allow the site to distinguish you from other users.)			</p>
+			<p class="paragraph">
+We believe that the cookies you encounter on the EasyRooms site are either (i) necessary to perform the functions that members wish to use EasyRooms for, or (ii) are non-intrusive.			</p>
 
 			<p class="paragraph">
-The purpose of this Privacy Policy is to let you know the type of information we may gather about you, how we may use it, whether we disclose it to anyone, and the choices you have regarding our use of the information.			</p>
+Please note, however, that if you set your browser to reject cookies you may not be able to use certain aspects of EasyRooms - and might not be able to use the service to its full extend.			</p>
+
+			<p class="paragraph">
+The purpose of this Privacy Policy is to let you know the type of information we may gather about you, how we may use it, whether we disclose it to anyone, and the choices you have regarding our use of the information.
+            </p>
+
 		</div>
         </div>
 
@@ -90,8 +102,8 @@ The purpose of this Privacy Policy is to let you know the type of information we
                     <div class="col-xl-8 col-lg-8 col-md-7">
                         <div class="socialMedia-caption socialMedia-caption2">
                             <p>Easy rooms will completely reduce the old tiresome process of physical travel for the search of room.
-                                Without such burden, the clients will get all facilities of <a href="index.html" target="_blank">www.easyrooms.com</a>
-                                in a single click.
+                                Without such burden, the clients will get all facilities of <a href="{% url 'index'%}" target="_blank">www.easyrooms.com</a>
+                                in a single click. Also check our <a href="{% url 'privacy' %}" target="_blank">privacy policy </a>
                             </p>
                         </div>
                     </div>
@@ -118,7 +130,7 @@ The purpose of this Privacy Policy is to let you know the type of information we
                         <div class="col-xl-12 col-lg-12 ">
                             <div class="footer-copy-right">
                                 <p>Copyright &copy; All rights reserved to
-                                    <a href="index.html" target="_blank">Easy Rooms</a>
+                                    <a href="{% url 'index'%}" target="_blank">Easy Rooms</a>
                                 </p>
                             </div>
                         </div>
