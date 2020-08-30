@@ -79,8 +79,8 @@ def dashboard_admin(request):
 # adminPages login room details views
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['adminGroup'])
-def dashboard_rooms(request):
-    return render(request, 'adminPages/roomdashboard.html')
+def dashboard_main(request):
+    return render(request, 'adminPages/maindashboard.html')
 
 
 # adminPages login usersPages details views
@@ -148,7 +148,7 @@ def user_logout(request):
 def verification_page(request):
     group = request.user.groups.filter(user=request.user)[0]
     if group.name == "adminGroup":
-        return HttpResponseRedirect(reverse('dashboardAdmin'))
+        return HttpResponseRedirect(reverse('dashboard'))
     elif group.name == "userGroup":
         return HttpResponseRedirect(reverse('userRooms'))
     else:

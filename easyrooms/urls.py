@@ -23,7 +23,7 @@ urlpatterns = [
 
     # admin pages url
     path('login/dashboard/admin', views.dashboard_admin, name='dashboardAdmin'),
-    path('login/dashboard/rooms', views.dashboard_rooms, name='dashboardRooms'),
+    path('login/dashboard/main', views.dashboard_main, name='dashboard'),
     path('login/dashboard/users', views.dashboard_users, name='dashboardUsers'),
     path('login/dashboard/admin/profile', views.admin_profile, name='dashboardAdminProfile'),
 ]
