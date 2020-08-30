@@ -6,7 +6,11 @@ from django.shortcuts import redirect
 def unauthenticated_user(view_func):
     def wrapper_func(request, *args, **kwargs):
         if request.user.is_authenticated:
-            return redirect('userRooms')
+            group = request.user.groups.filter(user=request.user)[0]
+            if group.name == "adminGroup":
+                return redirect('dashboardAdmin')
+            elif group.name == "userGroup":
+                return redirect('userRooms')
         else:
             return view_func(request, *args, **kwargs)
 

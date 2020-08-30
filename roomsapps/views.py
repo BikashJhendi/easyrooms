@@ -156,3 +156,4 @@ def verification_page(request):
 
     context = {}
     return render(request, 'redirect.html', context)
+
