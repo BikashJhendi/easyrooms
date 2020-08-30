@@ -37,6 +37,10 @@
 
 #profile
 {
+    height: 300px;
+    width: 900px;
     background: red;
-    float: left;
+    float: right;
+
 }
+
