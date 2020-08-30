@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.contrib.auth.models import Group
 
 
 # Create your models here.
@@ -31,6 +31,10 @@ class MyAccountManager(BaseUserManager):
         user.is_staff = True
         user.is_superuser = True
         user.is_user = True
+        # -- adding group type for admin --#
+        group = Group.objects.get(name='adminGroup')
+        user.groups.add(group)
+        #############
         user.save(using=self._db)
         return user
 
@@ -61,7 +65,4 @@ class UsersAccount(AbstractBaseUser, PermissionsMixin):
         return self.is_admin
 
     def has_module_perms(self, app_label):
-        return True
-
-    def get_group_permissions(self, obj=None):
         return True
