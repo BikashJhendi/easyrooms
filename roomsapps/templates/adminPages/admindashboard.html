@@ -23,7 +23,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="{% url 'dashboardAdmin' %}">Profile</a></li>
                 <li><a href="{% url 'dashboardUsers' %}">User Dashboard</a></li>
-                <li><a href="{% url 'dashboardRooms' %}">Room Dashboard</a></li>
+                <li><a href="{% url 'dashboard' %}">Room Dashboard</a></li>
             </ul>
             <button class="btn btn-danger navbar-btn"><a href="{% url 'logout' %}"> Logout </a></button>
         </div>
@@ -31,6 +31,17 @@
 </div>
 <div id="main">
     <div class="container">
+        <div id="image-main">
+        <div id="image">
+
+        </div>
+            <div id="but">
+        <button>
+            Upload a new picture
+        </button>
+        </div>
+        </div>
+
         <div id="profile">
             <div id="heading">
                 <h2>Profile</h2>

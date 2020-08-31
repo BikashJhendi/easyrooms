@@ -8,7 +8,7 @@ def unauthenticated_user(view_func):
         if request.user.is_authenticated:
             group = request.user.groups.filter(user=request.user)[0]
             if group.name == "adminGroup":
-                return redirect('dashboardAdmin')
+                return redirect('dashboard')
             elif group.name == "userGroup":
                 return redirect('userRooms')
         else:
