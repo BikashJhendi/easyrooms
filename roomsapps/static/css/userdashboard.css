@@ -1,12 +1,16 @@
+body
+{
+    background: #222222;
+}
 #usernavigation
 {
     background: #1e7e34;
 }
 
 .navbar-inverse {
-    background-color: #3b2774;
-    border-color: #3b2774;
+
     border-radius: 0px;
+    border-bottom: 1px solid white;
 }
 
 .navbar-btn {
@@ -15,27 +19,47 @@
     float: right;
 }
 
+.navbar-btn a
+{
+    color: #FFFFFF;
+}
+
 .navbar-inverse .navbar-brand {
     color: #FFFFFF;
     font-size: 25px;
-    font-family: "Corbel Light";
+    font-family: Corbel;
+    letter-spacing: 5px;
     font-weight: bold;
+    color: #de7300;
 }
 
 @media (min-width: 768px){
 .navbar-nav
 {
     float: left;
-    margin: 0px 0px 0px 900px;
+    margin: 0px 0px 0px 850px;
+    font-family: Corbel;
+
 }
 }
 
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
-    color: #fff;
-    background-color: #b367ff;
+    color: white;
+    font-weight: bold;
+    font-family: Corbel;
+    background-color: #de7300;
 }
 #user_table
 {
     background: #b3d7ff;
     height: 100px;
+    margin-top: 20px;
+}
+
+.container h2
+{
+    font-family: Corbel;
+    font-weight: bold;
+    font-size: 40px;
+    color: white;
 }
