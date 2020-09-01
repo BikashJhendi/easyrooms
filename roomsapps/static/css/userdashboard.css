@@ -1,12 +1,16 @@
+body
+{
+    background: #222222;
+}
 #usernavigation
 {
     background: #1e7e34;
 }
 
 .navbar-inverse {
-    background-color: #3b2774;
-    border-color: #3b2774;
+
     border-radius: 0px;
+    border-bottom: 1px solid white;
 }
 
 .navbar-btn {
