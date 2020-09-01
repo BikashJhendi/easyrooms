@@ -16,7 +16,8 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/themify-icons.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/nice-select.css' %}">
-     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css ">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css ">
 
 
     <!-- CSS here -->
@@ -27,89 +28,118 @@
 <div class="container">
 
     <section class="panel panel-default">
-        <div class="panel-heading">
+        <div class="row panel-heading justify-content-center pt-20 pb-20">
             <h3 class="panel-title">Add a Room</h3>
         </div>
         <div class="panel-body">
+            {% block content %}
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
 
-            <form>
+                    <!-- form-group // -->
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for msg in messages %}
+                                <li>
+                                    <div class="alert alert-{{ msg.level_tag }}" role="alert">
+                                        {{ msg.message }}
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
 
-                <!-- form-group // -->
 
-                <div class="form-group">
-                    <label for="name" class="col-sm-3 control-label">Title</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Title" required>
+                    <div class="row form-group">
+                        <label for="name" class="col-3 control-label">Title</label>
+                        <div class="col-lg-9 col-sm-8">
+                            <input type="text" class="form-control" name="title" id="name" placeholder="Title" required>
+                        </div>
                     </div>
-                </div> <!-- form-group // -->
-                <div class="form-group">
-                    <label for="name" class="col-sm-3 control-label">Customer Name</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Your name" required>
-                    </div>
-                </div> <!-- form-group // -->
+                    <!-- form-group // -->
 
-                <div class="form-group">
-                    <label for="name" class="col-sm-3 control-label">Contact No</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" name="name" id="name" placeholder="your number" required>
-                    </div>
-                </div> <!-- form-group // -->
+                    <div class="row form-group">
+                        <label for="name" class="col-3 control-label">Username</label>
+                        <div class="col-lg-9 col-sm-8">
+                            {% if request.user.is_authenticated %}
+                                <input type="text" class="form-control" id="name"
+                                       placeholder=
+                                               " Your username is  *{{ request.user.username }}* and you can't edit this information."
+                                       required readonly>
+                            {% endif %}
+
+                        </div>
+                    </div> <!-- form-group // -->
+
+                    <div class="row form-group">
+                        <label for="name" class="col-3 control-label">Contact No</label>
+                        <div class="col-lg-9 col-sm-8">
+                            <input type="number" class="form-control" name="contactNo" id="name"
+                                   placeholder="Phone number (Must be 10digit number) " required>
+                        </div>
+                    </div> <!-- form-group // -->
 
 
-                <div class="form-group">
-                    <label for="tech" class="col-sm-3 control-label">District</label>
-                    <div class="col-sm-9">
-                            <select class="form-control">
-                                <option value="">Kathmandu</option>
-                                <option value="">Bhaktapur</option>
-                                <option value="">Lalitpur</option>
-                                <option value="">Pokhara</option>
+                    <div class="row form-group">
+                        <label for="tech" class="col-3 control-label">District</label>
+                        <div class="col-lg-9 col-sm-8">
+                            <select class="form-control" name="district">
+                                <option value="Kathmandu">Kathmandu</option>
+                                <option value="Bhaktapur">Bhaktapur</option>
+                                <option value="Lalitpur">Lalitpur</option>
+                                <option value="Pokhara">Pokhara</option>
                             </select>
-                    </div>
-                </div> <!-- form-group // -->
-                <div class="form-group">
-                    <label for="name" class="col-sm-3 control-label">Address</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Address" required>
-                    </div>
-                </div> <!-- form-group // -->
+                        </div>
+                    </div> <!-- form-group // -->
+                    <div class="row form-group">
+                        <label for="name" class="col-3 control-label">Address</label>
+                        <div class="col-lg-9 col-sm-8">
+                            <input type="text" class="form-control" name="address" id="name"
+                                   placeholder="Address (Eg. Building Number, Street Name, Neighborhood, City)"
+                                   required>
+                        </div>
+                    </div> <!-- form-group // -->
 
-                <div class="form-group">
-                    <label for="name" class="col-sm-3 control-label">Price</label>
-                    <div class="col-sm-9">
-                        <input type="number" class="form-control" name="name" id="name" placeholder="Price" required>
-                    </div>
-                </div> <!-- form-group // -->
-                <div class="form-group">
-                    <label for="about" class="col-sm-3 control-label">Description</label>
-                    <div class="col-sm-9">
-                            <textarea class="form-control"></textarea>
-                    </div>
-                </div> <!-- form-group // -->
+                    <div class="row form-group">
+                        <label for="name" class="col-3 control-label">Price</label>
+                        <div class="col-lg-9 col-sm-8">
+                            <input type="number" class="form-control" name="price" id="name"
+                                   placeholder="Price in (Rs.)" required>
+                        </div>
+                    </div> <!-- form-group // -->
+                    <div class="row form-group">
+                        <label for="about" class="col-3 control-label">Description</label>
+                        <div class="col-lg-9 col-sm-8 ">
+                            <textarea class="form-control" name="descriptions"></textarea>
+                        </div>
+                    </div> <!-- form-group // -->
 
-                <div class="form-group">
-                    <label for="name" class="col-sm-3 control-label">Images</label>
-                    <div class="col-sm-9">
-                        <label class="control-label small" for="file_img" >Rooms (jpg/png):</label> <input type="file" name="file_img" required multiple>
-                    </div>
+                    <input type="hidden" name="user" value="{{ request.user.id }}">
 
-                </div> <!-- form-group // -->
+                    <div class="row form-group">
+                        <label for="name" class="col-3 control-label">Images</label>
+                        <div class="col-lg-9 col-sm-8">
+                            <label class="control-label small" for="file_img">Rooms (jpg/png):</label> <input
+                                type="file" name="images" accept="image/x-png,image/gif,image/jpeg" required multiple>
+                        </div>
 
-                <hr>
-                <div class="form-group">
-                    <div class="col-sm-offset-3 col-sm-9">
-                        <button type="submit" class="btn btn-primary">ADD</button>
-                    </div>
-                </div> <!-- form-group // -->
-            </form>
+                    </div> <!-- form-group // -->
+
+
+                    <hr>
+                    <div class="row form-group d-flex justify-content-center ">
+                        <div class="col-3">
+                            <button type="submit" class="btn btn-primary col-12">POST ROOM </button>
+                        </div>
+                    </div> <!-- form-group // -->
+                </form>
+            {% endblock content %}
 
         </div><!-- panel-body // -->
     </section><!-- panel// -->
 
 
 </div> <!-- container// -->
-
 
 
 </body>

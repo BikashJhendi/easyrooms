@@ -1,12 +1,13 @@
 from django.contrib.auth.models import Group
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from roomsapps.forms import RegistrationForms
+from roomsapps.forms import RegistrationForms, RoomForms
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from .decorators import unauthenticated_user, allowed_users
+from account.models import UsersAccount
 
 
 # Create your views here.
@@ -45,7 +46,14 @@ def user_rooms(request):
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['userGroup'])
 def post_room(request):
-    return render(request, 'usersPages/post_room.html')
+    if request.method == 'POST':
+        room_details = RoomForms(request.POST, request.FILES)
+        room_details.save()
+
+        messages.success(request, "Your post is added for review. We will inform you when it is accepted.")
+        return redirect('postRoom')
+    room_details = RoomForms()
+    return render(request, 'usersPages/post_room.html', {'room_details': room_details})
 
 
 # login usersPages about  views
@@ -156,4 +164,3 @@ def verification_page(request):
 
     context = {}
     return render(request, 'redirect.html', context)
-

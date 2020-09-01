@@ -1,9 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-
-from account import models
+from roomsapps.models import Rooms
 from account.models import UsersAccount
-from django.contrib.auth.models import Group
 
 
 # Register Forms
@@ -16,3 +14,8 @@ class RegistrationForms(UserCreationForm):
         # fields = '__all__'
 
 
+class RoomForms(forms.ModelForm):
+    class Meta:
+        model = Rooms
+        fields = ("title", "contactNo", "district", "address", "price", "descriptions", "user")
+        # fields = '__all__'
