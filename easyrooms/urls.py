@@ -2,6 +2,9 @@ from django.contrib import admin
 from django.urls import path
 from roomsapps import views
 
+from django.conf.urls.static import static
+from django.conf import settings
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name="index"),
@@ -27,3 +30,5 @@ urlpatterns = [
     path('login/dashboard/users', views.dashboard_users, name='dashboardUsers'),
     path('login/dashboard/admin/profile', views.admin_profile, name='dashboardAdminProfile'),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

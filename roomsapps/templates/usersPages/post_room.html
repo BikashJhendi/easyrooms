@@ -16,10 +16,6 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/themify-icons.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/nice-select.css' %}">
-    <link rel="stylesheet" type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css ">
-
-
     <!-- CSS here -->
 
 </head>
@@ -28,9 +24,10 @@
 <div class="container">
 
     <section class="panel panel-default">
-        <div class="row panel-heading justify-content-center pt-20 pb-20">
+        <div class="row panel-heading justify-content-center pt-20 pb-10">
             <h3 class="panel-title">Add a Room</h3>
         </div>
+        <hr>
         <div class="panel-body">
             {% block content %}
                 <form method="POST" enctype="multipart/form-data">
@@ -74,8 +71,10 @@
                     <div class="row form-group">
                         <label for="name" class="col-3 control-label">Contact No</label>
                         <div class="col-lg-9 col-sm-8">
-                            <input type="number" class="form-control" name="contactNo" id="name"
-                                   placeholder="Phone number (Must be 10digit number) " required>
+                            <input type="number" class="form-control" name="contactNo" min="1000000000" max="9999999999"
+                                   oninvalid="this.setCustomValidity('The number should be 10 digit.')"
+                                   oninput="setCustomValidity('')"
+                                   id="name" placeholder="Phone number (Must have 10 digit number) " required>
                         </div>
                     </div> <!-- form-group // -->
 
@@ -103,8 +102,12 @@
                     <div class="row form-group">
                         <label for="name" class="col-3 control-label">Price</label>
                         <div class="col-lg-9 col-sm-8">
-                            <input type="number" class="form-control" name="price" id="name"
-                                   placeholder="Price in (Rs.)" required>
+                            <input type="number" class="form-control" name="price" id="name" min="1000" max="100000"
+                                   oninvalid="this.setCustomValidity('The price should be more than Rs One thousands ' +
+                                    'and less than Rs One Lakh.')"
+                                   oninput="setCustomValidity('')"
+                                   placeholder="Price in (Rs.) (It should be more than Rs.1000 and less than Rs. 100000)"
+                                   required>
                         </div>
                     </div> <!-- form-group // -->
                     <div class="row form-group">
@@ -129,7 +132,7 @@
                     <hr>
                     <div class="row form-group d-flex justify-content-center ">
                         <div class="col-3">
-                            <button type="submit" class="btn btn-primary col-12">POST ROOM </button>
+                            <button type="submit" class="btn btn-primary col-12">POST ROOM</button>
                         </div>
                     </div> <!-- form-group // -->
                 </form>
