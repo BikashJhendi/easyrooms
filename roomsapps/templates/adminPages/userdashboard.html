@@ -23,7 +23,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="{% url 'dashboardAdmin' %}">Profile</a></li>
                 <li class="active"><a href="{% url 'dashboardUsers' %}">User Dashboard</a></li>
-                <li><a href="{% url 'dashboardRooms' %}">Room Dashboard</a></li>
+                <li><a href="{% url 'dashboard' %}">Room Dashboard</a></li>
             </ul>
             <button class="btn btn-danger navbar-btn"><a href="{% url 'logout' %}"> Logout </a></button>
         </div>
@@ -36,9 +36,11 @@
             <table class="table">
                 <tr>
                     <th>ID</th>
-                    <th>email</th>
-                    <th>username</th>
-                    <th>password</th>
+                    <th>Fullname</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Contact No.</th>
+                    <th>Password</th>
                     <th>ACTION</th>
 
                 </tr>

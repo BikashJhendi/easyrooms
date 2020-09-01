@@ -678,6 +678,9 @@ hr {
 .mobile_menu .slicknav_menu .slicknav_nav .slicknav_item a {
     padding: 0 !important;
 }
+.mobile_sign{
+    display: none;
+}
 /*main navbar header End*/
 
 
