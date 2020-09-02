@@ -26,14 +26,14 @@
 <body>
 
 <!-- Header Start -->
-<div class="nav">
+<div class="header">
     <div class="header-area1 header-transparent">
         <div class="main-header1 header-sticky">
-            <div class="container-fluid">
+            <div class="container">
                 <div class="menu-wrapper d-flex align-items-center justify-content-between">
                     <!-- Logo -->
                     <div class="logo">
-                        <a href="{% url 'index' %}">Easy Rooms</a>
+                        <a href="{% url 'userRooms' %}">Easy Rooms</a>
                     </div>
                     <!-- Logo -->
 
@@ -41,26 +41,43 @@
                     <div class="main-menu f-right d-none d-lg-block">
                         <nav>
                             <ul id="navigation">
-                                <li><a href="{% url 'index' %}">Home</a></li>
+                                <a href="{% url 'userProfile' %}" class="mobile_sign">
+                                    You are login as {{ request.user.username }}.</a>
                                 <li><a href="{% url 'rooms' %}">Rooms</a></li>
-                                <li><a href="{% url 'aboutUs' %}">About Us</a></li>
-                                <a href="{% url 'signup' %}" class="mobile_sign">Sign up</a>
-                                <a href="{% url 'login' %}" class="mobile_sign">Login </a>
+                                <li><a href="{% url 'postRoom' %}">Post Room</a></li>
+                                <li><a href="{% url 'userAboutUS' %}">About Us</a></li>
+                                <a href="{% url 'userProfile' %}" class="mobile_sign">Profile</a>
+                                <a href="{% url 'logout' %}" class="mobile_sign">Logout</a>
+
                             </ul>
                         </nav>
                     </div>
                     <!-- nav bar -->
 
-                    <!-- Header-btn -->
-                    <div class="header-btn d-none d-lg-block f-right">
-                        <a href="{% url 'login' %}" class="btnOnly">Login</a>
-                        <a href="{% url 'signup' %}" class="btnOnly">Signup</a>
+                    <!-- Profile Start -->
+                    <div class="header-profile d-none d-lg-block f-right ">
+                        <div class="row">
+                            <div class="profile-icon">
+                                {% if request.user.is_authenticated %}
+                                    <p><i class="fas fa-user-circle"></i> Hi, {{ request.user.username }}</p>
+                                {% endif %}
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-circle"><i class="fas fa-caret-down"></i></button>
+                                <div class="dropdown-content">
+                                    <a href="{% url 'userProfile' %}">Profile</a>
+                                    <a href="{% url 'logout' %}">Logout</a>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
-                    <!-- Header-btn -->
+                    <!-- Profile End -->
+
 
                     <!-- Mobile Menu -->
                     <div class="col-12">
-                        <div class="mobile_menu d-block d-lg-none"></div>
+                        <div class="row mobile_menu d-block d-lg-none"></div>
                     </div>
                     <!-- Mobile Menu -->
 
@@ -135,9 +152,9 @@
                     <div class="socialMedia-caption socialMedia-caption2">
                         <p>Easy rooms will completely reduce the old tiresome process of physical travel for the search
                             of room.
-                            Without such burden, the clients will get all facilities of <a href="{% url 'index' %}"
+                            Without such burden, the clients will get all facilities of <a href="{% url 'userRooms' %}"
                                                                                            target="_blank">www.easyrooms.com</a>
-                            in a single click. Also check our <a href="{% url 'privacy' %}" target="_blank">privacy
+                            in a single click. Also check our <a href="{% url 'userPrivacy' %}" target="_blank">privacy
                                 policy </a>
                         </p>
                     </div>
@@ -165,7 +182,7 @@
                         <div class="col-xl-12 col-lg-12 ">
                             <div class="footer-copy-right">
                                 <p>Copyright &copy; All rights reserved to
-                                    <a href="{% url 'index' %}" target="_blank">Easy Rooms</a>
+                                    <a href="{% url 'userRooms' %}" target="_blank">Easy Rooms</a>
                                 </p>
                             </div>
                         </div>
@@ -228,5 +245,3 @@
 </body>
 
 </html>
-
-

@@ -2,6 +2,9 @@ from django.contrib import admin
 from django.urls import path
 from roomsapps import views
 
+from django.conf.urls.static import static
+from django.conf import settings
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name="index"),
@@ -19,6 +22,7 @@ urlpatterns = [
     path('login/user/post_room', views.post_room, name='postRoom'),
     path('login/user/profile', views.user_profile, name='userProfile'),
     path('login/user/room/details', views.user_rooms_details, name='userRoomDetails'),
+    path('login/user/room/privacy', views.user_privacy, name='userPrivacy'),
     path('login/redirect', views.verification_page, name='redirect'),
 
     # admin pages url
@@ -27,3 +31,5 @@ urlpatterns = [
     path('login/dashboard/users', views.dashboard_users, name='dashboardUsers'),
     path('login/dashboard/admin/profile', views.admin_profile, name='dashboardAdminProfile'),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
