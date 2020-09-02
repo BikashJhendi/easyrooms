@@ -75,6 +75,13 @@ def users_about_us(request):
     return render(request, 'usersPages/users_aboutUs.html')
 
 
+# login usersPages privacy views
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['userGroup'])
+def user_privacy(request):
+    return render(request, 'usersPages/users_privacy.html')
+
+
 # login usersPages about  views
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['userGroup'])

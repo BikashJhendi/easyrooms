@@ -24,10 +24,10 @@
 <body>
 
 <!-- Header Start -->
-<div class="nav">
+<div class="header">
     <div class="header-area1 header-transparent">
         <div class="main-header1 header-sticky">
-            <div class="container-fluid">
+            <div class="container">
                 <div class="menu-wrapper d-flex align-items-center justify-content-between">
                     <!-- Logo -->
                     <div class="logo">
@@ -39,49 +39,34 @@
                     <div class="main-menu f-right d-none d-lg-block">
                         <nav>
                             <ul id="navigation">
+                                <a href="{% url 'userProfile' %}" class="mobile_sign">
+                                    You are login as {{ request.user.username }}.</a>
                                 <li><a href="{% url 'rooms' %}">Rooms</a></li>
                                 <li><a href="{% url 'postRoom' %}">Post Room</a></li>
                                 <li><a href="{% url 'aboutUs' %}">About Us</a></li>
+                                <a href="{% url 'userProfile' %}" class="mobile_sign">Profile</a>
+                                <a href="{% url 'logout' %}" class="mobile_sign">Logout</a>
+
                             </ul>
                         </nav>
                     </div>
                     <!-- nav bar -->
 
-                    <!-- Header-btn -->
-                    {#                    <div class="header-btn d-none d-lg-block f-right">#}
-                    {#                        <a href="{% url 'login' %}" class="btnOnly">Login</a>#}
-                    {#                        <a href="{% url 'signup' %}" class="btnOnly">Signup</a>#}
-                    {#                        <span>#}
-                    {#                            {% if request.user.is_authenticated %}#}
-                    {#                                <p style="background-color: white;"> Hello, {{ request.user.username }}</p> |#}
-                    {#                                <a href="{% url 'logout' %}"> Logout </a>#}
-                    {##}
-                    {#                            {% else %}#}
-                    {##}
-                    {#                            {% endif %}#}
-                    {#                        </span>#}
-                    {##}
-                    {#                        <span>Hello, {{ request.username }}</span>#}
-                    {#                        <span> <a href="{% url 'userLogout' %}"> Logout </a> </span>#}
-                    {#                    </div>#}
-                    <!-- Header-btn -->
-
-
                     <!-- Profile Start -->
-                    <div class="header-profile d-none d-lg-block f-right col-xl-3 col-lg-3">
+                    <div class="header-profile d-none d-lg-block f-right ">
                         <div class="row">
-                            <div class="profile-icon col-6">
+                            <div class="profile-icon">
                                 {% if request.user.is_authenticated %}
-                                    <p><i class="fas fa-user-circle"></i> {{ request.user.username }}</p>
-
-
-                                {% else %}
-
+                                    <p><i class="fas fa-user-circle"></i> Hi, {{ request.user.username }}</p>
                                 {% endif %}
                             </div>
+                            <div class="dropdown">
+                                <button class="btn btn-circle"><i class="fas fa-caret-down"></i></button>
+                                <div class="dropdown-content">
+                                    <a href="{% url 'userProfile' %}">Profile</a>
+                                    <a href="{% url 'logout' %}">Logout</a>
+                                </div>
 
-                            <div class="profile-down-button col-6">
-                                <a href="{% url 'logout' %}"> Logout </a>
                             </div>
                         </div>
                     </div>
@@ -90,7 +75,7 @@
 
                     <!-- Mobile Menu -->
                     <div class="col-12">
-                        <div class="mobile_menu d-block d-lg-none"></div>
+                        <div class="row mobile_menu d-block d-lg-none"></div>
                     </div>
                     <!-- Mobile Menu -->
 
@@ -131,10 +116,13 @@
                     <div class="col-xl-8 col-lg-8 col-md-7">
                         <div class="socialMedia-caption socialMedia-caption2">
                             <p>Easy rooms will completely reduce the old tiresome process of physical travel for the
-                                search of room.
-                                Without such burden, the clients will get all facilities of <a href="index.html"
-                                                                                               target="_blank">www.easyrooms.com</a>
-                                in a single click.
+                                search
+                                of room.
+                                Without such burden, the clients will get all facilities of <a
+                                        href="{% url 'userRooms' %}"
+                                        target="_blank">www.easyrooms.com</a>
+                                in a single click. Also check our <a href="{% url 'userPrivacy' %}" target="_blank">privacy
+                                    policy </a>
                             </p>
                         </div>
                     </div>
@@ -150,39 +138,38 @@
             </div>
         </div>
     </section>
-    <!-- Social Media Link End  -->
-</div>
 
-<!-- footer Copyright start  -->
-<footer>
-    <div class="footer-copyright">
-        <div class="footer-bottom-area">
-            <div class="container">
-                <div class="footer-border">
-                    <div class="row d-flex justify-content-between align-items-center">
-                        <div class="col-xl-12 col-lg-12 ">
-                            <div class="footer-copy-right">
-                                <p>Copyright &copy; All rights reserved to
-                                    <a href="index.html" target="_blank">Easy Rooms</a>
-                                </p>
+
+    <footer>
+        <div class="footer-copyright">
+            <div class="footer-bottom-area">
+                <div class="container">
+                    <div class="footer-border">
+                        <div class="row d-flex justify-content-between align-items-center">
+                            <div class="col-xl-12 col-lg-12 ">
+                                <div class="footer-copy-right">
+                                    <p>Copyright &copy; All rights reserved to
+                                        <a href="{% url 'userRooms' %}" target="_blank">Easy Rooms</a>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </footer>
+    <!-- footer Copyright End -->
+
+
+    <!-- Scroll Up Start -->
+    <div id="backToTop">
+        <a title="Move To Top" href="#">
+            <i class="fas fa-level-up-alt"></i>
+        </a>
     </div>
-</footer>
-<!-- footer Copyright End -->
-
-
-<!-- Scroll Up Start -->
-<div id="backToTop">
-    <a title="Move To Top" href="#">
-        <i class="fas fa-level-up-alt"></i>
-    </a>
+    <!-- Scroll Up End -->
 </div>
-<!-- Scroll Up End -->
 
 
 {% comment %} javascript link {% endcomment %}
