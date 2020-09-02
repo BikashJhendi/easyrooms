@@ -29,8 +29,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+
+    # personal apps here
     'account',
 
+    # django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -123,7 +126,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_URL = '/img/'
+MEDIA_URL = '/img/'  # to add images
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/img')
-
+MEDIA_ROOT = os.path.join(BASE_DIR, 'roomsapps/static/img/')  # setting img locations

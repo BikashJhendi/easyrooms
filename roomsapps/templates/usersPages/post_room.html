@@ -32,8 +32,6 @@
             {% block content %}
                 <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
-
-                    <!-- form-group // -->
                     {% if messages %}
                         <ul class="messages">
                             {% for msg in messages %}
@@ -46,10 +44,10 @@
                         </ul>
                     {% endif %}
 
-
+                    <!-- form-group // -->
                     <div class="row form-group">
                         <label for="name" class="col-3 control-label">Title</label>
-                        <div class="col-lg-9 col-sm-8">
+                        <div class="col-lg-9 col-sm-12">
                             <input type="text" class="form-control" name="title" id="name" placeholder="Title" required>
                         </div>
                     </div>
@@ -57,7 +55,7 @@
 
                     <div class="row form-group">
                         <label for="name" class="col-3 control-label">Username</label>
-                        <div class="col-lg-9 col-sm-8">
+                        <div class="col-lg-9 col-sm-12">
                             {% if request.user.is_authenticated %}
                                 <input type="text" class="form-control" id="name"
                                        placeholder=
@@ -70,7 +68,7 @@
 
                     <div class="row form-group">
                         <label for="name" class="col-3 control-label">Contact No</label>
-                        <div class="col-lg-9 col-sm-8">
+                        <div class="col-lg-9 col-sm-12">
                             <input type="number" class="form-control" name="contactNo" min="1000000000" max="9999999999"
                                    oninvalid="this.setCustomValidity('The number should be 10 digit.')"
                                    oninput="setCustomValidity('')"
@@ -81,7 +79,7 @@
 
                     <div class="row form-group">
                         <label for="tech" class="col-3 control-label">District</label>
-                        <div class="col-lg-9 col-sm-8">
+                        <div class="col-lg-9 col-sm-12">
                             <select class="form-control" name="district">
                                 <option value="Kathmandu">Kathmandu</option>
                                 <option value="Bhaktapur">Bhaktapur</option>
@@ -92,7 +90,7 @@
                     </div> <!-- form-group // -->
                     <div class="row form-group">
                         <label for="name" class="col-3 control-label">Address</label>
-                        <div class="col-lg-9 col-sm-8">
+                        <div class="col-lg-9 col-sm-12">
                             <input type="text" class="form-control" name="address" id="name"
                                    placeholder="Address (Eg. Building Number, Street Name, Neighborhood, City)"
                                    required>
@@ -101,7 +99,7 @@
 
                     <div class="row form-group">
                         <label for="name" class="col-3 control-label">Price</label>
-                        <div class="col-lg-9 col-sm-8">
+                        <div class="col-lg-9 col-sm-12">
                             <input type="number" class="form-control" name="price" id="name" min="1000" max="100000"
                                    oninvalid="this.setCustomValidity('The price should be more than Rs One thousands ' +
                                     'and less than Rs One Lakh.')"
@@ -112,7 +110,7 @@
                     </div> <!-- form-group // -->
                     <div class="row form-group">
                         <label for="about" class="col-3 control-label">Description</label>
-                        <div class="col-lg-9 col-sm-8 ">
+                        <div class="col-lg-9 col-sm-12 ">
                             <textarea class="form-control" name="descriptions"></textarea>
                         </div>
                     </div> <!-- form-group // -->
@@ -121,9 +119,10 @@
 
                     <div class="row form-group">
                         <label for="name" class="col-3 control-label">Images</label>
-                        <div class="col-lg-9 col-sm-8">
+                        <div class="col-lg-9 col-sm-12">
                             <label class="control-label small" for="file_img">Rooms (jpg/png):</label> <input
-                                type="file" name="images" accept="image/x-png,image/gif,image/jpeg" required multiple>
+                                type="file" name="rooms_images" accept="image/x-png,image/gif,image/jpeg" required
+                                multiple>
                         </div>
 
                     </div> <!-- form-group // -->

@@ -1,13 +1,13 @@
 from django.contrib.auth.models import Group
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from roomsapps.forms import RegistrationForms, RoomForms
+from roomsapps.forms import RegistrationForms, RoomForms, RoomImagesForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from .decorators import unauthenticated_user, allowed_users
-from account.models import UsersAccount
+from .models import RoomsImage, Rooms
 
 
 # Create your views here.
@@ -47,13 +47,25 @@ def user_rooms(request):
 @allowed_users(allowed_roles=['userGroup'])
 def post_room(request):
     if request.method == 'POST':
-        room_details = RoomForms(request.POST, request.FILES)
-        room_details.save()
+        form = RoomImagesForm(request.POST or None, request.FILES or None)
+        files = request.FILES.getlist('rooms_images')
+        if form.is_valid():
+            user = request.user
+            title = form.cleaned_data['title']
+            price = form.cleaned_data['price']
+            contactNo = form.cleaned_data['contactNo']
+            district = form.cleaned_data['district']
+            address = form.cleaned_data['address']
+            descriptions = form.cleaned_data['descriptions']
+            obj = Rooms.objects.create(user=user, title=title, contactNo=contactNo, district=district,
+                                       address=address, price=price, descriptions=descriptions)
 
-        messages.success(request, "Your post is added for review. We will inform you when it is accepted.")
-        return redirect('postRoom')
-    room_details = RoomForms()
-    return render(request, 'usersPages/post_room.html', {'room_details': room_details})
+            for f in files:
+                RoomsImage.objects.create(rooms=obj, rooms_images=f)
+            messages.success(request, "Your post is added for review. We will inform you when it is accepted.")
+        else:
+            messages.info(request, "Invalid Form!!!s")
+    return render(request, 'usersPages/post_room.html')
 
 
 # login usersPages about  views
