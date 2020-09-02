@@ -8,24 +8,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {# asking the width of devices #}
 
-    <!-- CSS here -->
+ <!-- CSS here -->
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/slicknav.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/all.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/themify-icons.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/nice-select.css' %}">
-
+    <link rel="stylesheet" type="text/css" href="{% static 'css/header2.css' %}">
+    {#    <link rel="stylesheet" type="text/css" href="{% static 'css/nice-select.css' %}">#}
     <!-- CSS here -->
 
 </head>
 
 <body>
+<div class="header">
+    <div class="header-area1 header-transparent">
+        <div class="main-header1 header-sticky">
+            <div class="container">
+                <div class="menu-wrapper d-flex align-items-center justify-content-between">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <a href="{% url 'userRooms' %}">Easy Rooms</a>
+                    </div>
+                    <!-- Logo -->
+
+                    <!-- nav bar -->
+                    <div class="main-menu f-right d-none d-lg-block">
+                        <nav>
+                            <ul id="navigation">
+                                <a href="{% url 'userProfile' %}" class="mobile_sign">
+                                    You are login as {{ request.user.username }}.</a>
+                                <li><a href="{% url 'rooms' %}">Rooms</a></li>
+                                <li><a href="{% url 'postRoom' %}">Post Room</a></li>
+                                <li><a href="{% url 'userAboutUS' %}">About Us</a></li>
+                                <a href="{% url 'userProfile' %}" class="mobile_sign">Profile</a>
+                                <a href="{% url 'logout' %}" class="mobile_sign">Logout</a>
+
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- nav bar -->
+
+                    <!-- Profile Start -->
+                    <div class="header-profile d-none d-lg-block f-right ">
+                        <div class="row">
+                            <div class="profile-icon">
+                                {% if request.user.is_authenticated %}
+                                    <p><i class="fas fa-user-circle"></i> Hi, {{ request.user.username }}</p>
+                                {% endif %}
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-circle"><i class="fas fa-caret-down"></i></button>
+                                <div class="dropdown-content">
+                                    <a href="{% url 'userProfile' %}">Profile</a>
+                                    <a href="{% url 'logout' %}">Logout</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Profile End -->
+
+
+                    <!-- Mobile Menu -->
+                    <div class="col-12">
+                        <div class="row mobile_menu d-block d-lg-none"></div>
+                    </div>
+                    <!-- Mobile Menu -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- Header End -->
+
 <div class="container post-form">
 
     <section class="panel panel-default">
-        <div class="row panel-heading justify-content-center pt-20 pb-10">
+        <div class="row panel-heading justify-content-center pt-20 ">
             <h3 class="panel-title">Add a Room</h3>
         </div>
         <hr>
@@ -121,9 +184,9 @@
                     <div class="row form-group">
                         <label for="name" class="col-3 control-label"><i class="far fa-images fas-color"></i>Images</label>
                         <div class="col-lg-9 col-sm-12">
-                            <label class="control-label small" for="file_img">Rooms (jpg/png):</label> <input
+                            <p><label class="control-label " for="file_img">Rooms (jpg/png):</label> <input
                                 type="file" name="rooms_images" accept="image/x-png,image/gif,image/jpeg" required
-                                multiple>
+                                multiple="4"></p>
                         </div>
 
                     </div> <!-- form-group // -->
@@ -144,6 +207,104 @@
 
 </div> <!-- container// -->
 
+<!-- Social Media Link start -->
+    <section class="socialMedia-area">
+        <div class="container">
+            <div class="wants-wrapper w-padding2">
+                <div class="row justify-content-between">
+                    <div class="col-xl-8 col-lg-8 col-md-7">
+                        <div class="socialMedia-caption socialMedia-caption2">
+                            <p>Easy rooms will completely reduce the old tiresome process of physical travel for the
+                                search
+                                of room.
+                                Without such burden, the clients will get all facilities of <a
+                                        href="{% url 'userRooms' %}"
+                                        target="_blank">www.easyrooms.com</a>
+                                in a single click. Also check our <a href="{% url 'userPrivacy' %}" target="_blank">privacy
+                                    policy </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-5">
+                        <div class="footer-social f-right sm-left">
+                            <a href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.google.com/gmail/about/#" target="_blank"><i class="fab fa-google"></i></a>
+                            <a href="https://www.instagram.com/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="footer-copyright">
+            <div class="footer-bottom-area">
+                <div class="container">
+                    <div class="footer-border">
+                        <div class="row d-flex justify-content-between align-items-center">
+                            <div class="col-xl-12 col-lg-12 ">
+                                <div class="footer-copy-right">
+                                    <p>Copyright &copy; All rights reserved to
+                                        <a href="{% url 'userRooms' %}" target="_blank">Easy Rooms</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer Copyright End -->
+
+
+    <!-- Scroll Up Start -->
+    <div id="backToTop">
+        <a title="Move To Top" href="#">
+            <i class="fas fa-level-up-alt"></i>
+        </a>
+    </div>
+    <!-- Scroll Up End -->
+</div>
+
+<script src="{% static 'js/modernizr-3.5.0.min.js' %}"></script>
+<!-- Jquery, Popper, Bootstrap -->
+<script src="{% static 'bootstrap/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'bootstrap/popper.min.js' %}"></script>
+<script src="{% static 'bootstrap/bootstrap.min.js' %}"></script>
+
+
+<!-- Jquery Mobile Menu -->
+<script src="{% static 'js/jquery.slicknav.min.js' %}"></script>
+
+<!-- Jquery Slick , Owl-Carousel Plugins -->
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/slick.min.js' %}"></script>
+
+<!-- One Page, Animated-HeadLin -->
+<script src="{% static 'js/wow.min.js' %}"></script>
+<script src="{% static 'js/animated.headline.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+
+<!-- Date Picker -->
+<script src="{% static 'js/gijgo.min.js' %}"></script>
+
+<!-- Nice-select, sticky -->
+<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'js/jquery.sticky.js' %}"></script>
+
+<!-- Progress -->
+<script src="{% static 'js/jquery.barfiller.js' %}"></script>
+
+
+<!-- Jquery Plugins, main Jquery -->
+<script src="{% static 'js/plugins.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+
+{% comment %} end of javascript link {% endcomment %}
 
 </body>
 

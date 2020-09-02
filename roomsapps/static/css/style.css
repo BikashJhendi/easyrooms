@@ -3274,7 +3274,7 @@ hr {
 /*    background: linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);*/
 /*}*/
 .post-button {
-       background-color: #b367ff;
+    background-color: #b367ff;
 }
 
 .form-group .col-3 i{
@@ -3286,4 +3286,9 @@ hr {
 }
 .fas-color{
     color: #b367ff;
+}
+.post-form{
+    position: relative;
+    padding-top: 70px;
+
 }
