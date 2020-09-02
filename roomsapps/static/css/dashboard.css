@@ -1,16 +1,14 @@
 body
 {
-    background: #222222;
-}
-#navigation
-{
-    background: #1e7e34;
+    background-color: #ebeced;
 }
 
 .navbar-inverse {
 
     border-radius: 0px;
-    border-bottom: 1px solid gray;
+    outline: none;
+    background-color: #3b2774;
+    border-color: #3b2774;
 }
 
 .navbar-btn {
@@ -24,12 +22,11 @@ body
 }
 
 .navbar-inverse .navbar-brand {
-    color: #FFFFFF;
     font-size: 25px;
     font-family: Corbel;
     letter-spacing: 5px;
     font-weight: bold;
-    color: #de7300;
+    color: #FFFFFF;
 }
 
 
@@ -37,38 +34,29 @@ body
     color: white;
     font-weight: bold;
     font-family: Corbel;
-    background-color: #de7300;
+    background-color: coral;
 }
 
 
-#heading
+
+.text-center
 {
 
-    /*height: 80px;*/
-    /*margin-top: 50px;*/
-    background-color: #121416;
-    /*border-radius: 10px;*/
-
-}
-#heading h2
-{
-    font-family: SansSerif;
+    font-family: Corbel;
     font-weight: bold;
-    color: white;
+    color: #3b2774;
     padding: 10px;
     font-size: 50px;
     text-align: center;
     letter-spacing: 5px;
-
-
 }
-
 
 #profile
 {
-    height: 620px;
-    width: 700px;
+    height: 550px;
+    width: 550px;
     float: left;
+    margin-left: 300px;
 
 
 }
@@ -76,25 +64,26 @@ body
 #form
 {
     margin-top: 20px;
-    background-color: #121416;
-    border-radius: 10px;
-    padding: 10px;
+    width: 500px;
+    margin-left: 20px;
+    background-color: white;
+    padding: 20px;
 
 }
 
 #profile input[type="submit"]
 {
-    background: lightgreen;
-    color: #222222;
+    background: cornflowerblue;
+    color: whitesmoke;
     width: 150px;
     height: 40px;
     font-family: corbel;
     font-weight: bold;
     font-size: 18px;
     float: left;
-    margin-left: 260px;
+    margin-left: 155px;
+    margin-top: 20px;
     border: none;
-    border-radius: 10px;
     transition: .5s;
 
 
@@ -110,72 +99,29 @@ body
 {
     width: 96%;
     height: 40px;
-    border: 1px solid #222222;
+    border: 1px solid black;
     background-color: transparent ;
     outline: none;
     margin-left: 15px;
     margin-top: 10px;
     font-weight: bold;
     font-size: 18px;
-    border-radius: 5px;
     padding: 15px;
     color: #de7300;
+
 }
 
 #profile input[type="text"]::placeholder,input[type="password"]::placeholder
 {
-    color: #ffffff;
+    color: gray;
+    font-weight: normal;
 }
 #profile input[type="text"]:hover,input[type="password"]:hover
 {
-    border: 1px solid #de7300;
-    transition-duration: .5s;
+    border: 1px solid cornflowerblue;
+    transition-duration: .2s;
     transition-timing-function: ease-in-out;
     transform: scale(1.01);
-    box-shadow: 0px 2px #de7300;
+    box-shadow: 0px 1px cornflowerblue;
 
-}
-
-
-#image-main
-{
-    width: 300px;
-    height: 320px;
-    float: right;
-    margin-right: 100px;
-    margin-top: 25px;
-
-}
-
-#image {
-    background: whitesmoke;
-    width: 300px;
-    height: 275px;
-    float: left;
-}
-
-
-#but
-{
-    float: left;
-    width: 100%;
-    text-align: center;
-    margin-top: 20px;
-}
-
-#but button {
-    height: 40px;
-    border-radius: 10px;
-    border: 0px;
-    background-color: coral;
-    font-family: Corbel;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-#but button:hover
-{
-    transform: scale(1.1);
-    transition: ease;
-    transition-duration: .8s;
 }
