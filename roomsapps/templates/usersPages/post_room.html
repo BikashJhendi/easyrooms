@@ -16,12 +16,13 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/themify-icons.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/nice-select.css' %}">
+
     <!-- CSS here -->
 
 </head>
 
 <body>
-<div class="container">
+<div class="container post-form">
 
     <section class="panel panel-default">
         <div class="row panel-heading justify-content-center pt-20 pb-10">
@@ -46,15 +47,15 @@
 
                     <!-- form-group // -->
                     <div class="row form-group">
-                        <label for="name" class="col-3 control-label">Title</label>
+                        <label for="name" class="col-3 control-label"><i class="fas fa-tag fas-color"></i>Title</label>
                         <div class="col-lg-9 col-sm-12">
-                            <input type="text" class="form-control" name="title" id="name" placeholder="Title" required>
+                            <input type="text" class="form-control" name="title" id="name" placeholder="Rooms title (e.g location or no of rooms)" required >
                         </div>
                     </div>
                     <!-- form-group // -->
 
                     <div class="row form-group">
-                        <label for="name" class="col-3 control-label">Username</label>
+                        <label for="name" class="col-3 control-label"><i class="fas fa-user fas-color"></i>Username</label>
                         <div class="col-lg-9 col-sm-12">
                             {% if request.user.is_authenticated %}
                                 <input type="text" class="form-control" id="name"
@@ -67,7 +68,7 @@
                     </div> <!-- form-group // -->
 
                     <div class="row form-group">
-                        <label for="name" class="col-3 control-label">Contact No</label>
+                        <label for="name" class="col-3 control-label"><i class="fas fa-address-book fas-color"></i>Contact No</label>
                         <div class="col-lg-9 col-sm-12">
                             <input type="number" class="form-control" name="contactNo" min="1000000000" max="9999999999"
                                    oninvalid="this.setCustomValidity('The number should be 10 digit.')"
@@ -78,9 +79,9 @@
 
 
                     <div class="row form-group">
-                        <label for="tech" class="col-3 control-label">District</label>
+                        <label for="tech" class="col-3 control-label"><i class="fas fa-map-signs fas-color"></i>District</label>
                         <div class="col-lg-9 col-sm-12">
-                            <select class="form-control" name="district">
+                            <select class="form-control " name="district">
                                 <option value="Kathmandu">Kathmandu</option>
                                 <option value="Bhaktapur">Bhaktapur</option>
                                 <option value="Butwal">Butwal</option>
@@ -89,7 +90,7 @@
                         </div>
                     </div> <!-- form-group // -->
                     <div class="row form-group">
-                        <label for="name" class="col-3 control-label">Address</label>
+                        <label for="name" class="col-3 control-label"><i class="fas fa-map-marker-alt fas-color"></i>Address</label>
                         <div class="col-lg-9 col-sm-12">
                             <input type="text" class="form-control" name="address" id="name"
                                    placeholder="Address (Eg. Building Number, Street Name, Neighborhood, City)"
@@ -98,7 +99,7 @@
                     </div> <!-- form-group // -->
 
                     <div class="row form-group">
-                        <label for="name" class="col-3 control-label">Price</label>
+                        <label for="name" class="col-3 control-label"><i class="fas fa-dollar-sign fas-color"></i>Price</label>
                         <div class="col-lg-9 col-sm-12">
                             <input type="number" class="form-control" name="price" id="name" min="1000" max="100000"
                                    oninvalid="this.setCustomValidity('The price should be more than Rs One thousands ' +
@@ -109,7 +110,7 @@
                         </div>
                     </div> <!-- form-group // -->
                     <div class="row form-group">
-                        <label for="about" class="col-3 control-label">Description</label>
+                        <label for="about" class="col-3 control-label"><i class="fas fa-clipboard fas-color"></i>Description</label>
                         <div class="col-lg-9 col-sm-12 ">
                             <textarea class="form-control" name="descriptions"></textarea>
                         </div>
@@ -118,7 +119,7 @@
                     <input type="hidden" name="user" value="{{ request.user.id }}">
 
                     <div class="row form-group">
-                        <label for="name" class="col-3 control-label">Images</label>
+                        <label for="name" class="col-3 control-label"><i class="far fa-images fas-color"></i>Images</label>
                         <div class="col-lg-9 col-sm-12">
                             <label class="control-label small" for="file_img">Rooms (jpg/png):</label> <input
                                 type="file" name="rooms_images" accept="image/x-png,image/gif,image/jpeg" required
@@ -130,11 +131,11 @@
 
                     <hr>
                     <div class="row form-group d-flex justify-content-center ">
-                        <div class="col-3">
-                            <button type="submit" class="btn btn-primary col-12">POST ROOM</button>
+                        <div class="col-3 post-button">
+                            <button type="submit" class="btn col-12">POST ROOM</button>
                         </div>
                     </div> <!-- form-group // -->
-                </form>
+
             {% endblock content %}
 
         </div><!-- panel-body // -->
