@@ -1,16 +1,12 @@
 body
 {
-    background: #222222;
+    background-color: #ebeced;
 }
-#roomnavigation
-{
-    background: #1e7e34;
-}
-
 .navbar-inverse {
 
     border-radius: 0px;
-    border-bottom: 1px solid white;
+    background-color: #3b2774;
+    border-color: #3b2774;
 }
 
 .navbar-btn {
@@ -30,21 +26,14 @@ body
     font-family: Corbel;
     letter-spacing: 5px;
     font-weight: bold;
-    color: #de7300;
+    color: white;
 }
 
-@media (min-width: 768px){
-.navbar-nav
-{
-    float: left;
-    margin: 0px 0px 0px 850px;
-    font-family: Corbel;
-}
-}
 
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
     color: white;
     font-weight: bold;
     font-family: Corbel;
-    background-color: #de7300;
+    background-color: coral;
+    margin-right: 10px;
 }
