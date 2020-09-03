@@ -80,7 +80,7 @@
                     <div class="col-xl-10 col-lg-10">
                         <!-- Search Caption -->
                         <div class="main-box1 wrapper">
-                            <h1>Register New Account</h1>
+                            <h1>Create Account</h1>
                             <div class="main-box2">
                                 <div class="labels-top">
                                     {% block content %}
@@ -104,7 +104,7 @@
                                                 {% endfor %}
                                             {% endif %}
 
-                                            <label>
+                                            <div class="col-75">
                                                 <input class="text" type="text" name="fullName" placeholder="Full Name"
                                                        required="">
                                                 <input class="text" type="text" name="username" placeholder="Username"
@@ -119,7 +119,9 @@
                                                        required="">
                                                 <input class="text" type="password" name="password2"
                                                        placeholder="Confirm Password" required="">
-                                            </label>
+                                            </div>
+
+
                                             <div class="chkbox">
                                                 <label class="anim">
                                                     <input type="checkbox" class="checkbox" required="">
