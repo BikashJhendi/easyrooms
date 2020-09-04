@@ -14,7 +14,7 @@
 .container_left {
     width: 40%;
     padding-left: 20px;
-    background-color: #3b2774;
+    background-color: honeydew;
     float: left;
     padding-top: 1%;
     margin-left: 6%;
@@ -28,16 +28,14 @@
 
 .left-sub {
     font-size: large;
-    font-family: math;
     text-align: center;
     padding: 5%;
-    color: #fff;
 }
 
 .container_right {
     width: 40%;
     padding-left: 20px;
-    background-color: #3b2774;
+    background-color: honeydew;
     padding-top: 1%;
     margin-left: 56%;
 }
@@ -50,10 +48,8 @@
 
 .right-sub {
     font-size: large;
-    font-family: math;
     text-align: center;
     padding: 5%;
-    color: #fff;
 }
 
 .border-container {
@@ -62,12 +58,10 @@
     border: 2px solid #01a640;
     margin-left: 6%;
     margin-top: 5%;
-    font-family: "roboto-regular-webfont";
     font-size: 18px;
-    background-color: #3b2774;
+    background-color: honeydew;
 }
 
 .paragraph {
 	margin: 0 10px 0.6em;
-	color: #fff;
 }
