@@ -63,10 +63,11 @@
                             <div class="dropdown">
                                 <button class="btn btn-circle"><i class="fas fa-caret-down"></i></button>
                                 <div class="dropdown-content">
-                                    <a href="{% url 'userProfile' %}">Profile</a>
-                                    <a href="{% url 'logout' %}">Logout</a>
+                                    <a class="dropdown-icon" href="{% url 'userProfile' %}"> <i class="fas fa-user"></i>
+                                        Profile </a>
+                                    <a class="dropdown-icon" href="{% url 'logout' %}"> <i
+                                            class="fas fa-sign-out-alt"></i> Logout </a>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -108,30 +109,37 @@
                     <!-- Tittle End -->
                 </div>
             </div>
-            <hr style="border: 3px solid red; width:100%">
+            <hr style="border: 1px solid #b367ff; width:100%">
 
             <div class="section-tittle text-center display-40">
                 <h1>Update Your Profile</h1>
             </div>
-            <form action="">
-                <div class="form-group">
-                    <label for="Uname" name="username">Username:</label>
-                    <input type="text" class="form-control" id="email" placeholder="Enter a New Username">
-                </div>
-                <div class="form-group">
-                    <label for="Fname" name="fullName">Fullname:</label>
-                    <input type="text" class="form-control" id="pwd" placeholder="Enter a New Fullname">
-                </div>
-                <div class="form-group">
-                    <label for="email" name="email">Email:</label>
-                    <input type="email" class="form-control" id="pwd" placeholder="Enter a New Email">
-                </div>
-                <div class="form-group">
-                    <label for="pwd" name="password">Password:</label>
-                    <input type="password" class="form-control" id="pwd" placeholder="Enter a New Password">
-                </div>
-                <button type="submit" class="btn btn-info">Update</button>
-            </form>
+            {% block content %}
+                <form method="POST" action="" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="Uname" name="username">Username:</label>
+                        <input type="text" class="form-control" id="email" value="{{ request.user.username }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="Fname" name="fullName">Full Name:</label>
+                        <input type="text" class="form-control" id="pwd" value="{{ request.user.fullName }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="Fname" name="contanctNo">Contact No.</label>
+                        <input type="number" class="form-control" id="pwd" value="{{ request.user.contactNo }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" name="email">Email:</label>
+                        <input type="email" class="form-control" id="pwd" value="{{ request.user.email }}" >
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd" name="password">Password:</label>
+                        <input type="password" class="form-control" id="pwd" placeholder="Enter a New Password">
+                    </div>
+                    <button type="submit" class="btn btn-info">Update</button>
+                </form>
+            {% endblock content %}
         </div>
 
     </div>
