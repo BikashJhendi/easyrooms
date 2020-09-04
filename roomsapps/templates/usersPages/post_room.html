@@ -8,101 +8,200 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {# asking the width of devices #}
 
-    <!-- CSS here -->
+ <!-- CSS here -->
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/slicknav.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/all.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/themify-icons.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/nice-select.css' %}">
-     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css ">
-
-
+    <link rel="stylesheet" type="text/css" href="{% static 'css/header2.css' %}">
+    {#    <link rel="stylesheet" type="text/css" href="{% static 'css/nice-select.css' %}">#}
     <!-- CSS here -->
 
 </head>
 
 <body>
-<div class="container">
+<div class="header">
+    <div class="header-area1 header-transparent">
+        <div class="main-header1 header-sticky">
+            <div class="container">
+                <div class="menu-wrapper d-flex align-items-center justify-content-between">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <a href="{% url 'userRooms' %}">Easy Rooms</a>
+                    </div>
+                    <!-- Logo -->
+
+                    <!-- nav bar -->
+                    <div class="main-menu f-right d-none d-lg-block">
+                        <nav>
+                            <ul id="navigation">
+                                <a href="{% url 'userProfile' %}" class="mobile_sign">
+                                    You are login as {{ request.user.username }}.</a>
+                                <li><a href="{% url 'rooms' %}">Rooms</a></li>
+                                <li><a href="{% url 'postRoom' %}">Post Room</a></li>
+                                <li><a href="{% url 'userAboutUS' %}">About Us</a></li>
+                                <a href="{% url 'userProfile' %}" class="mobile_sign">Profile</a>
+                                <a href="{% url 'logout' %}" class="mobile_sign">Logout</a>
+
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- nav bar -->
+
+                    <!-- Profile Start -->
+                    <div class="header-profile d-none d-lg-block f-right ">
+                        <div class="row">
+                            <div class="profile-icon">
+                                {% if request.user.is_authenticated %}
+                                    <p><i class="fas fa-user-circle"></i> Hi, {{ request.user.username }}</p>
+                                {% endif %}
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-circle"><i class="fas fa-caret-down"></i></button>
+                                <div class="dropdown-content">
+                                    <a class="dropdown-icon" href="{% url 'userProfile' %}"> <i class="fas fa-user"></i>
+                                        Profile </a>
+                                    <a class="dropdown-icon" href="{% url 'logout' %}"> <i
+                                            class="fas fa-sign-out-alt"></i> Logout </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Profile End -->
+
+
+                    <!-- Mobile Menu -->
+                    <div class="col-12">
+                        <div class="row mobile_menu d-block d-lg-none"></div>
+                    </div>
+                    <!-- Mobile Menu -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- Header End -->
+
+<div class="container post-form">
 
     <section class="panel panel-default">
-        <div class="panel-heading">
+        <div class="row panel-heading justify-content-center pt-20 ">
             <h3 class="panel-title">Add a Room</h3>
         </div>
+        <hr>
         <div class="panel-body">
+            {% block content %}
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for msg in messages %}
+                                <li>
+                                    <div class="alert alert-{{ msg.level_tag }}" role="alert">
+                                        {{ msg.message }}
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
 
-            <form>
-
-                <!-- form-group // -->
-
-                <div class="form-group">
-                    <label for="name" class="col-sm-3 control-label">Title</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Title" required>
+                    <!-- form-group // -->
+                    <div class="row form-group">
+                        <label for="name" class="col-3 control-label"><i class="fas fa-tag fas-color"></i>Title</label>
+                        <div class="col-lg-9 col-sm-12">
+                            <input type="text" class="form-control" name="title" id="name" placeholder="Rooms title (e.g location or no of rooms)" required >
+                        </div>
                     </div>
-                </div> <!-- form-group // -->
-                <div class="form-group">
-                    <label for="name" class="col-sm-3 control-label">Customer Name</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Your name" required>
-                    </div>
-                </div> <!-- form-group // -->
+                    <!-- form-group // -->
 
-                <div class="form-group">
-                    <label for="name" class="col-sm-3 control-label">Contact No</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" name="name" id="name" placeholder="your number" required>
-                    </div>
-                </div> <!-- form-group // -->
+                    <div class="row form-group">
+                        <label for="name" class="col-3 control-label"><i class="fas fa-user fas-color"></i>Username</label>
+                        <div class="col-lg-9 col-sm-12">
+                            {% if request.user.is_authenticated %}
+                                <input type="text" class="form-control" id="name"
+                                       placeholder=
+                                               " Your username is  *{{ request.user.username }}* and you can't edit this information."
+                                       required readonly>
+                            {% endif %}
+
+                        </div>
+                    </div> <!-- form-group // -->
+
+                    <div class="row form-group">
+                        <label for="name" class="col-3 control-label"><i class="fas fa-address-book fas-color"></i>Contact No</label>
+                        <div class="col-lg-9 col-sm-12">
+                            <input type="number" class="form-control" name="contactNo" min="1000000000" max="9999999999"
+                                   oninvalid="this.setCustomValidity('The number should be 10 digit.')"
+                                   oninput="setCustomValidity('')"
+                                   id="name" placeholder="Phone number (Must have 10 digit number) " required>
+                        </div>
+                    </div> <!-- form-group // -->
 
 
-                <div class="form-group">
-                    <label for="tech" class="col-sm-3 control-label">District</label>
-                    <div class="col-sm-9">
-                            <select class="form-control">
-                                <option value="">Kathmandu</option>
-                                <option value="">Bhaktapur</option>
-                                <option value="">Lalitpur</option>
-                                <option value="">Pokhara</option>
+                    <div class="row form-group">
+                        <label for="tech" class="col-3 control-label"><i class="fas fa-map-signs fas-color"></i>District</label>
+                        <div class="col-lg-9 col-sm-12">
+                            <select class="form-control " name="district">
+                                <option value="Kathmandu">Kathmandu</option>
+                                <option value="Bhaktapur">Bhaktapur</option>
+                                <option value="Butwal">Butwal</option>
+                                <option value="Pokhara">Pokhara</option>
                             </select>
-                    </div>
-                </div> <!-- form-group // -->
-                <div class="form-group">
-                    <label for="name" class="col-sm-3 control-label">Address</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Address" required>
-                    </div>
-                </div> <!-- form-group // -->
+                        </div>
+                    </div> <!-- form-group // -->
+                    <div class="row form-group">
+                        <label for="name" class="col-3 control-label"><i class="fas fa-map-marker-alt fas-color"></i>Address</label>
+                        <div class="col-lg-9 col-sm-12">
+                            <input type="text" class="form-control" name="address" id="name"
+                                   placeholder="Address (Eg. Building Number, Street Name, Neighborhood, City)"
+                                   required>
+                        </div>
+                    </div> <!-- form-group // -->
 
-                <div class="form-group">
-                    <label for="name" class="col-sm-3 control-label">Price</label>
-                    <div class="col-sm-9">
-                        <input type="number" class="form-control" name="name" id="name" placeholder="Price" required>
-                    </div>
-                </div> <!-- form-group // -->
-                <div class="form-group">
-                    <label for="about" class="col-sm-3 control-label">Description</label>
-                    <div class="col-sm-9">
-                            <textarea class="form-control"></textarea>
-                    </div>
-                </div> <!-- form-group // -->
+                    <div class="row form-group">
+                        <label for="name" class="col-3 control-label"><i class="fas fa-dollar-sign fas-color"></i>Price</label>
+                        <div class="col-lg-9 col-sm-12">
+                            <input type="number" class="form-control" name="price" id="name" min="1000" max="100000"
+                                   oninvalid="this.setCustomValidity('The price should be more than Rs One thousands ' +
+                                    'and less than Rs One Lakh.')"
+                                   oninput="setCustomValidity('')"
+                                   placeholder="Price in (Rs.) (It should be more than Rs.1000 and less than Rs. 100000)"
+                                   required>
+                        </div>
+                    </div> <!-- form-group // -->
+                    <div class="row form-group">
+                        <label for="about" class="col-3 control-label"><i class="fas fa-clipboard fas-color"></i>Description</label>
+                        <div class="col-lg-9 col-sm-12 ">
+                            <textarea class="form-control" name="descriptions"></textarea>
+                        </div>
+                    </div> <!-- form-group // -->
 
-                <div class="form-group">
-                    <label for="name" class="col-sm-3 control-label">Images</label>
-                    <div class="col-sm-9">
-                        <label class="control-label small" for="file_img" >Rooms (jpg/png):</label> <input type="file" name="file_img" required multiple>
-                    </div>
+                    <input type="hidden" name="user" value="{{ request.user.id }}">
 
-                </div> <!-- form-group // -->
+                    <div class="row form-group">
+                        <label for="name" class="col-3 control-label"><i class="far fa-images fas-color"></i>Images</label>
+                        <div class="col-lg-9 col-sm-12">
+                            <p><label class="control-label " for="file_img">Rooms (jpg/png):</label> <input
+                                type="file" name="rooms_images" accept="image/x-png,image/gif,image/jpeg" required
+                                multiple="4"></p>
+                        </div>
 
-                <hr>
-                <div class="form-group">
-                    <div class="col-sm-offset-3 col-sm-9">
-                        <button type="submit" class="btn btn-primary">ADD</button>
-                    </div>
-                </div> <!-- form-group // -->
-            </form>
+                    </div> <!-- form-group // -->
+
+
+                    <hr>
+                    <div class="row form-group d-flex justify-content-center ">
+                        <div class="col-3 post-button">
+                            <button type="submit" class="btn col-12">POST ROOM</button>
+                        </div>
+                    </div> <!-- form-group // -->
+
+            {% endblock content %}
 
         </div><!-- panel-body // -->
     </section><!-- panel// -->
@@ -110,7 +209,104 @@
 
 </div> <!-- container// -->
 
+<!-- Social Media Link start -->
+    <section class="socialMedia-area">
+        <div class="container">
+            <div class="wants-wrapper w-padding2">
+                <div class="row justify-content-between">
+                    <div class="col-xl-8 col-lg-8 col-md-7">
+                        <div class="socialMedia-caption socialMedia-caption2">
+                            <p>Easy rooms will completely reduce the old tiresome process of physical travel for the
+                                search
+                                of room.
+                                Without such burden, the clients will get all facilities of <a
+                                        href="{% url 'userRooms' %}"
+                                        target="_blank">www.easyrooms.com</a>
+                                in a single click. Also check our <a href="{% url 'userPrivacy' %}" target="_blank">privacy
+                                    policy </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-5">
+                        <div class="footer-social f-right sm-left">
+                            <a href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.google.com/gmail/about/#" target="_blank"><i class="fab fa-google"></i></a>
+                            <a href="https://www.instagram.com/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+
+    <footer>
+        <div class="footer-copyright">
+            <div class="footer-bottom-area">
+                <div class="container">
+                    <div class="footer-border">
+                        <div class="row d-flex justify-content-between align-items-center">
+                            <div class="col-xl-12 col-lg-12 ">
+                                <div class="footer-copy-right">
+                                    <p>Copyright &copy; All rights reserved to
+                                        <a href="{% url 'userRooms' %}" target="_blank">Easy Rooms</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer Copyright End -->
+
+
+    <!-- Scroll Up Start -->
+    <div id="backToTop">
+        <a title="Move To Top" href="#">
+            <i class="fas fa-level-up-alt"></i>
+        </a>
+    </div>
+    <!-- Scroll Up End -->
+</div>
+
+<script src="{% static 'js/modernizr-3.5.0.min.js' %}"></script>
+<!-- Jquery, Popper, Bootstrap -->
+<script src="{% static 'bootstrap/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'bootstrap/popper.min.js' %}"></script>
+<script src="{% static 'bootstrap/bootstrap.min.js' %}"></script>
+
+
+<!-- Jquery Mobile Menu -->
+<script src="{% static 'js/jquery.slicknav.min.js' %}"></script>
+
+<!-- Jquery Slick , Owl-Carousel Plugins -->
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/slick.min.js' %}"></script>
+
+<!-- One Page, Animated-HeadLin -->
+<script src="{% static 'js/wow.min.js' %}"></script>
+<script src="{% static 'js/animated.headline.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+
+<!-- Date Picker -->
+<script src="{% static 'js/gijgo.min.js' %}"></script>
+
+<!-- Nice-select, sticky -->
+<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'js/jquery.sticky.js' %}"></script>
+
+<!-- Progress -->
+<script src="{% static 'js/jquery.barfiller.js' %}"></script>
+
+
+<!-- Jquery Plugins, main Jquery -->
+<script src="{% static 'js/plugins.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+
+{% comment %} end of javascript link {% endcomment %}
 
 </body>
 
