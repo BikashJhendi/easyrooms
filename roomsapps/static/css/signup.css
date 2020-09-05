@@ -118,6 +118,9 @@ img {
     background-size: cover;
 }
 
+.chkbox span{
+    line-height:normal;
+}
 .labels-top {
     padding: 3em;
 }
