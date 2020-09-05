@@ -9,225 +9,175 @@
     {# asking the width of devices #}
 
     <!-- CSS here -->
-    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap.min.css' %}">
+    {#    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap.min.css' %}">#}
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/slicknav.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/all.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/themify-icons.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/header2.css' %}">
-    {#    <link rel="stylesheet" type="text/css" href="{% static 'css/nice-select.css' %}">#}
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap3.4.1.min.css' %}">
+    <link href="{% static 'css/mainDashboard.css' %}" rel="stylesheet" type="text/css"/>
     <!-- CSS here -->
 
 </head>
 
 <body>
 
-<!-- Header Start -->
-<div class="nav">
-    <div class="header-area1 header-transparent">
-        <div class="main-header1 header-sticky">
-            <div class="container-fluid">
-                <div class="menu-wrapper d-flex align-items-center justify-content-between">
-                    <!-- Logo -->
-                    <div class="logo">
-                        <a href="{% url 'index' %}">Easy Rooms</a>
-                    </div>
-                    <!-- Logo -->
+<!-- admin navbar start -->
+<div class="main_nav">
 
-                    <!-- nav bar -->
-                    <div class="main-menu f-right d-none d-lg-block">
-                        <nav>
-                            <ul id="navigation">
-                                <li><a href="{% url 'index' %}">Home</a></li>
-                                <li><a href="{% url 'rooms' %}">Rooms</a></li>
-                                <li><a href="{% url 'aboutUs' %}">About Us</a></li>
-                            </ul>
-                        </nav>
-                    </div>
+    <nav class="navbar navbar-inverse">
+        <div class=" container-fluid">
+            <div class="nav navbar-header">
+                <a class="navbar-brand list" href="{% url 'dashboard' %}">DASHBOARD</a>
+            </div>
 
-                    <!-- Profile Start -->
-                    <div class="header-profile d-none d-lg-block f-right col-xl-3 col-lg-3">
-                        <div class="row">
-                            <div class="profile-icon col-6">
-                                {% if request.user.is_authenticated %}
-                                    <p><i class="fas fa-user-circle"></i> {{ request.user.username }}</p>
+            <ul class="nav navbar-nav navbar-center list">
+                <li><a href="{% url 'dashboard' %}" class="list">Room List</a></li>
+                <li><a href="{% url 'dashboardUsers' %}" class="list">User List</a></li>
+                <li><a href="{% url 'dashboardAdmin' %} " class="list">Add New Admin</a></li>
+            </ul>
 
+            <ul class="nav navbar-nav navbar-right">
+                <div class="header-profile">
+                    <div class="row main">
+                        <div class="profile-icon in-line">
+                            {% if request.user.is_authenticated %}
+                                <p><i class="fas fa-user-circle"></i> Hi, {{ request.user.username }}</p>
+                            {% endif %}
+                        </div>
 
-                                {% else %}
-
-                                {% endif %}
-                            </div>
-
-                            <div class="profile-down-button col-6">
-                                <a href="{% url 'logout' %}"> Logout </a>
+                        <div class="dropdown in-line">
+                            <button class="btn btn-circle"><i class="fas fa-caret-down"></i></button>
+                            <div class="dropdown-content">
+                                <a class="dropdown-icon" href="{% url 'dashboardAdminProfile' %}"> <i
+                                        class="fas fa-user"></i>
+                                    Profile </a>
+                                <a class="dropdown-icon" href="{% url 'logout' %}"> <i
+                                        class="fas fa-sign-out-alt"></i> Logout </a>
                             </div>
                         </div>
                     </div>
-                    <!-- Profile End -->
-
-
-                    <!-- Mobile Menu -->
-                    <div class="col-12">
-                        <div class="mobile_menu d-block d-lg-none"></div>
-                    </div>
-                    <!-- Mobile Menu -->
-
                 </div>
-            </div>
-        </div>
-    </div>
+            </ul>
 
+        </div>
+    </nav>
 </div>
-<!-- Header End -->
+<!-- admin navbar end -->
 
 
 <div class="main">
 
-    <!-- Rooms Locations 01-->
-    <div class="test1 border-bottom section-padding40">
-            <div class="container">
+    <!--Profile Start -->
+    <div class="admin-profile border-bottom">
+        <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-12">
                     <!-- Tittle -->
-                    <div class="section-tittle text-center mb-80">
-                        <h2>Admin Info</h2>
-                        <p><h1>{{ request.user.username }}</h1></p>
-                        <p><h1>{{ request.user.fullName}}</h1></p>
-                        <p><h1>{{ request.user.email}}</h1></p>
+                    <div class="section-tittle text-center mb-30">
+                        <h2>User Info</h2>
+                        <h1>{{ request.user.username }}</h1>
+                        <h1>{{ request.user.fullName }}</h1>
+                        <h1>{{ request.user.email }}</h1>
                     </div>
                     <!-- Tittle End -->
                 </div>
             </div>
-       <hr style="border: 3px solid red; width:100%">
+            <hr style="border: .5px solid #b367ff; width:100%">
 
-             <div class="section-tittle text-center display-40">
-             <h1>Update Your Profile</h1>
-             </div>
-                <form action="">
-                     <div class="form-group">
-                         <label for="Uname" name="username">Username:</label>
-                            <input type="text" class="form-control" id="email" placeholder="Enter a New Username">
-                     </div>
-                    <div class="form-group">
-                            <label for="Fname"name="fullName">Fullname:</label>
-                                 <input type="text" class="form-control" id="pwd"placeholder="Enter a New Fullname">
+            {# update user profile #}
+            <div class="section-tittle text-center display-40">
+                <h1>Update Your Profile</h1>
+
+                {% if messages %}
+                    <ul class="messages">
+                        {% for msg in messages %}
+                            <li>
+                                <div class="alert alert-{{ msg.level_tag }}" role="alert">
+                                    {{ msg.message }}
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+
+            {% block content %}
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="P_icons">
+                        <div class="form-group">
+                            <label for="Uname"><i class="far fa-user-circle fas-color"></i>&nbsp; Username:</label>
+                            <input type="text" class="form-control" name="username" readonly
+                                   onclick="alert('Username can`t be change.')" value="{{ user.username }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="fullName"><i class="fas fa-user-circle fas-color"></i>&nbsp; Full Name:</label>
+                            <input type="text" class="form-control" name="fullName" value="{{ user.fullName }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactNo"><i class="fas fa-phone fas-color"></i>&nbsp; Contact No.</label>
+                            <input type="number" class="form-control" name="contactNo" min="1000000000" max="9999999999"
+                                   oninvalid="this.setCustomValidity('The number should be 10 digit.')"
+                                   oninput="setCustomValidity('')" value="{{ user.contactNo }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><i class="far fa-envelope fas-color"></i>&nbsp; Email:</label>
+                            <input type="email" class="form-control" name="email" value="{{ user.email }}">
+                        </div>
+
+                        <div class="form-group passCheck">
+                            <label for="pwd"><i class="fas fa-key fas-color"></i>&nbsp; Password:</label>
+                            <input type="password" class="form-control"
+                                   name="password1" title="Password must contain at least 8 characters, including
+                               UPPER/lowercase and numbers" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                                   placeholder="Enter a new password" minlength="8" required
+                                   onchange=" this.setCustomValidity(this.validity.patternMismatch ? this.title : '');
+                               if(this.checkValidity()) form.password2.pattern = RegExp.escape(this.value);">
+                        </div>
+
+                        <div class="form-group passCheck">
+                            <label for="pwd"><i class="fas fa-key fas-color"></i>&nbsp; Confirm Password:</label>
+                            <input type="password" class="form-control" name="password2"
+                                   title="Please enter the same Password as above"
+                                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                                   placeholder="Enter same password as above"
+                                   onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"
+                                   minlength="8" required>
+                        </div>
                     </div>
-                    <div class="form-group">
-                            <label for="email"name="email">Email:</label>
-                                 <input type="email" class="form-control" id="pwd"placeholder="Enter a New Email">
+
+                    <hr style="border: .5px solid #b367ff;">
+
+                    <div class="center-block mt-15 mb-50">
+                        <button type="submit" class="btn submit-button center-block"
+                                style="width: 200px; height: 40px;">Update</button>
                     </div>
-                    <div class="form-group">
-                            <label for="pwd"name="password">Password:</label>
-                                 <input type="password" class="form-control" id="pwd"placeholder="Enter a New Password">
-                    </div>
-                        <button type="submit" class="btn btn-info">Update</button>
+                    {# checks passwords #}
+                    <script type="text/javascript">
+                        // polyfill for RegExp.escape
+                        if (!RegExp.escape) {
+                            RegExp.escape = function (s) {
+                                return String(s).replace(/[\\^$*+?.()|[\]{}]/g, '\\$&');
+                            };
+                        }
+                    </script>
+
                 </form>
-            </div>
-
-    </div>
-    <!-- Rooms Locations End -->
-
-    <!-- Social Media Link start -->
-    <section class="socialMedia-area">
-        <div class="container">
-            <div class="wants-wrapper w-padding2">
-                <div class="row justify-content-between">
-                    <div class="col-xl-8 col-lg-8 col-md-7">
-                        <div class="socialMedia-caption socialMedia-caption2">
-                            <p>Easy rooms will completely reduce the old tiresome process of physical travel for the
-                                search of room.
-                                Without such burden, the clients will get all facilities of <a href="index.html"
-                                                                                               target="_blank">www.easyrooms.com</a>
-                                in a single click.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-5">
-                        <div class="footer-social f-right sm-left">
-                            <a href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
-                            <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                            <a href="https://www.google.com/gmail/about/#" target="_blank"><i class="fab fa-google"></i></a>
-                            <a href="https://www.instagram.com/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Social Media Link End  -->
-</div>
-
-<!-- footer Copyright start  -->
-<footer>
-    <div class="footer-copyright">
-        <div class="footer-bottom-area">
-            <div class="container">
-                <div class="footer-border">
-                    <div class="row d-flex justify-content-between align-items-center">
-                        <div class="col-xl-12 col-lg-12 ">
-                            <div class="footer-copy-right">
-                                <p>Copyright &copy; All rights reserved to
-                                    <a href="index.html" target="_blank">Easy Rooms</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endblock content %}
         </div>
     </div>
-</footer>
-<!-- footer Copyright End -->
+    <!-- profile End -->
 
 
-<!-- Scroll Up Start -->
-<div id="backToTop">
-    <a title="Move To Top" href="#">
-        <i class="fas fa-level-up-alt"></i>
-    </a>
-</div>
-<!-- Scroll Up End -->
+    {% comment %} javascript link {% endcomment %}
+    <!-- Jquery, Popper, Bootstrap -->
+    <script src="{% static 'bootstrap/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static 'bootstrap/popper.min.js' %}"></script>
+    <script src="{% static 'bootstrap/bootstrap.min.js' %}"></script>
 
-
-{% comment %} javascript link {% endcomment %}
-<!-- JS here -->
-
-<script src="{% static 'js/modernizr-3.5.0.min.js' %}"></script>
-<!-- Jquery, Popper, Bootstrap -->
-<script src="{% static 'bootstrap/jquery-1.12.4.min.js' %}"></script>
-<script src="{% static 'bootstrap/popper.min.js' %}"></script>
-<script src="{% static 'bootstrap/bootstrap.min.js' %}"></script>
-
-
-<!-- Jquery Mobile Menu -->
-<script src="{% static 'js/jquery.slicknav.min.js' %}"></script>
-
-<!-- Jquery Slick , Owl-Carousel Plugins -->
-<script src="{% static 'js/owl.carousel.min.js' %}"></script>
-<script src="{% static 'js/slick.min.js' %}"></script>
-
-<!-- One Page, Animated-HeadLin -->
-<script src="{% static 'js/wow.min.js' %}"></script>
-<script src="{% static 'js/animated.headline.js' %}"></script>
-<script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
-
-<!-- Date Picker -->
-<script src="{% static 'js/gijgo.min.js' %}"></script>
-
-<!-- Nice-select, sticky -->
-<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
-<script src="{% static 'js/jquery.sticky.js' %}"></script>
-
-<!-- Progress -->
-<script src="{% static 'js/jquery.barfiller.js' %}"></script>
-
-
-<!-- Jquery Plugins, main Jquery -->
-<script src="{% static 'js/plugins.js' %}"></script>
-<script src="{% static 'js/main.js' %}"></script>
-
-{% comment %} end of javascript link {% endcomment %}
+    {% comment %} end of javascript link {% endcomment %}
 </body>
 
 </html>
