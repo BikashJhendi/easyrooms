@@ -99,49 +99,114 @@
                     <!-- Tittle -->
                     <div class="section-tittle text-center mb-80">
                         <h2>User Info</h2>
-                        <p>
-                        <h1>{{ request.user.username }}</h1></p>
-                        <p>
-                        <h1>{{ request.user.fullName }}</h1></p>
-                        <p>
-                        <h1>{{ request.user.email }}</h1></p>
+                        <h1>{{ request.user.username }}</h1>
+                        <h1>{{ request.user.fullName }}</h1>
+                        <h1>{{ request.user.email }}</h1>
                     </div>
                     <!-- Tittle End -->
                 </div>
             </div>
-            <hr style="border: 1px solid #b367ff; width:100%">
+            {#            <hr style="border: 1px solid #b367ff; width:100%">#}
+            <hr>
 
+
+            <div class="row">
+                <div class="profile-card col-lg-6 col-md-6 col-sm-12 d-flex justify-content-center">
+                    <div class="card mb-3" style="width: 18rem;">
+                        <div class="card-header d-flex justify-content-center"> <h2>Room Posted</h2></div>
+                        <div class="card-body text-dark">
+                            <h1 class="card-text  d-flex justify-content-center">{{ total_room_post }}</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-card col-lg-6 col-md-6 col-sm-12 d-flex justify-content-center">
+                    <div class="card mb-3" style="width: 18rem;">
+                        <div class="card-header d-flex justify-content-center"> <h2>Room Rented</h2></div>
+                        <div class="card-body text-dark">
+                            <h1 class="card-text  d-flex justify-content-center">{{ total_rented }}</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <hr>
+
+            {# update user profile #}
             <div class="section-tittle text-center display-40">
                 <h1>Update Your Profile</h1>
+
+                {% if messages %}
+                    <ul class="messages">
+                        {% for msg in messages %}
+                            <li>
+                                <div class="alert alert-{{ msg.level_tag }}" role="alert">
+                                    {{ msg.message }}
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             </div>
             {% block content %}
-                <form method="POST" action="" enctype="multipart/form-data">
+                <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="form-group">
-                        <label for="Uname" name="username">Username:</label>
-                        <input type="text" class="form-control" id="email" value="{{ request.user.username }}">
+                        <label for="Uname">Username:</label>
+                        <input type="text" class="form-control" name="username" readonly
+                               onclick="alert('Username can`t be change.')" value="{{ user.username }}">
                     </div>
                     <div class="form-group">
-                        <label for="Fname" name="fullName">Full Name:</label>
-                        <input type="text" class="form-control" id="pwd" value="{{ request.user.fullName }}">
+                        <label for="fullName">Full Name:</label>
+                        <input type="text" class="form-control" name="fullName" value="{{ user.fullName }}">
                     </div>
                     <div class="form-group">
-                        <label for="Fname" name="contanctNo">Contact No.</label>
-                        <input type="number" class="form-control" id="pwd" value="{{ request.user.contactNo }}">
+                        <label for="contactNo">Contact No.</label>
+                        <input type="number" class="form-control" name="contactNo" min="1000000000" max="9999999999"
+                               oninvalid="this.setCustomValidity('The number should be 10 digit.')"
+                               oninput="setCustomValidity('')" value="{{ user.contactNo }}">
                     </div>
                     <div class="form-group">
-                        <label for="email" name="email">Email:</label>
-                        <input type="email" class="form-control" id="pwd" value="{{ request.user.email }}" >
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" name="email" value="{{ user.email }}">
                     </div>
-                    <div class="form-group">
-                        <label for="pwd" name="password">Password:</label>
-                        <input type="password" class="form-control" id="pwd" placeholder="Enter a New Password">
+
+                    <div class="form-group passCheck">
+                        <label for="pwd">Password:</label>
+                        <input type="password" class="form-control"
+                               name="password1" title="Password must contain at least 8 characters, including
+                               UPPER/lowercase and numbers" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                               placeholder="Enter a new password" minlength="8" required
+                               onchange=" this.setCustomValidity(this.validity.patternMismatch ? this.title : '');
+                               if(this.checkValidity()) form.password2.pattern = RegExp.escape(this.value);">
                     </div>
-                    <button type="submit" class="btn btn-info">Update</button>
+
+                    <div class="form-group passCheck">
+                        <label for="pwd">Confirm Password:</label>
+                        <input type="password" class="form-control" name="password2"
+                               title="Please enter the same Password as above"
+                               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" placeholder="Enter same password as above"
+                               onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"
+                               minlength="8" required>
+                    </div>
+
+                    <hr>
+                    <div class="d-flex justify-content-center ">
+                        <button type="submit" class="btn submit-button col-3">Update</button>
+                    </div>
+
+                    {# checks passwords #}
+                    <script type="text/javascript">
+                        // polyfill for RegExp.escape
+                        if (!RegExp.escape) {
+                            RegExp.escape = function (s) {
+                                return String(s).replace(/[\\^$*+?.()|[\]{}]/g, '\\$&');
+                            };
+                        }
+                    </script>
+
                 </form>
             {% endblock content %}
         </div>
-
     </div>
     <!-- 01 End -->
 
@@ -153,13 +218,10 @@
                     <div class="col-xl-8 col-lg-8 col-md-7">
                         <div class="socialMedia-caption socialMedia-caption2">
                             <p>Easy rooms will completely reduce the old tiresome process of physical travel for the
-                                search
-                                of room.
-                                Without such burden, the clients will get all facilities of <a
-                                        href="{% url 'userRooms' %}"
-                                        target="_blank">www.easyrooms.com</a>
-                                in a single click. Also check our <a href="{% url 'userPrivacy' %}" target="_blank">privacy
-                                    policy </a>
+                                search of room. Without such burden, the clients will get all facilities of
+                                <a href="{% url 'userRooms' %}" target="_blank">www.easyrooms.com</a>
+                                in a single click. Also check our
+                                <a href="{% url 'userPrivacy' %}" target="_blank">privacy policy </a>
                             </p>
                         </div>
                     </div>

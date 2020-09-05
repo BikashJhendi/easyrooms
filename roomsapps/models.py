@@ -32,3 +32,19 @@ class RoomsImage(models.Model):
 
     def __str__(self):
         return self.rooms.title
+
+
+class Rent(models.Model):
+    ROOM_STAT = (
+        ('pending', 'pending'),
+        ('accept', 'accept request'),
+        ('reject', 'reject request'),
+    )
+
+    room = models.ForeignKey(Rooms, on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(UsersAccount, on_delete=models.CASCADE, null=True)
+    room_status = models.CharField(max_length=120, default="pending", choices=ROOM_STAT, null=True)
+    date_rent = models.DateTimeField(verbose_name='date rent', auto_now=True, null=True)
+
+    def __str__(self):
+        return self.room

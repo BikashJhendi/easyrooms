@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {# asking the width of devices #}
 
- <!-- CSS here -->
+    <!-- CSS here -->
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/slicknav.css' %}">
@@ -114,13 +114,15 @@
                     <div class="row form-group">
                         <label for="name" class="col-3 control-label"><i class="fas fa-tag fas-color"></i>Title</label>
                         <div class="col-lg-9 col-sm-12">
-                            <input type="text" class="form-control" name="title" id="name" placeholder="Rooms title (e.g location or no of rooms)" required >
+                            <input type="text" class="form-control" name="title" id="name"
+                                   placeholder="Rooms title (e.g location or no of rooms)" required>
                         </div>
                     </div>
                     <!-- form-group // -->
 
                     <div class="row form-group">
-                        <label for="name" class="col-3 control-label"><i class="fas fa-user fas-color"></i>Username</label>
+                        <label for="name" class="col-3 control-label"><i
+                                class="fas fa-user fas-color"></i>Username</label>
                         <div class="col-lg-9 col-sm-12">
                             {% if request.user.is_authenticated %}
                                 <input type="text" class="form-control" id="name"
@@ -133,7 +135,8 @@
                     </div> <!-- form-group // -->
 
                     <div class="row form-group">
-                        <label for="name" class="col-3 control-label"><i class="fas fa-address-book fas-color"></i>Contact No</label>
+                        <label for="name" class="col-3 control-label"><i class="fas fa-address-book fas-color"></i>Contact
+                            No</label>
                         <div class="col-lg-9 col-sm-12">
                             <input type="number" class="form-control" name="contactNo" min="1000000000" max="9999999999"
                                    oninvalid="this.setCustomValidity('The number should be 10 digit.')"
@@ -144,7 +147,8 @@
 
 
                     <div class="row form-group">
-                        <label for="tech" class="col-3 control-label"><i class="fas fa-map-signs fas-color"></i>District</label>
+                        <label for="tech" class="col-3 control-label"><i
+                                class="fas fa-map-signs fas-color"></i>District</label>
                         <div class="col-lg-9 col-sm-12">
                             <select class="form-control " name="district">
                                 <option value="Kathmandu">Kathmandu</option>
@@ -164,7 +168,8 @@
                     </div> <!-- form-group // -->
 
                     <div class="row form-group">
-                        <label for="name" class="col-3 control-label"><i class="fas fa-dollar-sign fas-color"></i>Price</label>
+                        <label for="name" class="col-3 control-label"><i
+                                class="fas fa-dollar-sign fas-color"></i>Price</label>
                         <div class="col-lg-9 col-sm-12">
                             <input type="number" class="form-control" name="price" id="name" min="1000" max="100000"
                                    oninvalid="this.setCustomValidity('The price should be more than Rs One thousands ' +
@@ -184,11 +189,12 @@
                     <input type="hidden" name="user" value="{{ request.user.id }}">
 
                     <div class="row form-group">
-                        <label for="name" class="col-3 control-label"><i class="far fa-images fas-color"></i>Images</label>
+                        <label for="name" class="col-3 control-label"><i
+                                class="far fa-images fas-color"></i>Images</label>
                         <div class="col-lg-9 col-sm-12">
                             <p><label class="control-label " for="file_img">Rooms (jpg/png):</label> <input
-                                type="file" name="rooms_images" accept="image/x-png,image/gif,image/jpeg" required
-                                multiple="4"></p>
+                                    type="file" name="rooms_images" accept="image/x-png,image/gif,image/jpeg" required
+                                    multiple="4"></p>
                         </div>
 
                     </div> <!-- form-group // -->
@@ -196,11 +202,9 @@
 
                     <hr>
                     <div class="row form-group d-flex justify-content-center ">
-                        <div class="col-3 post-button">
-                            <button type="submit" class="btn col-12">POST ROOM</button>
-                        </div>
+                        <button type="submit" class="btn col-3 submit-button">POST ROOM</button>
                     </div> <!-- form-group // -->
-
+                </form>
             {% endblock content %}
 
         </div><!-- panel-body // -->
@@ -210,66 +214,66 @@
 </div> <!-- container// -->
 
 <!-- Social Media Link start -->
-    <section class="socialMedia-area">
-        <div class="container">
-            <div class="wants-wrapper w-padding2">
-                <div class="row justify-content-between">
-                    <div class="col-xl-8 col-lg-8 col-md-7">
-                        <div class="socialMedia-caption socialMedia-caption2">
-                            <p>Easy rooms will completely reduce the old tiresome process of physical travel for the
-                                search
-                                of room.
-                                Without such burden, the clients will get all facilities of <a
-                                        href="{% url 'userRooms' %}"
-                                        target="_blank">www.easyrooms.com</a>
-                                in a single click. Also check our <a href="{% url 'userPrivacy' %}" target="_blank">privacy
-                                    policy </a>
-                            </p>
-                        </div>
+<section class="socialMedia-area">
+    <div class="container">
+        <div class="wants-wrapper w-padding2">
+            <div class="row justify-content-between">
+                <div class="col-xl-8 col-lg-8 col-md-7">
+                    <div class="socialMedia-caption socialMedia-caption2">
+                        <p>Easy rooms will completely reduce the old tiresome process of physical travel for the
+                            search
+                            of room.
+                            Without such burden, the clients will get all facilities of <a
+                                    href="{% url 'userRooms' %}"
+                                    target="_blank">www.easyrooms.com</a>
+                            in a single click. Also check our <a href="{% url 'userPrivacy' %}" target="_blank">privacy
+                                policy </a>
+                        </p>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-5">
-                        <div class="footer-social f-right sm-left">
-                            <a href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
-                            <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                            <a href="https://www.google.com/gmail/about/#" target="_blank"><i class="fab fa-google"></i></a>
-                            <a href="https://www.instagram.com/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
-                        </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-5">
+                    <div class="footer-social f-right sm-left">
+                        <a href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.google.com/gmail/about/#" target="_blank"><i class="fab fa-google"></i></a>
+                        <a href="https://www.instagram.com/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 
-    <footer>
-        <div class="footer-copyright">
-            <div class="footer-bottom-area">
-                <div class="container">
-                    <div class="footer-border">
-                        <div class="row d-flex justify-content-between align-items-center">
-                            <div class="col-xl-12 col-lg-12 ">
-                                <div class="footer-copy-right">
-                                    <p>Copyright &copy; All rights reserved to
-                                        <a href="{% url 'userRooms' %}" target="_blank">Easy Rooms</a>
-                                    </p>
-                                </div>
+<footer>
+    <div class="footer-copyright">
+        <div class="footer-bottom-area">
+            <div class="container">
+                <div class="footer-border">
+                    <div class="row d-flex justify-content-between align-items-center">
+                        <div class="col-xl-12 col-lg-12 ">
+                            <div class="footer-copy-right">
+                                <p>Copyright &copy; All rights reserved to
+                                    <a href="{% url 'userRooms' %}" target="_blank">Easy Rooms</a>
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </footer>
-    <!-- footer Copyright End -->
-
-
-    <!-- Scroll Up Start -->
-    <div id="backToTop">
-        <a title="Move To Top" href="#">
-            <i class="fas fa-level-up-alt"></i>
-        </a>
     </div>
-    <!-- Scroll Up End -->
+</footer>
+<!-- footer Copyright End -->
+
+
+<!-- Scroll Up Start -->
+<div id="backToTop">
+    <a title="Move To Top" href="#">
+        <i class="fas fa-level-up-alt"></i>
+    </a>
+</div>
+<!-- Scroll Up End -->
 </div>
 
 <script src="{% static 'js/modernizr-3.5.0.min.js' %}"></script>
