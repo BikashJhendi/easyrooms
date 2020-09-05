@@ -7,7 +7,9 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from .decorators import unauthenticated_user, allowed_users
-from .models import RoomsImage, Rooms
+# from .models import RoomsImage, Rooms, Rent, UsersAccount
+from .models import *
+from django.db.models import Count
 
 
 # Create your views here.
@@ -64,7 +66,7 @@ def post_room(request):
                 RoomsImage.objects.create(rooms=obj, rooms_images=f)
             messages.success(request, "Your post is added for review. We will inform you when it is accepted.")
         else:
-            messages.info(request, "Invalid Form!!!s")
+            messages.info(request, "Invalid Form!!!")
     return render(request, 'usersPages/post_room.html')
 
 
@@ -86,7 +88,28 @@ def user_privacy(request):
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['userGroup'])
 def user_profile(request):
-    return render(request, 'usersPages/user_profile.html')
+    users = request.user
+    form = RegistrationForms(instance=users)
+
+    rooms = Rooms.objects.all()
+    rooms_rent = Rent.objects.all()
+
+    total_room_post = rooms.filter(user=users.id).count
+    total_rented = rooms_rent.filter(user=users.id).count()
+
+    if request.method == 'POST':
+        form = RegistrationForms(request.POST, request.FILES, instance=users)
+        if form.is_valid():
+            form.save()
+            return redirect("userProfile")
+        else:
+            messages.info(request, "Please enter a valid information. Email and Contact No. should be unique."
+                                   " And both password should be same.")
+            return redirect("userProfile")
+
+    context = {"form": form, 'rooms': rooms, 'total_room_post': total_room_post,
+               'total_rented': total_rented}
+    return render(request, 'usersPages/user_profile.html', context)
 
 
 # login usersPages rooms details views

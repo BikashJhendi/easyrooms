@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from roomsapps.models import Rooms, RoomsImage
+from roomsapps.models import Rooms, RoomsImage, Rent
 from account.models import UsersAccount
 
 
@@ -14,6 +14,7 @@ class RegistrationForms(UserCreationForm):
         # fields = '__all__'
 
 
+# rooms form for posting rooms
 class RoomForms(forms.ModelForm):
     class Meta:
         model = Rooms
@@ -21,6 +22,7 @@ class RoomForms(forms.ModelForm):
         # fields = '__all__'
 
 
+# images form for rooms
 class RoomImagesForm(RoomForms):
     rooms_images = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}))
 

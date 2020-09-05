@@ -3273,8 +3273,17 @@ hr {
 /*    background: -moz-linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);*/
 /*    background: linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);*/
 /*}*/
-.post-button {
+.submit-button {
     background-color: #b367ff;
+    font-weight: 500;
+}
+
+.submit-button:hover{
+    color: #fff;
+}
+
+.profile-card .card{
+border-color: #b367ff;
 }
 
 .form-group .col-3 i{

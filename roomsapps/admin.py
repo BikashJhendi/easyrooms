@@ -1,5 +1,5 @@
 from django.contrib import admin
-from roomsapps.models import Rooms, RoomsImage
+from roomsapps.models import Rooms, RoomsImage, Rent
 
 
 # Register your models here.
@@ -19,4 +19,5 @@ class AddAdmin(admin.ModelAdmin):
 class AddImageAdmin(admin.ModelAdmin):
     pass
 
-# admin.site.register(Rooms)
+
+admin.site.register(Rent)
