@@ -1,10 +1,121 @@
+{% load static %} {% comment %} to load static {% endcomment %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <!-- CSS here -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/details.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slicknav.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/all.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/themify-icons.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/flexslider.css' %}">
+    {#    <link rel="stylesheet" type="text/css" href="{% static 'css/nice-select.css' %}">#}
+    <!-- CSS here -->
 </head>
 <body>
+<div class="banner-bootom-w3-agileits py-5">
+    <div class="container py-xl-4 py-lg-2">
+        <!-- tittle heading -->
+        <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
+            Title</h3>
+        <!-- //tittle heading -->
+        <div class="row">
+            <div class="col-lg-5 col-md-8 single-right-left ">
+                <div class="grid images_3_of_2">
+                    <div class="flexslider">
+                        <ul class="slides">
+                            <li data-thumb="{% static 'img/front.jpg' %}">
+                                <div class="thumb-image">
+                                    <img src="{% static 'img/front.jpg' %}" data-imagezoom="true" class="img-fluid"
+                                         alt=""></div>
+                            </li>
+                            <li data-thumb="{% static 'img/front.jpg' %}">
+                                <div class="thumb-image">
+                                    <img src="{% static 'img/front.jpg' %}" data-imagezoom="true" class="img-fluid"
+                                         alt=""></div>
+                            </li>
+                            <li data-thumb="{% static 'img/front.jpg' %}">
+                                <div class="thumb-image">
+                                    <img src="{% static 'img/front.jpg' %}" data-imagezoom="true" class="img-fluid"
+                                         alt=""></div>
+                            </li>
+                            <li data-thumb="{% static 'img/front.jpg' %}">
+                                <div class="thumb-image">
+                                    <img src="{% static 'img/front.jpg' %}" data-imagezoom="true" class="img-fluid"
+                                         alt=""></div>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7">
+                <div class="single-infoagile">
+                    <div class="row form-group">
+                   <label for="name" class="col-3 control-label"><i class="fas fa-user fas-color"></i>Username</label>
+                        </div>
+                     <div class="row mx-md-n5">
+                        <div class="col px-md-5">
+                            <label><i class="fas fa-map-signs fas-color"></i>District</label>
+                            <div class="p-3 ">Custom column padding</div>
+                        </div>
+                        <div class="col px-md-5">
+                            <label><i class="fas fa-address-book fas-color">Contact No</i></label>
+                            <div class="p-3 ">Custom column padding</div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="name" class="col-3 control-label"><i class="fas fa-map-marker-alt fas-color"></i>Address</label>
+                </div>
+                    <div class="row mx-md-n5">
+                        <div class="col px-md-5">
+                            <label><i class="fas fa-dollar-sign fas-color"></i>Price/Month</label>
+                            <div class="p-3 ">Custom column padding</div>
+                        </div>
+                        <div class="col px-md-5">
+                            <label><i class="fas fa-address-book fas-color">No of rooms</i></label>
+                            <div class="p-3 ">Custom column padding</div>
+                        </div>
+                    </div>
+                <div class="product-single-w3l">
+                    <p class="my-3">
+                        <i class="far fa-hand-point-right mr-2"></i>
+                        Discription
+                    </p>
+
+                </div>
+
+                    <div class="snipcart-details ">
+
+                        <input type="submit" name="submit" value="Add to cart" class="button"/>
+
+
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //Single Page -->
+
+
+<!-- js-files -->
+<!-- jquery -->
+<script src="{% static 'js/jquery-2.2.3.min.js' %}"></script>
+<!-- //jquery -->
+
+<!-- flexslider -->
+
+<script src="{% static 'js/jquery.flexslider.js' %}"></script>
+
+<script src="{% static 'js/details.js' %}"></script>
+
 
 </body>
 </html>
