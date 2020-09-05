@@ -3,39 +3,71 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Dashboard - Easy Rooms</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link href="{% static 'css/roomdashboard.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/mainDashboard.css' %}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/header2.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/all.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap3.4.1.min.css' %}">
 
 </head>
 
 <body>
-<div id="roomnavigation">
 
-   <nav class="navbar navbar-inverse">
+<!-- admin navbar start -->
+<div class="main_nav">
+
+    <nav class="navbar navbar-inverse">
         <div class=" container-fluid">
-            <div class="navbar-header ">
-                <a class="navbar-brand" href="{% url 'dashboard' %}">DASHBOARD</a>
+            <div class="nav navbar-header">
+                <a class="navbar-brand list" href="{% url 'dashboard' %}">DASHBOARD</a>
             </div>
 
-            <ul class="nav navbar-nav navbar-center navbar-right">
-                <li><a href="{% url 'dashboardAdmin' %}">Profile</a></li>
-                <li><a href="{% url 'dashboardUsers' %}">User Dashboard</a></li>
-                <li class="active"><a href="{% url 'dashboard' %}">Room Dashboard</a></li>
-                <button class="btn btn-danger navbar-btn"><a href="{% url 'logout' %}"> Logout </a></button>
+            <ul class="nav navbar-nav navbar-center list">
+                <li class="active"><a href="{% url 'dashboard' %}" class="list">Room List</a></li>
+                <li><a href="{% url 'dashboardUsers' %}" class="list">User List</a></li>
+                <li><a href="{% url 'dashboardAdmin' %} " class="list">Add New Admin</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <div class="header-profile">
+                    <div class="row main">
+                        <div class="profile-icon in-line">
+                            {% if request.user.is_authenticated %}
+                                <p><i class="fas fa-user-circle"></i> Hi, {{ request.user.username }}</p>
+                            {% endif %}
+                        </div>
+
+                        <div class="dropdown in-line">
+                            <button class="btn btn-circle"><i class="fas fa-caret-down"></i></button>
+                            <div class="dropdown-content">
+                                <a class="dropdown-icon" href="{% url 'dashboardAdminProfile' %}"> <i
+                                        class="fas fa-user"></i>
+                                    Profile </a>
+                                <a class="dropdown-icon" href="{% url 'logout' %}"> <i
+                                        class="fas fa-sign-out-alt"></i> Logout </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </ul>
 
         </div>
     </nav>
 </div>
+<!-- admin navbar end -->
+
 <div class="container">
     <div id="room_table">
         <p>Here will be the data for the room</p>
     </div>
 </div>
+
+
+<!-- Jquery, Popper, Bootstrap -->
+<script src="{% static 'bootstrap/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'bootstrap/popper.min.js' %}"></script>
+<script src="{% static 'bootstrap/bootstrap.min.js' %}"></script>
 
 </body>
 

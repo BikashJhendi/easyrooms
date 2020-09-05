@@ -3278,26 +3278,28 @@ hr {
     font-weight: 500;
 }
 
-.submit-button:hover{
+.submit-button:hover {
     color: #fff;
 }
 
-.profile-card .card{
-border-color: #b367ff;
+.profile-card .card {
+    border-color: #b367ff;
 }
 
-.form-group .col-3 i{
+.form-group .col-3 i {
     padding-right: 10px;
 }
-.form-group .col-lg-9 .form-control{
+
+.form-group .col-lg-9 .form-control {
     border-color: #b367ff;
-    border-bottom-width:2px;
+    border-bottom-width: 2px;
 }
-.fas-color{
+
+.fas-color {
     color: #b367ff;
 }
-.post-form{
+
+.post-form {
     position: relative;
     padding-top: 70px;
-
 }

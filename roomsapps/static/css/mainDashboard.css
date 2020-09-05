@@ -1,0 +1,35 @@
+body {
+    background-color: #ebeced;
+}
+
+.main_nav .navbar-inverse .navbar-brand {
+    color: #fff;
+    font-size: 18px;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.main_nav .navbar-inverse {
+    border-radius: 0;
+    background-color: #3b2774;
+    border-color: #3b2774;
+}
+
+.main_nav .navbar .list {
+    color: #fff;
+}
+
+.main_nav .navbar .list:hover {
+    color: #b367ff;
+}
+
+.main_nav .navbar-inverse .navbar-nav > .active > a,
+.main_nav .navbar-inverse .navbar-nav > .active > a:focus,
+.main_nav .navbar-inverse .navbar-nav > .active > a:hover {
+    color: white;
+    font-weight: bold;
+    font-family: Corbel;
+    background-color: coral;
+    margin-right: 10px;
+}
