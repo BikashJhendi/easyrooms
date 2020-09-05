@@ -41,8 +41,14 @@ def privacy(request):
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['userGroup'])
 def user_rooms(request):
-    return render(request, 'usersPages/users_rooms.html')
+    show_rooms = Rooms.objects.all()
+    ktm_rooms = show_rooms.filter(district='Kathmandu')#, status='accept')
+    bkt_rooms = show_rooms.filter(district='Bhaktapur')
+    btw_rooms = show_rooms.filter(district='Butwal')
+    pkh_rooms = show_rooms.filter(district='Pokhara')
 
+    context= {'S_rooms': show_rooms, 'ktm_rooms': ktm_rooms, 'bkt_rooms': bkt_rooms, 'btw_rooms': btw_rooms, 'pkh_rooms': pkh_rooms}
+    return render(request, 'usersPages/users_rooms.html', context)
 
 # login usersPages  post room  views
 @login_required(login_url='login')

@@ -91,23 +91,208 @@
 
 <div class="main">
 
-    <!-- Rooms Locations 01-->
-    <div class="test1 border-bottom section-padding40">
+    <!-- Rooms Areas  -->
+    <div class="rooms-area  border-bottom section-padding40 fix">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <!-- Tittle -->
+                    <!-- Section Tittle -->
                     <div class="section-tittle text-center mb-80">
                         <h2>Rooms</h2>
-                        <p>Finds.</p>
+                        <p>Let's uncover the best places to stay.</p>
                     </div>
-                    <!-- Tittle End -->
                 </div>
             </div>
 
+            <h2 align="center">Rooms in Kathmandu</h2>
+            <div class="rooms-active">
+                <!-- Single Room Added Start -->
+                {% for Sroom in ktm_rooms %}
+                <div class="roomsBox pb-20">
+
+                    <div class="roomsCard">
+                        <!-- Room Img -->
+                        <div class="roomsImg overlay1">
+                            <a href="#"><img src="{% static 'img/front.jpg' %}" alt=""></a>
+                            <div class="img-text">
+                                <span>RS. {{ Sroom.price }}</span> <!-- Price -->
+                                <span>Rent</span> <!-- Rent Status -->
+                            </div>
+                        </div>
+                        <!-- Room Img End -->
+
+                        <!-- Room Address -->
+                        <div class="rooms_caption">
+
+                            <h3><a href="#">{{ Sroom.title }}</a></h3> <!-- rooms address -->
+                            <p>{{ Sroom.price }}</p> <!-- Describe about rooms -->
+
+                        </div>
+                        <!-- Room Address End -->
+
+                        <!-- Room Footer -->
+                        <div class="roomsBoxFooter d-flex justify-content-between align-items-center">
+                            <div class="roomsFooterLocation">
+                                <h3>Kathmandu</h3>
+                            </div>
+
+
+                            <div class="">
+                                <a href="#" class="btnOnly">View</a>
+                            </div>
+                        </div>
+                        <!-- Room Footer End -->
+
+                    </div>
+
+                </div>
+                {% endfor %}
+                <!-- Single Room Added End -->
+            </div>
+
+            <h2 align="center">Rooms in Bhaktapur</h2>
+            <div class="rooms-active">
+             <!-- Single Room Added Start -->
+                {% for Sroom in bkt_rooms %}
+                <div class="roomsBox pb-20">
+
+                    <div class="roomsCard">
+                        <!-- Room Img -->
+                        <div class="roomsImg overlay1">
+                            <a href="#"><img src="{% static 'img/front.jpg' %}" alt=""></a>
+                            <div class="img-text">
+                                <span>RS. {{ Sroom.price }}</span> <!-- Price -->
+                                <span>Rent</span> <!-- Rent Status -->
+                            </div>
+                        </div>
+                        <!-- Room Img End -->
+
+                        <!-- Room Address -->
+                        <div class="rooms_caption">
+
+                            <h3><a href="#">{{ Sroom.title }}</a></h3> <!-- rooms address -->
+                            <p>{{ Sroom.price }}</p> <!-- Describe about rooms -->
+
+                        </div>
+                        <!-- Room Address End -->
+
+                        <!-- Room Footer -->
+                        <div class="roomsBoxFooter d-flex justify-content-between align-items-center">
+                            <div class="roomsFooterLocation">
+                                <h3>Bhaktapur</h3>
+                            </div>
+
+
+                            <div class="">
+                                <a href="#" class="btnOnly">View</a>
+                            </div>
+                        </div>
+                        <!-- Room Footer End -->
+
+                    </div>
+
+                </div>
+                {% endfor %}
+                <!-- Single Room Added End -->
+            </div>
+
+
+        <h2 align="center">Rooms in Pokhara</h2>
+        <div class="rooms-active">
+
+             <!-- Single Room Added Start -->
+                {% for Sroom in pkh_rooms %}
+                <div class="roomsBox pb-20">
+
+                    <div class="roomsCard">
+                        <!-- Room Img -->
+                        <div class="roomsImg overlay1">
+                            <a href="#"><img src="{% static 'img/front.jpg' %}" alt=""></a>
+                            <div class="img-text">
+                                <span>RS. {{ Sroom.price }}</span> <!-- Price -->
+                                <span>Rent</span> <!-- Rent Status -->
+                            </div>
+                        </div>
+                        <!-- Room Img End -->
+
+                        <!-- Room Address -->
+                        <div class="rooms_caption">
+
+                            <h3><a href="#">{{ Sroom.title }}</a></h3> <!-- rooms address -->
+                            <p>{{ Sroom.price }}</p> <!-- Describe about rooms -->
+
+                        </div>
+                        <!-- Room Address End -->
+
+                        <!-- Room Footer -->
+                        <div class="roomsBoxFooter d-flex justify-content-between align-items-center">
+                            <div class="roomsFooterLocation">
+                                <h3>Pokhara</h3>
+                            </div>
+
+
+                            <div class="">
+                                <a href="#" class="btnOnly">View</a>
+                            </div>
+                        </div>
+                        <!-- Room Footer End -->
+
+                    </div>
+
+                </div>
+                {% endfor %}
+                <!-- Single Room Added End -->
+            </div>
+
+
+        <h2 align="center">Rooms in Butwal</h2>
+        <div class="rooms-active">
+             <!-- Single Room Added Start -->
+                {% for Sroom in btw_rooms %}
+                <div class="roomsBox pb-20">
+
+                    <div class="roomsCard">
+                        <!-- Room Img -->
+                        <div class="roomsImg overlay1">
+                            <a href="#"><img src="{% static 'img/front.jpg' %}" alt=""></a>
+                            <div class="img-text">
+                                <span>RS. {{ Sroom.price }}</span> <!-- Price -->
+                                <span>Rent</span> <!-- Rent Status -->
+                            </div>
+                        </div>
+                        <!-- Room Img End -->
+
+                        <!-- Room Address -->
+                        <div class="rooms_caption">
+
+                            <h3><a href="#">{{ Sroom.title }}</a></h3> <!-- rooms address -->
+                            <p>{{ Sroom.price }}</p> <!-- Describe about rooms -->
+
+                        </div>
+                        <!-- Room Address End -->
+
+                        <!-- Room Footer -->
+                        <div class="roomsBoxFooter d-flex justify-content-between align-items-center">
+                            <div class="roomsFooterLocation">
+                                <h3>Butwal</h3>
+                            </div>
+
+
+                            <div class="">
+                                <a href="#" class="btnOnly">View</a>
+                            </div>
+                        </div>
+                        <!-- Room Footer End -->
+
+                    </div>
+
+                </div>
+                {% endfor %}
+                <!-- Single Room Added End -->
+            </div>
         </div>
     </div>
-    <!-- Rooms Locations End -->
+    <!-- Rooms Areas End -->
 
     <!-- Social Media Link start -->
     <section class="socialMedia-area">
