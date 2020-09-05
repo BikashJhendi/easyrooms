@@ -152,7 +152,21 @@ def dashboard_users(request):
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['adminGroup'])
 def admin_profile(request):
-    return render(request, 'adminPages/admin_profile.html')
+    user = request.user
+    form = RegistrationForms(instance=user)
+
+    if request.method == 'POST':
+        form = RegistrationForms(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect("dashboard")
+        else:
+            messages.info(request, "Please enter a valid information. Email and Contact No. should be unique."
+                                   " And both password should be same.")
+            return redirect("dashboardAdminProfile")
+
+    context = {"form": form, 'rooms': rooms}
+    return render(request, 'adminPages/admin_profile.html', context)
 
 
 # usersPages Registration views
