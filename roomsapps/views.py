@@ -129,13 +129,6 @@ def user_rooms_details(request):
     return render(request, 'usersPages/rooms_details.html')
 
 
-# adminPages login dashboard  views
-@login_required(login_url='login')
-@allowed_users(allowed_roles=['adminGroup'])
-def dashboard_admin(request):
-    return render(request, 'adminPages/admindashboard.html')
-
-
 # adminPages login room details views
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['adminGroup'])
