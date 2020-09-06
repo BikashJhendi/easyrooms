@@ -30,9 +30,6 @@
                     <li class="nav-item "><a href="{% url 'dashboard' %}" class="nav-link list">Room List</a></li>
                     <li class="nav-item active"><a href="{% url 'dashboardUsers' %}" class="nav-link list">User List</a>
                     </li>
-                    <li class="nav-item "><a href="{% url 'dashboardAdmin' %} " class="nav-link list">Add New
-                        Admin</a>
-                    </li>
                 </ul>
             </div>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -70,21 +67,42 @@
         <h2>USER DETAILS</h2>
         <div class="table-responsive text-nowrap">
             <!--Table-->
-            <table class="table table-striped">
+            {% block content %}
+                <table class="table table-striped">
 
-                <!--Table head-->
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Full Name</th>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Contact No</th>
-                    <th>Password</th>
-                    <th>Confirm Password</th>
-                </tr>
-                </thead>
-            </table>
+                    <!--Table head-->
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Full Name</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Contact No</th>
+                        <th>Date joined</th>
+                        <th>Is Superuser</th>
+                        <th>Is Admin</th>
+                        <th>Is User</th>
+                    </tr>
+                    </thead>
+
+                {% load static %}
+                {% for user in users %}
+                    <tbody>
+                    <tr>
+                        <th scope="row"> {{ user.id }}</th>
+                        <td>{{ user.fullName }}</td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.contactNo }}</td>
+                        <td>{{ user.date_joined }}</td>
+                        <td>{{ user.is_superuser }}</td>
+                        <td>{{ user.is_admin }}</td>
+                        <td>{{ user.is_user }}</td>
+                    </tr>
+                    </tbody>
+                {% endfor %}
+                </table>
+            {% endblock content %}
         </div>
 
     </div>

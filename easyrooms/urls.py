@@ -25,7 +25,6 @@ urlpatterns = [
     path('login/redirect', views.verification_page, name='redirect'),
 
     # admin pages url
-    path('login/dashboard/admin', views.dashboard_admin, name='dashboardAdmin'),
     path('login/dashboard/main', views.dashboard_main, name='dashboard'),
     path('login/dashboard/users', views.dashboard_users, name='dashboardUsers'),
     path('login/dashboard/admin/profile', views.admin_profile, name='dashboardAdminProfile'),
