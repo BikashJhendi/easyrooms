@@ -2,7 +2,7 @@ body {
     background-color: #ebeced;
 }
 
-.main_nav .navbar-inverse .navbar-brand {
+.main_nav .navbar-expand-lg .navbar-brand {
     color: #fff;
     font-size: 18px;
     font-family: sans-serif;
@@ -10,7 +10,7 @@ body {
     font-weight: bold;
 }
 
-.main_nav .navbar-inverse {
+.main_nav .navbar-expand-lg {
     border-radius: 0;
     background-color: #3b2774;
     border-color: #3b2774;

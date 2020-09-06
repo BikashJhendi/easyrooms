@@ -8,28 +8,38 @@
     <link href="{% static 'css/mainDashboard.css' %}" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/header2.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/all.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap3.4.1.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap.min.css' %}">
+
+
 </head>
 
 <body>
 <!-- admin navbar start -->
 <div class="main_nav">
 
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-expand-lg ">
         <div class=" container-fluid">
             <div class="nav navbar-header">
                 <a class="navbar-brand list" href="{% url 'dashboard' %}">DASHBOARD</a>
             </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav list mr-auto">
+                    <li class="nav-item "><a href="{% url 'dashboard' %}" class="nav-link">Room List</a></li>
+                    <li class="nav-item "><a href="{% url 'dashboardUsers' %}" class="nav-link">User List</a></li>
+                    <li class="nav-item active"><a href="{% url 'dashboardAdmin' %} " class="nav-link">Add New Admin</a>
+                    </li>
+                </ul>
+            </div>
+               <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-            <ul class="nav navbar-nav navbar-center list">
-                <li><a href="{% url 'dashboard' %}" class="list">Room List</a></li>
-                <li><a href="{% url 'dashboardUsers' %}" class="list">User List</a></li>
-                <li class="active"><a href="{% url 'dashboardAdmin' %} " class="list">Add New Admin</a></li>
-            </ul>
-
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav ml-auto">
                 <div class="header-profile">
-                    <div class="row main">
+                    <div class="row main ">
                         <div class="profile-icon in-line">
                             {% if request.user.is_authenticated %}
                                 <p><i class="fas fa-user-circle"></i> Hi, {{ request.user.username }}</p>
@@ -49,33 +59,60 @@
                     </div>
                 </div>
             </ul>
-
+               </div>
         </div>
     </nav>
 </div>
 <!-- admin navbar end -->
 
 
-<div class="container">
+<div class="container ">
 
+    <section class="panel panel-heading">
 
-    <div id="row heading col-12">
-        <h2 class="text-center">ADD ADMIN</h2>
-    </div>
+        <div id="row heading col-10 ">
+            <h2 class="text-center">ADD ADMIN</h2>
+        </div>
+        <div class="row form-group">
+            <label for="name" class="col-3 control-label">Full Name</label>
+            <div class="col-md-10 ">
+                <input type="text" class="form-control" name="name" id="name"
+                       placeholder="Your full name" required>
+            </div>
+        </div>
+        <div class="row form-group">
+            <label for="name" class="col-md-2 control-label">Email</label>
+            <div class="col-md-10 ">
+                <input type="text" class="form-control" name="Email" id="name"
+                       placeholder="Your Email" required>
+            </div>
+        </div>
+        <div class="row form-group">
+            <label for="name" class="col-md-2 control-label">Contact</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" name="contact" id="name"
+                       placeholder="Your Contact no" required>
+            </div>
+        </div>
+        <div class="row form-group">
+            <label for="name" class="col-md-2 control-label">Password</label>
+            <div class="col-md-10">
+                <input type="password" class="form-control" name="password" id="name"
+                       placeholder="password" required>
+            </div>
+        </div>
+        <div class="row form-group">
+            <label for="name" class="col-md-2 control-label">Confirm password</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" name="confirm" id="name"
+                       placeholder="Confirm password" required>
+            </div>
+        </div>
+        <div class="row form-group d-flex justify-content-center ">
+            <button type="submit" class="btn col-3 submit-button">Add Admin</button>
+        </div> <!-- form-group // -->
 
-    <div id="profile">
-
-        <form id="form">
-            <input type="text" id="fname" name="full name" placeholder="Full name"><br><br>
-            <input type="text" id="username" name="username" placeholder="Username"><br><br>
-            <input type="text" id="email" name="email" placeholder="Email"><br><br>
-            <input type="text" id="phone" name="phone" placeholder="Contact No."><br><br>
-            <input type="password" id="password" name="password" placeholder="Password"><br><br>
-            <input type="password" id="confirm" name="confirm" placeholder="Confirm Password"><br><br>
-            <input type="submit" value="ADD ADMIN"><br><br><br>
-        </form>
-    </div>
-
+    </section>
 
 </div>
 <!-- Jquery, Popper, Bootstrap -->
