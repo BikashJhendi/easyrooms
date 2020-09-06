@@ -2,7 +2,13 @@ body {
     background-color: #ebeced;
 }
 
-.main_nav .navbar-inverse .navbar-brand {
+.main_nav .navbar-expand-lg {
+    border-radius: 0;
+    background-color: #3b2774;
+    border-color: #3b2774;
+}
+
+.main_nav .navbar-expand-lg .navbar-brand {
     color: #fff;
     font-size: 18px;
     font-family: sans-serif;
@@ -10,23 +16,25 @@ body {
     font-weight: bold;
 }
 
-.main_nav .navbar-inverse {
-    border-radius: 0;
-    background-color: #3b2774;
-    border-color: #3b2774;
-}
-
-.main_nav .navbar .list {
+.main_nav .navbar .navbar-toggler .navbar-toggler-icon {
     color: #fff;
 }
 
-.main_nav .navbar .list:hover {
+.main_nav .navbar .navbar-toggler .navbar-toggler-icon:hover {
     color: #b367ff;
 }
 
-.main_nav .navbar-inverse .navbar-nav > .active > a,
-.main_nav .navbar-inverse .navbar-nav > .active > a:focus,
-.main_nav .navbar-inverse .navbar-nav > .active > a:hover {
+.main_nav .navbar .collapse .navbar-nav .list {
+    color: #fff;
+}
+
+.main_nav .navbar .collapse .navbar-nav .list:hover {
+    color: #b367ff;
+}
+
+.main_nav .navbar .collapse .navbar-nav > .active > a,
+.main_nav .navbar .collapse .navbar-nav > .active > a:focus,
+.main_nav .navbar .collapse .navbar-nav > .active > a:hover {
     color: white;
     font-weight: bold;
     font-family: Corbel;
