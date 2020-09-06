@@ -251,5 +251,5 @@ def verification_page(request):
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['adminGroup'])
 def update_room_status(request):
-    return render(request, 'update_status.html')
+    return render(request, 'adminPages/update_status.html')
 
