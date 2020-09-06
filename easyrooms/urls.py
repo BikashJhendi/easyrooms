@@ -30,6 +30,7 @@ urlpatterns = [
     path('login/dashboard/main', views.dashboard_main, name='dashboard'),
     path('login/dashboard/users', views.dashboard_users, name='dashboardUsers'),
     path('login/dashboard/admin/profile', views.admin_profile, name='dashboardAdminProfile'),
+    path('login/dashboard/rooms/updateStatus', views.update_rooom_status, name='dashboardRoomsUpdate'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

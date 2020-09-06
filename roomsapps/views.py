@@ -66,8 +66,9 @@ def post_room(request):
             district = form.cleaned_data['district']
             address = form.cleaned_data['address']
             descriptions = form.cleaned_data['descriptions']
+            noOfRooms = form.cleaned_data['noOfRooms']
             obj = Rooms.objects.create(user=user, title=title, contactNo=contactNo, district=district,
-                                       address=address, price=price, descriptions=descriptions)
+                                       address=address, price=price, descriptions=descriptions, noOfRooms= noOfRooms)
 
             for f in files:
                 RoomsImage.objects.create(rooms=obj, rooms_images=f)
@@ -244,3 +245,11 @@ def verification_page(request):
 
     context = {}
     return render(request, 'redirect.html', context)
+
+
+# rooms update status page
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['adminGroup'])
+def update_room_status(request):
+    return render(request, 'update_status.html')
+
