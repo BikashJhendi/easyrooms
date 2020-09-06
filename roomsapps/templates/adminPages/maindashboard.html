@@ -125,42 +125,47 @@
 
             <div class="table-responsive text-nowrap">
                 <!--Table-->
-                <table class="table table-hover table-fixed">
-                    <!--Table head-->
-                    <thead>
-                    <tr>
-                        <th>Room ID</th>
-                        <th>Posted by</th>
-                        <th>Title</th>
-                        <th>Contact No</th>
-                        <th>District</th>
-                        <th>Address</th>
-                        <th>Price</th>
-                        <th>No. of Rooms</th>
-                        <th>Descriptions</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
+                {% block content %}
+                    <table class="table table-hover table-fixed">
+                        <!--Table head-->
+                        <thead>
+                        <tr>
+                            <th>Room ID</th>
+                            <th>Posted by</th>
+                            <th>Title</th>
+                            <th>Contact No</th>
+                            <th>District</th>
+                            <th>Address</th>
+                            <th>Price</th>
+                            <th>No. of Rooms</th>
+                            <th>Descriptions</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
 
-                    {% for r_list in review_list%}
-                    <tbody>
-                    <tr>
-                        <th scope="row"> {{ r_list.id }}</th>
-                        <td>{{ r_list.user.username }}</td>
-                        <td>{{ r_list.title }}</td>
-                        <td>{{ r_list.contactNo }}</td>
-                        <td>{{ r_list.district }}</td>
-                        <td>{{ r_list.address }}</td>
-                        <td>{{ r_list.price }}</td>
-                        <td>{{ r_list.noOfRooms }}</td>
-                        <td>{{ r_list.descriptions }}</td>
-                        <td>{{ r_list.status }}</td>
-                        <td> <a href="#"><button class="btn btn-primary" type="submit">Update Status</button></a></td>
-                    </tr>
-                    </tbody>
-                    {% endfor %}
-                </table>
+                        {% load static %}
+                        {% for r_list in review_list %}
+                            <tbody>
+                            <tr>
+                                <th scope="row"> {{ r_list.id }}</th>
+                                <td>{{ r_list.user.username }}</td>
+                                <td>{{ r_list.title }}</td>
+                                <td>{{ r_list.contactNo }}</td>
+                                <td>{{ r_list.district }}</td>
+                                <td>{{ r_list.address }}</td>
+                                <td>{{ r_list.price }}</td>
+                                <td>{{ r_list.noOfRooms }}</td>
+                                <td>{{ r_list.descriptions }}</td>
+                                <td>{{ r_list.status }}</td>
+                                <td><a href="{% url 'dashboardRoomsEdit' r_list.id %}">
+                                    <button class="btn btn-primary" type="submit">Update Status</button>
+                                </a></td>
+                            </tr>
+                            </tbody>
+                        {% endfor %}
+                    </table>
+                {% endblock content %}
 
 
             </div>

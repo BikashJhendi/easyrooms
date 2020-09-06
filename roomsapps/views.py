@@ -67,8 +67,10 @@ def post_room(request):
             address = form.cleaned_data['address']
             descriptions = form.cleaned_data['descriptions']
             noOfRooms = form.cleaned_data['noOfRooms']
+            status = form.cleaned_data['status']
             obj = Rooms.objects.create(user=user, title=title, contactNo=contactNo, district=district,
-                                       address=address, price=price, descriptions=descriptions, noOfRooms= noOfRooms)
+                                       address=address, price=price, descriptions=descriptions, noOfRooms=noOfRooms,
+                                       status=status)
 
             for f in files:
                 RoomsImage.objects.create(rooms=obj, rooms_images=f)
@@ -247,9 +249,27 @@ def verification_page(request):
     return render(request, 'redirect.html', context)
 
 
-# rooms update status page
+#
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['adminGroup'])
-def update_room_status(request):
-    return render(request, 'adminPages/update_status.html')
+def edit_room_status(request, pk):
+    get_room_id = Rooms.objects.get(id=pk)
 
+    context = {'get_room_id': get_room_id}
+    return render(request, 'adminPages/update_status.html', context)
+
+
+# # rooms update status page
+@login_required(login_url='login')
+# @allowed_users(allowed_roles=['adminGroup'])
+def update_room_status(request, pk):
+    get_room_id = Rooms.objects.get(id=pk)
+    update_room = RoomForms(request.POST, instance=get_room_id)
+
+    if request.method == 'POST':
+        update_room = RoomForms(request.POST, request.FILES, instance=get_room_id)
+        if update_room.is_valid():
+            update_room.save()
+            return redirect('dashboard')
+
+    context = {'get_room_id': get_room_id, 'update_room': update_room}
+    return render(request, 'adminPages/update_status.html', context)

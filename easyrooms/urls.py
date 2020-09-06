@@ -4,7 +4,6 @@ from roomsapps import views
 
 from django.conf.urls.static import static
 from django.conf import settings
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name="index"),
@@ -30,7 +29,9 @@ urlpatterns = [
     path('login/dashboard/main', views.dashboard_main, name='dashboard'),
     path('login/dashboard/users', views.dashboard_users, name='dashboardUsers'),
     path('login/dashboard/admin/profile', views.admin_profile, name='dashboardAdminProfile'),
-    path('login/dashboard/rooms/updateStatus', views.update_rooom_status, name='dashboardRoomsUpdate'),
+    path('login/dashboard/rooms/edit/<slug:pk>', views.edit_room_status, name='dashboardRoomsEdit'),
+    path('login/dashboard/rooms/updateStatus/<slug:pk>', views.update_room_status, name='dashboardRoomsUpdate'),
 ]
+
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
