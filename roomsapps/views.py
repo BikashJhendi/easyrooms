@@ -9,7 +9,6 @@ from django.contrib import messages
 from .decorators import unauthenticated_user, allowed_users
 # from .models import RoomsImage, Rooms, Rent, UsersAccount
 from .models import *
-from django.db.models import Count
 
 
 # Create your views here.
@@ -102,7 +101,7 @@ def user_profile(request):
     rooms = Rooms.objects.all()
     rooms_rent = Rent.objects.all()
 
-    total_room_post = rooms.filter(user=users.id).count
+    total_room_post = rooms.filter(user=users.id).count()
     total_rented = rooms_rent.filter(user=users.id).count()
 
     if request.method == 'POST':

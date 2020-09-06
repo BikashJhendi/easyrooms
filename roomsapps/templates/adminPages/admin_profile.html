@@ -15,52 +15,59 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/all.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/header2.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap3.4.1.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap.min.css' %}">
     <link href="{% static 'css/mainDashboard.css' %}" rel="stylesheet" type="text/css"/>
     <!-- CSS here -->
 
 </head>
 
 <body>
-
 <!-- admin navbar start -->
 <div class="main_nav">
 
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-expand-lg ">
         <div class=" container-fluid">
             <div class="nav navbar-header">
                 <a class="navbar-brand list" href="{% url 'dashboard' %}">DASHBOARD</a>
             </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="fas fa-sliders-h"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item "><a href="{% url 'dashboard' %}" class="nav-link list">Room List</a></li>
+                    <li class="nav-item "><a href="{% url 'dashboardUsers' %}" class="nav-link list">User List</a></li>
+                    <li class="nav-item "><a href="{% url 'dashboardAdmin' %} " class="nav-link list">Add New
+                        Admin</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-            <ul class="nav navbar-nav navbar-center list">
-                <li><a href="{% url 'dashboard' %}" class="list">Room List</a></li>
-                <li><a href="{% url 'dashboardUsers' %}" class="list">User List</a></li>
-                <li><a href="{% url 'dashboardAdmin' %} " class="list">Add New Admin</a></li>
-            </ul>
+                <ul class="nav navbar-nav ml-auto">
+                    <div class="header-profile">
+                        <div class="row main ">
+                            <div class="profile-icon in-line">
+                                {% if request.user.is_authenticated %}
+                                    <p><i class="fas fa-user-circle"></i> Hi, {{ request.user.username }}</p>
+                                {% endif %}
+                            </div>
 
-            <ul class="nav navbar-nav navbar-right">
-                <div class="header-profile">
-                    <div class="row main">
-                        <div class="profile-icon in-line">
-                            {% if request.user.is_authenticated %}
-                                <p><i class="fas fa-user-circle"></i> Hi, {{ request.user.username }}</p>
-                            {% endif %}
-                        </div>
-
-                        <div class="dropdown in-line">
-                            <button class="btn btn-circle"><i class="fas fa-caret-down"></i></button>
-                            <div class="dropdown-content">
-                                <a class="dropdown-icon" href="{% url 'dashboardAdminProfile' %}"> <i
-                                        class="fas fa-user"></i>
-                                    Profile </a>
-                                <a class="dropdown-icon" href="{% url 'logout' %}"> <i
-                                        class="fas fa-sign-out-alt"></i> Logout </a>
+                            <div class="dropdown in-line">
+                                <button class="btn btn-circle"><i class="fas fa-caret-down"></i></button>
+                                <div class="dropdown-content">
+                                    <a class="dropdown-icon" href="{% url 'dashboardAdminProfile' %}"> <i
+                                            class="fas fa-user"></i>
+                                        Profile </a>
+                                    <a class="dropdown-icon" href="{% url 'logout' %}"> <i
+                                            class="fas fa-sign-out-alt"></i> Logout </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </ul>
-
+                </ul>
+            </div>
         </div>
     </nav>
 </div>
@@ -70,7 +77,6 @@
 <div class="main">
 
     <!--Profile Start -->
-    <div class="admin-profile border-bottom">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -150,8 +156,8 @@
 
                     <hr style="border: .5px solid #b367ff;">
 
-                    <div class="center-block mt-15 mb-50">
-                        <button type="submit" class="btn submit-button center-block"
+                    <div class="d-flex justify-content-center mt-15 mb-50">
+                        <button type="submit" class="btn submit-button col-3"
                                 style="width: 200px; height: 40px;">Update</button>
                     </div>
                     {# checks passwords #}
