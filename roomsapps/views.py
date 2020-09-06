@@ -137,14 +137,31 @@ def dashboard_admin(request):
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['adminGroup'])
 def dashboard_main(request):
-    return render(request, 'adminPages/maindashboard.html')
+    room = Rooms.objects.all()
+
+    total_room = room.count()
+    review_left = room.filter(status='review').count()
+    total_accepted = room.filter(status='accepted').count()
+    total_rejected = room.filter(status='rejected').count()
+
+    review_list = room.filter(status='review')
+    accepted_list = room.filter(status='accepted')
+
+    context = {'total_room': total_room, 'review_left': review_left, 'total_rejected': total_rejected,
+               'total_accepted': total_accepted, 'review_list': review_list, 'accepted_list': accepted_list}
+    return render(request, 'adminPages/maindashboard.html', context)
 
 
 # adminPages login usersPages details views
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['adminGroup'])
 def dashboard_users(request):
-    return render(request, 'adminPages/userdashboard.html')
+    users = UsersAccount.objects.all()
+
+    total_users = users.count()
+
+    context = {'total_users': total_users, 'users': users}
+    return render(request, 'adminPages/userdashboard.html', context)
 
 
 # adminPages login profile views

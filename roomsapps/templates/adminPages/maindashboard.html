@@ -27,7 +27,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active "><a href="{% url 'dashboard' %}" class="nav-link list">Room List</a></li>
+                    <li class="nav-item active "><a href="{% url 'dashboard' %}" class="nav-link list">Room List</a>
+                    </li>
                     <li class="nav-item "><a href="{% url 'dashboardUsers' %}" class="nav-link list">User List</a></li>
                     <li class="nav-item "><a href="{% url 'dashboardAdmin' %} " class="nav-link list">Add New
                         Admin</a>
@@ -64,10 +65,108 @@
 </div>
 <!-- admin navbar end -->
 
-<div class="container">
-    <div id="room_table">
-        <p>Here will be the data for the room</p>
+<div class="rooms-list">
+
+    <div class="container">
+
+        <div class="heading-room">
+            <div class="title-room text-center ">
+                <h1> Rooms Details</h1>
+            </div>
+            <hr>
+
+            <div class="row">
+                <div class="profile-card col-lg-3 col-md-3 col-sm-6 d-flex justify-content-center">
+                    <div class="card mb-3" style="width: 18rem;">
+                        <div class="card-header d-flex justify-content-center"><h2>Total Rooms</h2></div>
+                        <div class="card-body text-dark">
+                            <h1 class="card-text  d-flex justify-content-center">{{ total_room }}</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-card col-lg-3 col-md-3 col-sm-6 d-flex justify-content-center">
+                    <div class="card mb-3" style="width: 18rem;">
+                        <div class="card-header d-flex justify-content-center"><h2>To Review</h2></div>
+                        <div class="card-body text-dark">
+                            <h1 class="card-text  d-flex justify-content-center">{{ review_left }}</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-card col-lg-3 col-md-3 col-sm-6 d-flex justify-content-center">
+                    <div class="card mb-3" style="width: 18rem;">
+                        <div class="card-header d-flex justify-content-center"><h2>Accepted</h2></div>
+                        <div class="card-body text-dark">
+                            <h1 class="card-text  d-flex justify-content-center">{{ total_accepted }}</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-card col-lg-3 col-md-3 col-sm-6 d-flex justify-content-center">
+                    <div class="card mb-3" style="width: 18rem;">
+                        <div class="card-header d-flex justify-content-center"><h2>Rejected</h2></div>
+                        <div class="card-body text-dark">
+                            <h1 class="card-text  d-flex justify-content-center">{{ total_rejected }}</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <br>
+
+        <div class="room-review-list">
+            <div class="heading2 pb-3">
+                <h2> Review Rooms </h2>
+            </div>
+
+
+            <div class="table-responsive text-nowrap">
+                <!--Table-->
+                <table class="table table-hover table-fixed">
+                    <!--Table head-->
+                    <thead>
+                    <tr>
+                        <th>Room ID</th>
+                        <th>Posted by</th>
+                        <th>Title</th>
+                        <th>Contact No</th>
+                        <th>District</th>
+                        <th>Address</th>
+                        <th>Price</th>
+                        <th>No. of Rooms</th>
+                        <th>Descriptions</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+
+                    {% for r_list in review_list%}
+                    <tbody>
+                    <tr>
+                        <th scope="row"> {{ r_list.id }}</th>
+                        <td>{{ r_list.user.username }}</td>
+                        <td>{{ r_list.title }}</td>
+                        <td>{{ r_list.contactNo }}</td>
+                        <td>{{ r_list.district }}</td>
+                        <td>{{ r_list.address }}</td>
+                        <td>{{ r_list.price }}</td>
+                        <td>{{ r_list.noOfRooms }}</td>
+                        <td>{{ r_list.descriptions }}</td>
+                        <td>{{ r_list.status }}</td>
+                        <td> <a href="#"><button class="btn btn-primary" type="submit">Update Status</button></a></td>
+                    </tr>
+                    </tbody>
+                    {% endfor %}
+                </table>
+
+
+            </div>
+        </div>
     </div>
+
 </div>
 
 
