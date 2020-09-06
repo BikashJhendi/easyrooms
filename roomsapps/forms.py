@@ -18,7 +18,7 @@ class RegistrationForms(UserCreationForm):
 class RoomForms(forms.ModelForm):
     class Meta:
         model = Rooms
-        fields = ("title", "contactNo", "district", "address", "price", "descriptions", "user")
+        fields = ("title", "contactNo", "district", "address", "price", "descriptions", "user", "noOfRooms")
         # fields = '__all__'
 
 
