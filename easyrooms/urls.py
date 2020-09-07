@@ -10,6 +10,7 @@ urlpatterns = [
     path('aboutUs', views.about_us, name="aboutUs"),
     path('rooms', views.rooms, name='rooms'),
     path('privacy', views.privacy, name='privacy'),
+    path('rooms/details/<slug:id>', views.room_details, name='roomsDetails'),
 
     path('signup', views.user_registration, name='signup'),  # signup or register page url
     path('login', views.user_login, name='login'),  # login page url

@@ -73,13 +73,11 @@
                     </div>
                     <!-- Profile End -->
 
-
                     <!-- Mobile Menu -->
                     <div class="col-12">
                         <div class="row mobile_menu d-block d-lg-none"></div>
                     </div>
                     <!-- Mobile Menu -->
-
                 </div>
             </div>
         </div>
@@ -103,13 +101,14 @@
                     </div>
                 </div>
             </div>
+            <hr>
 
-            <h2 align="center">Rooms in Kathmandu</h2>
+            <h2 align="center" class="pb-20">Kathmandu</h2>
             <!-- Kathmandu rooms area Start -->
             <div class="rooms-active">
                 <!-- Single Room Added Start -->
                 {% for ktm in ktm_rooms %}
-                    <div class="roomsBox pb-20">
+                    <div class="roomsBox">
 
                         <div class="roomsCard">
                             <!-- Room Img -->
@@ -124,10 +123,8 @@
 
                             <!-- Room Address -->
                             <div class="rooms_caption">
-
                                 <h3>{{ ktm.title }}</h3> <!-- rooms address -->
                                 <p>{{ ktm.noOfRooms }} Rooms</p> <!-- no fo rooms -->
-
                             </div>
                             <!-- Room Address End -->
 
@@ -137,33 +134,29 @@
                                     <h3>{{ ktm.district }}</h3>
                                 </div>
 
-
                                 <div class="">
-                                    <a href="{% url 'userRoomDetails' ktm.id %}" class="btnOnly" readonly="">View</a>
+                                    <a href="{% url 'userRoomDetails' ktm.id %}" class="btnOnly">View</a>
                                 </div>
                             </div>
                             <!-- Room Footer End -->
-
                         </div>
-
                     </div>
                 {% endfor %}
                 <!-- Single Room Added End -->
             </div>
             <!-- Kathmandu rooms area End -->
+            <hr>
 
-
-            <h2 align="center">Rooms in Bhaktapur</h2>
+            <h2 align="center" class="pb-20">Bhaktapur</h2>
             <!-- Bhaktapur rooms area Start -->
             <div class="rooms-active">
                 <!-- Single Room Added Start -->
                 {% for bhaktapur in bkt_rooms %}
-                    <div class="roomsBox pb-20">
-
+                    <div class="roomsBox">
                         <div class="roomsCard">
                             <!-- Room Img -->
                             <div class="roomsImg overlay1">
-                                <a href="#"><img src="{% static 'img/front.jpg' %}" alt=""></a>
+                                <img src="/static/img/{{ bhaktapur.image }}" alt="{{ bhaktapur.image.url }}">
                                 <div class="img-text">
                                     <span>RS. {{ bhaktapur.price }}</span> <!-- Price -->
                                     <span>Rent</span> <!-- Rent Status -->
@@ -173,49 +166,43 @@
 
                             <!-- Room Address -->
                             <div class="rooms_caption">
-
                                 <h3><a href="#">{{ bhaktapur.title }}</a></h3> <!-- rooms address -->
                                 <p>{{ bhaktapur.price }}</p> <!-- Describe about rooms -->
-
                             </div>
                             <!-- Room Address End -->
 
                             <!-- Room Footer -->
                             <div class="roomsBoxFooter d-flex justify-content-between align-items-center">
                                 <div class="roomsFooterLocation">
-                                    <h3>Bhaktapur</h3>
+                                    <h3>{{ bhaktapur.district }}</h3>
                                 </div>
-
-
                                 <div class="">
-                                    <a href="#" class="btnOnly">View</a>
+                                    <a href="{% url 'userRoomDetails' bhaktapur.id %}" class="btnOnly">View</a>
                                 </div>
                             </div>
                             <!-- Room Footer End -->
-
                         </div>
-
                     </div>
                 {% endfor %}
                 <!-- Single Room Added End -->
             </div>
             <!-- Bhaktapur rooms area End -->
+            <hr>
 
 
-            <h2 align="center">Rooms in Pokhara</h2>
+            <h2 align="center" class="pb-20">Pokhara</h2>
             <!-- Pokhara rooms area Start -->
             <div class="rooms-active">
 
                 <!-- Single Room Added Start -->
-                {% for Sroom in pkh_rooms %}
-                    <div class="roomsBox pb-20">
-
+                {% for pokhara in pkh_rooms %}
+                    <div class="roomsBox">
                         <div class="roomsCard">
                             <!-- Room Img -->
                             <div class="roomsImg overlay1">
-                                <a href="#"><img src="{% static 'img/front.jpg' %}" alt=""></a>
+                                <img src="/static/img/{{ pokhara.image }}" alt="{{ pokhara.image.url }}">
                                 <div class="img-text">
-                                    <span>RS. {{ Sroom.price }}</span> <!-- Price -->
+                                    <span>RS. {{ pokhara.price }}</span> <!-- Price -->
                                     <span>Rent</span> <!-- Rent Status -->
                                 </div>
                             </div>
@@ -223,47 +210,41 @@
 
                             <!-- Room Address -->
                             <div class="rooms_caption">
-
-                                <h3><a href="#">{{ Sroom.title }}</a></h3> <!-- rooms address -->
-                                <p>{{ Sroom.price }}</p> <!-- Describe about rooms -->
-
+                                <h3><a href="#">{{ pokhara.title }}</a></h3> <!-- rooms address -->
+                                <p>{{ pokhara.price }}</p> <!-- Describe about rooms -->
                             </div>
                             <!-- Room Address End -->
 
                             <!-- Room Footer -->
                             <div class="roomsBoxFooter d-flex justify-content-between align-items-center">
                                 <div class="roomsFooterLocation">
-                                    <h3>Pokhara</h3>
+                                    <h3>{{ pokhara.district }}</h3>
                                 </div>
-
-
                                 <div class="">
-                                    <a href="#" class="btnOnly">View</a>
+                                    <a href="{% url 'userRoomDetails' pokhara.id %}" class="btnOnly">View</a>
                                 </div>
                             </div>
                             <!-- Room Footer End -->
-
                         </div>
-
                     </div>
                 {% endfor %}
                 <!-- Single Room Added End -->
             </div>
             <!-- Pokhara rooms area End -->
+            <hr>
 
-            <h2 align="center">Rooms in Butwal</h2>
+            <h2 align="center" class="pb-20">Butwal</h2>
             <!-- Butwal rooms area Start -->
             <div class="rooms-active">
                 <!-- Single Room Added Start -->
-                {% for Sroom in btw_rooms %}
-                    <div class="roomsBox pb-20">
-
+                {% for butwal in btw_rooms %}
+                    <div class="roomsBox">
                         <div class="roomsCard">
                             <!-- Room Img -->
                             <div class="roomsImg overlay1">
-                                <a href="#"><img src="{% static 'img/front.jpg' %}" alt=""></a>
+                                <img src="/static/img/{{ butwal.image }}" alt="{{ butwal.image.url }}">
                                 <div class="img-text">
-                                    <span>RS. {{ Sroom.price }}</span> <!-- Price -->
+                                    <span>RS. {{ butwal.price }}</span> <!-- Price -->
                                     <span>Rent</span> <!-- Rent Status -->
                                 </div>
                             </div>
@@ -271,28 +252,23 @@
 
                             <!-- Room Address -->
                             <div class="rooms_caption">
-
-                                <h3><a href="#">{{ Sroom.title }}</a></h3> <!-- rooms address -->
-                                <p>{{ Sroom.price }}</p> <!-- Describe about rooms -->
-
+                                <h3>{{ butwal.title }}</h3> <!-- rooms address -->
+                                <p>{{ butwal.price }}</p> <!-- Describe about rooms -->
                             </div>
                             <!-- Room Address End -->
 
                             <!-- Room Footer -->
                             <div class="roomsBoxFooter d-flex justify-content-between align-items-center">
                                 <div class="roomsFooterLocation">
-                                    <h3>Butwal</h3>
+                                    <h3>{{ butwal.district }}</h3>
                                 </div>
 
-
                                 <div class="">
-                                    <a href="#" class="btnOnly">View Details</a>
+                                    <a href="{% url 'userRoomDetails' butwal.id %}" class="btnOnly">View</a>
                                 </div>
                             </div>
                             <!-- Room Footer End -->
-
                         </div>
-
                     </div>
                 {% endfor %}
                 <!-- Single Room Added End -->
