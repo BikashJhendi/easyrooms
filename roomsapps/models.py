@@ -48,4 +48,4 @@ class Rent(models.Model):
     date_rent = models.DateTimeField(verbose_name='date rent', auto_now=True, null=True)
 
     def __str__(self):
-        return self.room
+        return self.room_status

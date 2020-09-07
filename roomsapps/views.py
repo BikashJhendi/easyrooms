@@ -39,7 +39,7 @@ def room_details(request, id):
     imgs = RoomsImage.objects.filter(rooms_id=id)
 
     context = {'imgs': imgs, 'room': room}
-    return render(request, 'rooms.html', context)
+    return render(request, 'room_details_home.html', context)
 
 
 # aboutUs.html views
@@ -170,9 +170,11 @@ def dashboard_main(request):
 
     review_list = room.filter(status='review')
     accepted_list = room.filter(status='accepted')
+    rejected_list = room.filter(status='rejected')
 
     context = {'total_room': total_room, 'review_left': review_left, 'total_rejected': total_rejected,
-               'total_accepted': total_accepted, 'review_list': review_list, 'accepted_list': accepted_list}
+               'total_accepted': total_accepted, 'review_list': review_list, 'accepted_list': accepted_list,
+               'rejected_list': rejected_list}
     return render(request, 'adminPages/maindashboard.html', context)
 
 
@@ -272,11 +274,24 @@ def verification_page(request):
 
 #
 @login_required(login_url='login')
+# @allowed_users(allowed_roles=['adminGroup'])
 def edit_room_status(request, pk):
     get_room_id = Rooms.objects.get(id=pk)
 
     context = {'get_room_id': get_room_id}
     return render(request, 'adminPages/update_status.html', context)
+
+
+#
+@login_required(login_url='login')
+def delete_rooms(request, pk):
+    get_room_id = Rooms.objects.get(id=pk)
+    if request.method == 'POST':
+        get_room_id.delete()
+        return redirect('dashboard')
+
+    context = {'get_room_id': get_room_id}
+    return render(request, 'adminPages/delete_rooms.html', context)
 
 
 # # rooms update status page
