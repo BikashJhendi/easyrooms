@@ -38,8 +38,8 @@ class RoomsImage(models.Model):
 class Rent(models.Model):
     ROOM_STAT = (
         ('pending', 'pending'),
-        ('accept', 'accept request'),
-        ('reject', 'reject request'),
+        ('accepted', 'accept request'),
+        ('rejected', 'reject request'),
     )
 
     room = models.ForeignKey(Rooms, on_delete=models.CASCADE, null=True)

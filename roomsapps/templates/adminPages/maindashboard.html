@@ -258,11 +258,58 @@
             </div>
         </div>
         <!-- accepted and rejected list table start -->
-    <hr>
+        <hr>
 
+        <!-- rented list table start -->
+        <div class="room-review-list mt-5">
+            <div class="heading2 pb-3">
+                <h2> Rented Rooms Lists </h2>
+            </div>
+            <div class="table-responsive text-nowrap">
+                <!--Table-->
+                {% block rentedContent %}
+                    <table class="table table-hover table-fixed">
+                        <!--Table head-->
+                        <thead>
+                        <tr>
+                            <th>Rented ID</th>
+                            <th>Room ID</th>
+                            <th>Rented by</th>
+                            <th>Posted by</th>
+                            <th>Status</th>
+                            <th>Date Requested</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+
+                        {% load static %}
+                        {% for rented_list in rent %}
+                            <tbody>
+                            <tr>
+                                <th scope="row"> {{ rented_list.id }}</th>
+                                <td>{{ rented_list.room_id }}</td>
+                                <td>{{ rented_list.user.username }}</td>
+                                <td>{{ rented_list.room.user.username }}</td>
+                                <td>{{ rented_list.room_status }}</td>
+                                <td>{{ rented_list.date_rent }}</td>
+                                <td><a href="{% url 'rentedStatusView' rented_list.id %}">
+                                    <button class="btn btn-primary" type="submit">Update Status</button>
+                                </a> ||
+                                    <a href="{% url 'deleteRentedRoom' rented_list.id %}">
+                                        <button class="btn btn-danger" type="submit">Delete</button>
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        {% endfor %}
+                    </table>
+                {% endblock rentedContent %}
+            </div>
+        </div>
+        <!-- rented list table start -->
+        <hr>
 
     </div>
-
 </div>
 
 
