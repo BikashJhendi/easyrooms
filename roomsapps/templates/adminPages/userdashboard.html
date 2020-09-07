@@ -64,27 +64,27 @@
 <!-- admin navbar end -->
 
 
-    <div class="container">
-        <h2>USER DETAILS</h2>
-        <div class="table-responsive text-nowrap">
-            <!--Table-->
-            {% block content %}
-                <table class="table table-hover table-fixed  " style="width: 100%" >
+<div class="container">
+    <h2>USER DETAILS</h2>
+    <div class="table-responsive text-nowrap">
+        <!--Table-->
+        {% block content %}
+            <table class="table table-hover table-fixed  " style="width: 100%">
 
-                    <!--Table head-->
-                    <thead>
-                    <tr>
-                        <th>User Id</th>
-                        <th>Full Name</th>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>Contact No</th>
-                        <th>Date joined</th>
-                        <th>Is Superuser</th>
-                        <th>Is Admin</th>
-                        <th>Is User</th>
-                    </tr>
-                    </thead>
+                <!--Table head-->
+                <thead>
+                <tr>
+                    <th>User Id</th>
+                    <th>Full Name</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Contact No</th>
+                    <th>Date joined</th>
+                    <th>Is Superuser</th>
+                    <th>Is Admin</th>
+                    <th>Is User</th>
+                </tr>
+                </thead>
 
                 {% load static %}
                 {% for user in users %}
@@ -102,32 +102,32 @@
                     </tr>
                     </tbody>
                 {% endfor %}
-                </table>
+            </table>
             {% if users.has_other_pages %}
-  <ul class="pagination">
-    {% if users.has_previous %}
-      <li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
-    {% else %}
-      <li class="disabled"><span>&laquo;</span></li>
-    {% endif %}
-    {% for i in users.paginator.page_range %}
-      {% if users.number == i %}
-        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-      {% else %}
-        <li><a href="?page={{ i }}">{{ i }}</a></li>
-      {% endif %}
-    {% endfor %}
-    {% if users.has_next %}
-      <li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
-    {% else %}
-      <li class="disabled"><span>&raquo;</span></li>
-    {% endif %}
-  </ul>
-{% endif %}
-            {% endblock content %}
-        </div>
-
+                <ul class="pagination">
+                    {% if users.has_previous %}
+                        <li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+                    {% else %}
+                        <li class="disabled"><span>&laquo;</span></li>
+                    {% endif %}
+                    {% for i in users.paginator.page_range %}
+                        {% if users.number == i %}
+                            <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                        {% else %}
+                            <li><a href="?page={{ i }}">{{ i }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if users.has_next %}
+                        <li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
+                    {% else %}
+                        <li class="disabled"><span>&raquo;</span></li>
+                    {% endif %}
+                </ul>
+            {% endif %}
+        {% endblock content %}
     </div>
+
+</div>
 
 
 <!-- Jquery, Popper, Bootstrap -->
