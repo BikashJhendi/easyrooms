@@ -181,6 +181,15 @@ def rent_room(request):
 def dashboard_main(request):
     room = Rooms.objects.all()
     rent = Rent.objects.all()
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(rent, 5)
+    try:
+        rent = paginator.page(page)
+    except PageNotAnInteger:
+        rent = paginator.page(1)
+    except EmptyPage:
+        rent = paginator.page(paginator.num_pages)
 
     total_room = room.count()
     review_left = room.filter(status='review').count()
@@ -188,8 +197,37 @@ def dashboard_main(request):
     total_rejected = room.filter(status='rejected').count()
 
     review_list = room.filter(status='review')
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(review_list, 5)
+    try:
+        review_list = paginator.page(page)
+    except PageNotAnInteger:
+        review_list = paginator.page(1)
+    except EmptyPage:
+        review_list = paginator.page(paginator.num_pages)
+
     accepted_list = room.filter(status='accepted')
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(accepted_list, 5)
+    try:
+        accepted_list = paginator.page(page)
+    except PageNotAnInteger:
+        accepted_list = paginator.page(1)
+    except EmptyPage:
+        accepted_list = paginator.page(paginator.num_pages)
+
     rejected_list = room.filter(status='rejected')
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(rejected_list, 5)
+    try:
+        rejected_list = paginator.page(page)
+    except PageNotAnInteger:
+        rejected_list = paginator.page(1)
+    except EmptyPage:
+        rejected_list = paginator.page(paginator.num_pages)
 
     context = {'total_room': total_room, 'review_left': review_left, 'total_rejected': total_rejected,
                'total_accepted': total_accepted, 'review_list': review_list, 'accepted_list': accepted_list,
@@ -204,7 +242,6 @@ def dashboard_users(request):
     users = UsersAccount.objects.all()
     page = request.GET.get('page', 1)
 
-    total_users = users.count()
     paginator = Paginator(users, 10)
     try:
         users = paginator.page(page)
@@ -212,7 +249,8 @@ def dashboard_users(request):
         users = paginator.page(1)
     except EmptyPage:
         users = paginator.page(paginator.num_pages)
-    context = {'total_users': total_users, 'users': users}
+
+    context = {'users': users}
     return render(request, 'adminPages/userdashboard.html', context)
 
 
