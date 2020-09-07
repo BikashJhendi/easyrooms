@@ -33,6 +33,9 @@ urlpatterns = [
     path('login/dashboard/rooms/edit/<slug:pk>', views.edit_room_status, name='dashboardRoomsEdit'),
     path('login/dashboard/rooms/updateStatus/<slug:pk>', views.update_room_status, name='dashboardRoomsUpdate'),
     path('login/dashboard/rooms/delete/<slug:pk>', views.delete_rooms, name='dashboardRoomsDelete'),
+    path('login/dashboard/rooms/rented/view/<slug:pk>', views.rented_status, name='rentedStatusView'),
+    path('login/dashboard/rooms/rented/update/<slug:pk>', views.update_rented_status, name='rentedStatusUpdate'),
+    path('login/dashboard/rooms/rented/delete/<slug:pk>', views.delete_rent_room, name='deleteRentedRoom'),
 ]
 
 

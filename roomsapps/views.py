@@ -179,6 +179,7 @@ def rent_room(request):
 @allowed_users(allowed_roles=['adminGroup'])
 def dashboard_main(request):
     room = Rooms.objects.all()
+    rent = Rent.objects.all()
 
     total_room = room.count()
     review_left = room.filter(status='review').count()
@@ -191,7 +192,7 @@ def dashboard_main(request):
 
     context = {'total_room': total_room, 'review_left': review_left, 'total_rejected': total_rejected,
                'total_accepted': total_accepted, 'review_list': review_list, 'accepted_list': accepted_list,
-               'rejected_list': rejected_list}
+               'rejected_list': rejected_list, 'rent': rent}
     return render(request, 'adminPages/maindashboard.html', context)
 
 
@@ -326,3 +327,42 @@ def update_room_status(request, pk):
 
     context = {'get_room_id': get_room_id, 'update_room': update_room}
     return render(request, 'adminPages/update_status.html', context)
+
+
+#
+@login_required(login_url='login')
+# @allowed_users(allowed_roles=['adminGroup'])
+def rented_status(request, pk):
+    rent = Rent.objects.get(id=pk)
+
+    context = {'rent': rent}
+    return render(request, 'adminPages/rented_room_status.html', context)
+
+
+# rented status
+@login_required(login_url='login')
+# @allowed_users(allowed_roles=['adminGroup'])
+def update_rented_status(request, pk):
+    rent = Rent.objects.get(id=pk)
+    update_status = RentForm(request.POST, instance=rent)
+
+    if request.method == 'POST':
+        update_status = RentForm(request.POST, request.FILES, instance=rent)
+        if update_status.is_valid():
+            update_status.save()
+            return redirect('dashboard')
+
+    context = {'rent': rent, 'update_status': update_status}
+    return render(request, 'adminPages/rented_room_status.html', context)
+
+
+#
+@login_required(login_url='login')
+def delete_rent_room(request, pk):
+    rent = Rent.objects.get(id=pk)
+    if request.method == 'POST':
+        rent.delete()
+        return redirect('dashboard')
+
+    context = {'rent': rent}
+    return render(request, 'adminPages/delete_rented_room.html', context)

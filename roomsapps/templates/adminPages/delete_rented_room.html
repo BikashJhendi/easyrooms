@@ -1,0 +1,98 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete - Easy Rooms</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{% static 'css/mainDashboard.css' %}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/header2.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/all.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap.min.css' %}">
+
+</head>
+
+<body>
+<!-- admin navbar start -->
+<div class="main_nav">
+
+    <nav class="navbar navbar-expand-lg ">
+        <div class=" container-fluid">
+            <div class="nav navbar-header">
+                <a class="navbar-brand list" href="{% url 'dashboard' %}">DASHBOARD</a>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="fas fa-sliders-h"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><a href="{% url 'dashboard' %}" class="nav-link list">Room List</a>
+                    </li>
+                    <li class="nav-item "><a href="{% url 'dashboardUsers' %}" class="nav-link list">User List</a></li>
+
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="nav navbar-nav ml-auto">
+                    <div class="header-profile">
+                        <div class="row main ">
+                            <div class="profile-icon in-line">
+                                {% if request.user.is_authenticated %}
+                                    <p><i class="fas fa-user-circle"></i> Hi, {{ request.user.username }}</p>
+                                {% endif %}
+                            </div>
+
+                            <div class="dropdown in-line">
+                                <button class="btn btn-circle"><i class="fas fa-caret-down"></i></button>
+                                <div class="dropdown-content">
+                                    <a class="dropdown-icon" href="{% url 'dashboardAdminProfile' %}"> <i
+                                            class="fas fa-user"></i>
+                                        Profile </a>
+                                    <a class="dropdown-icon" href="{% url 'logout' %}"> <i
+                                            class="fas fa-sign-out-alt"></i> Logout </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<!-- admin navbar end -->
+
+
+<div class="confirm pt-4">
+    {% block content %}
+        <div class="heading">
+            <h3 class="text-center"> Are you sure you want to delete id no. "{{ rent.id }}" room posted
+                by {{ rent.room.user.username }}. </h3>
+            <p class="text-center" > Press Yes to delete. Press No to Cancel the delete. </p>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+            <form method="POST" action="{% url 'deleteRentedRoom' rent.id %}">
+                {% csrf_token %}
+                <input type="submit" class="btn btn-danger mr-2" name="Confirm" value="Yes">
+                <a href="{% url 'dashboard' %}">
+                    <button type="button" class="btn btn-circle btn-primary mr-2"> No</button>
+                </a>
+
+            </form>
+        </div>
+    {% endblock content %}
+</div>
+
+
+<!-- Jquery, Popper, Bootstrap -->
+<script src="{% static 'bootstrap/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'bootstrap/popper.min.js' %}"></script>
+<script src="{% static 'bootstrap/bootstrap.min.js' %}"></script>
+
+</body>
+
+
+</html>
