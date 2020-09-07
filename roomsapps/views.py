@@ -1,13 +1,12 @@
 from django.contrib.auth.models import Group
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from roomsapps.forms import RegistrationForms, RoomForms, RoomImagesForm
+from roomsapps.forms import RegistrationForms, RoomForms, RoomImagesForm, RentForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from .decorators import unauthenticated_user, allowed_users
-# from .models import RoomsImage, Rooms, Rent, UsersAccount
 from .models import *
 
 
@@ -152,9 +151,27 @@ def user_profile(request):
 def user_rooms_details(request, id):
     room = Rooms.objects.filter(id=id)
     imgs = RoomsImage.objects.filter(rooms_id=id)
+    user = request.user
 
-    context = {'imgs': imgs, 'room': room}
+    context = {'imgs': imgs, 'room': room, 'user': user}
     return render(request, 'usersPages/rooms_details.html', context)
+
+
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['userGroup'])
+def rent_room(request):
+    form = RentForm()
+    if request.method == 'POST':
+        form = RentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('userRooms')
+        else:
+            print('Invalid!!!')
+            return redirect('roomsDetails')
+
+    context = {'form': form}
+    return render(request, 'usersPages/rent_sucess.html', context)
 
 
 # adminPages login room details views
