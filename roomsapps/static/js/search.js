@@ -3,6 +3,7 @@ function search() {
     var x;
         x = document.getElementById("searchRoom").value;
         if (x === "kathmandu"||"bhaktapur"||"pokhara"||"butwal") {
-            window.open("rooms");
+            window.location.replace("rooms");
+            /*window.open("rooms");*/
         }
     }
