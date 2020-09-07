@@ -124,7 +124,7 @@ h3.tittle-w3l span {
 }
 
 .snipcart-details input.button:hover {
-    background: #000
+
 }
 
 .link-product-add-cart {
@@ -287,6 +287,10 @@ h3.title:before {
     height: 2px;
     bottom: -25%;
     left: 45%
+}
+
+.flexslider .slides .thumb-image img{
+    height: 250px;
 }
 
 @media (max-width: 1080px) {

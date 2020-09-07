@@ -41,7 +41,12 @@ def privacy(request):
 @allowed_users(allowed_roles=['userGroup'])
 def user_rooms(request):
     show_rooms = Rooms.objects.all()
-    ktm_rooms = show_rooms.filter(district='Kathmandu')  # , status='accept')
+    # ktm_img = {}
+
+    ktm_rooms = show_rooms.filter(district='Kathmandu')  # , status='accepted')
+    # for ktm in ktm_rooms:
+    #     ktm_img[ktm.id] = RoomsImage.objects.filter(rooms_id=ktm.id).first()
+
     bkt_rooms = show_rooms.filter(district='Bhaktapur')
     btw_rooms = show_rooms.filter(district='Butwal')
     pkh_rooms = show_rooms.filter(district='Pokhara')
@@ -68,9 +73,10 @@ def post_room(request):
             descriptions = form.cleaned_data['descriptions']
             noOfRooms = form.cleaned_data['noOfRooms']
             status = form.cleaned_data['status']
+            image = files[0]
             obj = Rooms.objects.create(user=user, title=title, contactNo=contactNo, district=district,
                                        address=address, price=price, descriptions=descriptions, noOfRooms=noOfRooms,
-                                       status=status)
+                                       status=status, image=image)
 
             for f in files:
                 RoomsImage.objects.create(rooms=obj, rooms_images=f)
@@ -124,9 +130,14 @@ def user_profile(request):
 
 # login usersPages rooms details views
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['userGroup'])
-def user_rooms_details(request):
-    return render(request, 'usersPages/rooms_details.html')
+# @allowed_users(allowed_roles=['userGroup'])
+def user_rooms_details(request, id):
+    rooms = "Rooms"
+    room = Rooms.objects.filter(id=id)
+    imgs = RoomsImage.objects.filter(rooms_id=id)
+
+    context = {'rooms': rooms, 'imgs': imgs, 'room': room}
+    return render(request, 'usersPages/rooms_details.html', context)
 
 
 # adminPages login room details views

@@ -20,6 +20,7 @@ class Rooms(models.Model):
     noOfRooms = models.CharField(max_length=10, null=True)
     status = models.CharField(max_length=10, default="review", choices=STATUS, null=True)
     date_post = models.DateTimeField(verbose_name='date posted', auto_now=True, null=True)
+    image = models.ImageField(upload_to='rooms_photo/', max_length=120, null=True)
     user = models.ForeignKey(UsersAccount, on_delete=models.CASCADE)
 
     def __str__(self):
