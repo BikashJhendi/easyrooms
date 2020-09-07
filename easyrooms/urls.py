@@ -22,6 +22,7 @@ urlpatterns = [
     path('login/user/post_room', views.post_room, name='postRoom'),
     path('login/user/profile', views.user_profile, name='userProfile'),
     path('login/user/room/details/<str:id>', views.user_rooms_details, name='userRoomDetails'),
+    path('login/user/room/details/rent/', views.rent_room, name='rentSuccess'),
     path('login/user/room/privacy', views.user_privacy, name='userPrivacy'),
     path('login/redirect', views.verification_page, name='redirect'),
 

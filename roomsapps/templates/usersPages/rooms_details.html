@@ -88,7 +88,7 @@
         <!-- tittle heading -->
         <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-1">
             Title</h3>
-    <hr>
+        <hr>
         <!-- //tittle heading -->
         <div class="row">
             <div class="col-lg-5 col-md-12 single-right-left ">
@@ -109,66 +109,78 @@
             </div>
 
             <div class="col-lg-7">
-                {% for room_details in room %}
-                    <div class="single-infoagile">
-                        <div class="row mx-md-n5">
-                            <div class="col px-md-5 mb-3">
-                                <label><i class="fas fa-user fas-color"></i> Posted by:</label>
-                                <div class="p-1 ml-3">{{ room_details.user.username }}</div>
-                            </div>
-                            <div class="col px-md-5 mb-3">
-                            </div>
-                        </div>
+                {% block content %}
+                    <form action="{% url 'rentSuccess' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% for room_details in room %}
+                            <div class="single-infoagile">
+                                <div class="row mx-md-n5">
+                                    <div class="col px-md-5 mb-3">
+                                        <label><i class="fas fa-user fas-color"></i> Posted by:</label>
+                                        <div class="p-1 ml-3">{{ room_details.user.username }}</div>
+                                    </div>
+                                    <div class="col px-md-5 mb-3">
+                                    </div>
+                                </div>
 
-                        <div class="row mx-md-n5">
-                            <div class="col px-md-5 mb-3">
-                                <label><i class="fas fa-map-signs fas-color"></i> District:</label>
-                                <div class="p-1 ml-3">{{ room_details.district }}</div>
-                            </div>
-                            <div class="col px-md-5 mb-3">
-                                <label><i class="fas fa-address-book fas-color"></i> Contact No:</label>
-                                <div class="p-1 ml-3">{{ room_details.contactNo }}</div>
-                            </div>
-                        </div>
+                                <div class="row mx-md-n5">
+                                    <div class="col px-md-5 mb-3">
+                                        <label><i class="fas fa-map-signs fas-color"></i> District:</label>
+                                        <div class="p-1 ml-3">{{ room_details.district }}</div>
+                                    </div>
+                                    <div class="col px-md-5 mb-3">
+                                        <label><i class="fas fa-address-book fas-color"></i> Contact No:</label>
+                                        <div class="p-1 ml-3">{{ room_details.contactNo }}</div>
+                                    </div>
+                                </div>
 
-                        <div class="row mx-md-n5">
-                            <div class="col px-md-5 mb-3">
-                                <label> <i class="fas fa-map-marker-alt fas-color"></i> Address:</label>
-                                <div class="p-1 ml-3">{{ room_details.address }}</div>
-                            </div>
-                            <div class="col px-md-5 mb-3">
-                            </div>
+                                <div class="row mx-md-n5">
+                                    <div class="col px-md-5 mb-3">
+                                        <label> <i class="fas fa-map-marker-alt fas-color"></i> Address:</label>
+                                        <div class="p-1 ml-3">{{ room_details.address }}</div>
+                                    </div>
+                                    <div class="col px-md-5 mb-3">
+                                    </div>
 
-                        </div>
+                                </div>
 
-                        <div class="row mx-md-n5">
-                            <div class="col px-md-5 mb-3">
-                                <label><i class="fas fa-dollar-sign fas-color"></i> Price per month:</label>
-                                <div class="p-1 ml-3">{{ room_details.price }}</div>
-                            </div>
-                            <div class="col px-md-5 mb-3">
-                                <label><i class="fas fa-home fas-color"> </i> No of rooms:</label>
-                                <div class="p-1 ml-3">{{ room_details.noOfRooms }}</div>
-                            </div>
-                        </div>
-                        <div class="product-single-w3l">
-                            <p class="mt-2">
-                                <i class="far fa-hand-point-right fas-color"></i> Descriptions:
-                            </p>
-                            <p class="ml-4">
-                                &nbsp;{{ room_details.descriptions }}
-                            </p>
-                        </div>
+                                <div class="row mx-md-n5">
+                                    <div class="col px-md-5 mb-3">
+                                        <label><i class="fas fa-dollar-sign fas-color"></i> Price per month:</label>
+                                        <div class="p-1 ml-3">{{ room_details.price }}</div>
+                                    </div>
+                                    <div class="col px-md-5 mb-3">
+                                        <label><i class="fas fa-home fas-color"> </i> No of rooms:</label>
+                                        <div class="p-1 ml-3">{{ room_details.noOfRooms }}</div>
+                                    </div>
+                                </div>
+                                <div class="product-single-w3l">
+                                    <p class="mt-2">
+                                        <i class="far fa-hand-point-right fas-color"></i> Descriptions:
+                                    </p>
+                                    <p class="ml-4">
+                                        &nbsp;{{ room_details.descriptions }}
+                                    </p>
+                                </div>
 
-                        <div class="snipcart-details mt-20">
-                            <input type="submit" name="submit" value="Rent" class="button"/>
-                        </div>
+                                <div class="snipcart-details mt-20">
 
+                                    <input type="hidden" name="user" value="{{ user.id }}"/>
+                                    <input type="hidden" name="room" value="{{ room_details.id }}"/>
+                                    <input type="hidden" type="text" name="room_status" value="pending"/>
+                                </div>
+                            </form>
+                        {% endfor %}
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" name="submit" class="btn btnOnly col-5">Rent</button>
                     </div>
-                {% endfor %}
+                {% endblock content %}
             </div>
         </div>
+
     </div>
+</div>
+</div>
 </div>
 <hr>
 

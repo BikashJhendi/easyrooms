@@ -28,3 +28,9 @@ class RoomImagesForm(RoomForms):
 
     class Meta(RoomForms.Meta):
         fields = RoomForms.Meta.fields + ('rooms_images',)
+
+
+class RentForm(forms.ModelForm):
+    class Meta:
+        model = Rent
+        fields = '__all__'
