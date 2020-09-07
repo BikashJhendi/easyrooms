@@ -115,12 +115,11 @@
         <hr>
         <br>
 
+        <!-- review list table start -->
         <div class="room-review-list">
             <div class="heading2 pb-3">
                 <h2> Review Rooms </h2>
             </div>
-
-
             <div class="table-responsive text-nowrap">
                 <!--Table-->
                 {% block content %}
@@ -164,10 +163,104 @@
                         {% endfor %}
                     </table>
                 {% endblock content %}
-
-
             </div>
         </div>
+        <!-- review list table start -->
+        <hr>
+
+        <!-- accepted and rejected list table start -->
+        <div class="room-review-list mt-5">
+
+            <div class="row">
+                <div class="col-md-6 col-sm-12 mb-5">
+                    <div class="heading2 pb-3">
+                        <h2> Accepted Rooms </h2>
+                    </div>
+                    <div class="table-responsive text-nowrap">
+                        <!--Table-->
+                        {% block contents %}
+                            <table class="table table-hover table-fixed">
+                                <!--Table head-->
+                                <thead>
+                                <tr>
+                                    <th>Room ID</th>
+                                    <th>Posted by</th>
+                                    <th>District</th>
+                                    <th>Price</th>
+                                    <th>No. of Rooms</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+
+                                {% load static %}
+                                {% for accept_list in accepted_list %}
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row"> {{ accept_list.id }}</th>
+                                        <td>{{ accept_list.user.username }}</td>
+                                        <td>{{ accept_list.district }}</td>
+                                        <td>{{ accept_list.price }}</td>
+                                        <td>{{ accept_list.noOfRooms }}</td>
+                                        <td>{{ accept_list.status }}</td>
+                                        <td><a href="{% url 'dashboardRoomsEdit' accept_list.id %}">
+                                            <button class="btn btn-primary" type="submit">Update Status</button>
+                                        </a></td>
+                                    </tr>
+                                    </tbody>
+                                {% endfor %}
+                            </table>
+                        {% endblock contents %}
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-12 mb-5">
+                    <div class="heading2 pb-3">
+                        <h2> Rejected Rooms </h2>
+                    </div>
+                    <div class="table-responsive text-nowrap">
+                        <!--Table-->
+                        {% block cont %}
+                            <table class="table table-hover table-fixed">
+                                <!--Table head-->
+                                <thead>
+                                <tr>
+                                    <th>Room ID</th>
+                                    <th>Posted by</th>
+                                    <th>District</th>
+                                    <th>Price</th>
+                                    <th>No. of Rooms</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+
+                                {% load static %}
+                                {% for reject_list in rejected_list %}
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row"> {{ reject_list.id }}</th>
+                                        <td>{{ reject_list.user.username }}</td>
+                                        <td>{{ reject_list.district }}</td>
+                                        <td>{{ reject_list.price }}</td>
+                                        <td>{{ reject_list.noOfRooms }}</td>
+                                        <td>{{ reject_list.status }}</td>
+                                        <td><a href="{% url 'dashboardRoomsDelete' reject_list.id %}">
+                                            <button class="btn btn-danger" type="submit">Delete</button>
+                                        </a></td>
+                                    </tr>
+                                    </tbody>
+                                {% endfor %}
+                            </table>
+                        {% endblock cont %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- accepted and rejected list table start -->
+    <hr>
+
+
     </div>
 
 </div>

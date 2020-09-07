@@ -31,6 +31,7 @@ urlpatterns = [
     path('login/dashboard/admin/profile', views.admin_profile, name='dashboardAdminProfile'),
     path('login/dashboard/rooms/edit/<slug:pk>', views.edit_room_status, name='dashboardRoomsEdit'),
     path('login/dashboard/rooms/updateStatus/<slug:pk>', views.update_room_status, name='dashboardRoomsUpdate'),
+    path('login/dashboard/rooms/delete/<slug:pk>', views.delete_rooms, name='dashboardRoomsDelete'),
 ]
 
 
