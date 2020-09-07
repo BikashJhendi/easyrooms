@@ -3,39 +3,180 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Dashboard - Easy Rooms</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link href="{% static 'css/roomdashboard.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/mainDashboard.css' %}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/header2.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/all.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap.min.css' %}">
 
 </head>
 
 <body>
-<div id="roomnavigation">
+<!-- admin navbar start -->
+<div class="main_nav">
 
-   <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-expand-lg ">
         <div class=" container-fluid">
-            <div class="navbar-header ">
-                <a class="navbar-brand" href="{% url 'dashboard' %}">DASHBOARD</a>
+            <div class="nav navbar-header">
+                <a class="navbar-brand list" href="{% url 'dashboard' %}">DASHBOARD</a>
             </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="fas fa-sliders-h"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active "><a href="{% url 'dashboard' %}" class="nav-link list">Room List</a>
+                    </li>
+                    <li class="nav-item "><a href="{% url 'dashboardUsers' %}" class="nav-link list">User List</a></li>
 
-            <ul class="nav navbar-nav navbar-center navbar-right">
-                <li><a href="{% url 'dashboardAdmin' %}">Profile</a></li>
-                <li><a href="{% url 'dashboardUsers' %}">User Dashboard</a></li>
-                <li class="active"><a href="{% url 'dashboard' %}">Room Dashboard</a></li>
-                <button class="btn btn-danger navbar-btn"><a href="{% url 'logout' %}"> Logout </a></button>
-            </ul>
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
+                <ul class="nav navbar-nav ml-auto">
+                    <div class="header-profile">
+                        <div class="row main ">
+                            <div class="profile-icon in-line">
+                                {% if request.user.is_authenticated %}
+                                    <p><i class="fas fa-user-circle"></i> Hi, {{ request.user.username }}</p>
+                                {% endif %}
+                            </div>
+
+                            <div class="dropdown in-line">
+                                <button class="btn btn-circle"><i class="fas fa-caret-down"></i></button>
+                                <div class="dropdown-content">
+                                    <a class="dropdown-icon" href="{% url 'dashboardAdminProfile' %}"> <i
+                                            class="fas fa-user"></i>
+                                        Profile </a>
+                                    <a class="dropdown-icon" href="{% url 'logout' %}"> <i
+                                            class="fas fa-sign-out-alt"></i> Logout </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </div>
         </div>
     </nav>
 </div>
-<div class="container">
-    <div id="room_table">
-        <p>Here will be the data for the room</p>
+<!-- admin navbar end -->
+
+<div class="rooms-list">
+
+    <div class="container">
+
+        <div class="heading-room">
+            <div class="title-room text-center ">
+                <h1> Rooms Details</h1>
+            </div>
+            <hr>
+
+            <div class="row">
+                <div class="profile-card col-lg-3 col-md-3 col-sm-6 d-flex justify-content-center">
+                    <div class="card mb-3" style="width: 18rem;">
+                        <div class="card-header d-flex justify-content-center"><h2>Total Rooms</h2></div>
+                        <div class="card-body text-dark">
+                            <h1 class="card-text  d-flex justify-content-center">{{ total_room }}</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-card col-lg-3 col-md-3 col-sm-6 d-flex justify-content-center">
+                    <div class="card mb-3" style="width: 18rem;">
+                        <div class="card-header d-flex justify-content-center"><h2>To Review</h2></div>
+                        <div class="card-body text-dark">
+                            <h1 class="card-text  d-flex justify-content-center">{{ review_left }}</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-card col-lg-3 col-md-3 col-sm-6 d-flex justify-content-center">
+                    <div class="card mb-3" style="width: 18rem;">
+                        <div class="card-header d-flex justify-content-center"><h2>Accepted</h2></div>
+                        <div class="card-body text-dark">
+                            <h1 class="card-text  d-flex justify-content-center">{{ total_accepted }}</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-card col-lg-3 col-md-3 col-sm-6 d-flex justify-content-center">
+                    <div class="card mb-3" style="width: 18rem;">
+                        <div class="card-header d-flex justify-content-center"><h2>Rejected</h2></div>
+                        <div class="card-body text-dark">
+                            <h1 class="card-text  d-flex justify-content-center">{{ total_rejected }}</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <br>
+
+        <div class="room-review-list">
+            <div class="heading2 pb-3">
+                <h2> Review Rooms </h2>
+            </div>
+
+
+            <div class="table-responsive text-nowrap">
+                <!--Table-->
+                {% block content %}
+                    <table class="table table-hover table-fixed">
+                        <!--Table head-->
+                        <thead>
+                        <tr>
+                            <th>Room ID</th>
+                            <th>Posted by</th>
+                            <th>Title</th>
+                            <th>Contact No</th>
+                            <th>District</th>
+                            <th>Address</th>
+                            <th>Price</th>
+                            <th>No. of Rooms</th>
+                            <th>Descriptions</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+
+                        {% load static %}
+                        {% for r_list in review_list %}
+                            <tbody>
+                            <tr>
+                                <th scope="row"> {{ r_list.id }}</th>
+                                <td>{{ r_list.user.username }}</td>
+                                <td>{{ r_list.title }}</td>
+                                <td>{{ r_list.contactNo }}</td>
+                                <td>{{ r_list.district }}</td>
+                                <td>{{ r_list.address }}</td>
+                                <td>{{ r_list.price }}</td>
+                                <td>{{ r_list.noOfRooms }}</td>
+                                <td>{{ r_list.descriptions }}</td>
+                                <td>{{ r_list.status }}</td>
+                                <td><a href="{% url 'dashboardRoomsEdit' r_list.id %}">
+                                    <button class="btn btn-primary" type="submit">Update Status</button>
+                                </a></td>
+                            </tr>
+                            </tbody>
+                        {% endfor %}
+                    </table>
+                {% endblock content %}
+
+
+            </div>
+        </div>
     </div>
+
 </div>
+
+
+<!-- Jquery, Popper, Bootstrap -->
+<script src="{% static 'bootstrap/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'bootstrap/popper.min.js' %}"></script>
+<script src="{% static 'bootstrap/bootstrap.min.js' %}"></script>
 
 </body>
 

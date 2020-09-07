@@ -9,7 +9,6 @@ from django.contrib import messages
 from .decorators import unauthenticated_user, allowed_users
 # from .models import RoomsImage, Rooms, Rent, UsersAccount
 from .models import *
-from django.db.models import Count
 
 
 # Create your views here.
@@ -22,7 +21,25 @@ def index(request):
 # rooms.html views
 @unauthenticated_user
 def rooms(request):
-    return render(request, 'rooms.html')
+    room_list = Rooms.objects.all()
+
+    ktm_rooms = room_list.filter(district='Kathmandu', status='accepted')
+    bkt_rooms = room_list.filter(district='Bhaktapur', status='accepted')
+    btw_rooms = room_list.filter(district='Butwal', status='accepted')
+    pkh_rooms = room_list.filter(district='Pokhara', status='accepted')
+
+    context = {'room_list': room_list, 'ktm_rooms': ktm_rooms, 'bkt_rooms': bkt_rooms, 'btw_rooms': btw_rooms,
+               'pkh_rooms': pkh_rooms}
+    return render(request, 'rooms.html', context)
+
+
+@unauthenticated_user
+def room_details(request, id):
+    room = Rooms.objects.filter(id=id)
+    imgs = RoomsImage.objects.filter(rooms_id=id)
+
+    context = {'imgs': imgs, 'room': room}
+    return render(request, 'rooms.html', context)
 
 
 # aboutUs.html views
@@ -42,13 +59,20 @@ def privacy(request):
 @allowed_users(allowed_roles=['userGroup'])
 def user_rooms(request):
     show_rooms = Rooms.objects.all()
-    ktm_rooms = show_rooms.filter(district='Kathmandu')#, status='accept')
+    # ktm_img = {}
+
+    ktm_rooms = show_rooms.filter(district='Kathmandu')  # , status='accepted')
+    # for ktm in ktm_rooms:
+    #     ktm_img[ktm.id] = RoomsImage.objects.filter(rooms_id=ktm.id).first()
+
     bkt_rooms = show_rooms.filter(district='Bhaktapur')
     btw_rooms = show_rooms.filter(district='Butwal')
     pkh_rooms = show_rooms.filter(district='Pokhara')
 
-    context= {'S_rooms': show_rooms, 'ktm_rooms': ktm_rooms, 'bkt_rooms': bkt_rooms, 'btw_rooms': btw_rooms, 'pkh_rooms': pkh_rooms}
+    context = {'S_rooms': show_rooms, 'ktm_rooms': ktm_rooms, 'bkt_rooms': bkt_rooms, 'btw_rooms': btw_rooms,
+               'pkh_rooms': pkh_rooms}
     return render(request, 'usersPages/users_rooms.html', context)
+
 
 # login usersPages  post room  views
 @login_required(login_url='login')
@@ -65,8 +89,12 @@ def post_room(request):
             district = form.cleaned_data['district']
             address = form.cleaned_data['address']
             descriptions = form.cleaned_data['descriptions']
+            noOfRooms = form.cleaned_data['noOfRooms']
+            status = form.cleaned_data['status']
+            image = files[0]
             obj = Rooms.objects.create(user=user, title=title, contactNo=contactNo, district=district,
-                                       address=address, price=price, descriptions=descriptions)
+                                       address=address, price=price, descriptions=descriptions, noOfRooms=noOfRooms,
+                                       status=status, image=image)
 
             for f in files:
                 RoomsImage.objects.create(rooms=obj, rooms_images=f)
@@ -100,7 +128,7 @@ def user_profile(request):
     rooms = Rooms.objects.all()
     rooms_rent = Rent.objects.all()
 
-    total_room_post = rooms.filter(user=users.id).count
+    total_room_post = rooms.filter(user=users.id).count()
     total_rented = rooms_rent.filter(user=users.id).count()
 
     if request.method == 'POST':
@@ -120,37 +148,65 @@ def user_profile(request):
 
 # login usersPages rooms details views
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['userGroup'])
-def user_rooms_details(request):
-    return render(request, 'usersPages/rooms_details.html')
+# @allowed_users(allowed_roles=['userGroup'])
+def user_rooms_details(request, id):
+    room = Rooms.objects.filter(id=id)
+    imgs = RoomsImage.objects.filter(rooms_id=id)
 
-
-# adminPages login dashboard  views
-@login_required(login_url='login')
-@allowed_users(allowed_roles=['adminGroup'])
-def dashboard_admin(request):
-    return render(request, 'adminPages/admindashboard.html')
+    context = {'imgs': imgs, 'room': room}
+    return render(request, 'usersPages/rooms_details.html', context)
 
 
 # adminPages login room details views
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['adminGroup'])
 def dashboard_main(request):
-    return render(request, 'adminPages/maindashboard.html')
+    room = Rooms.objects.all()
+
+    total_room = room.count()
+    review_left = room.filter(status='review').count()
+    total_accepted = room.filter(status='accepted').count()
+    total_rejected = room.filter(status='rejected').count()
+
+    review_list = room.filter(status='review')
+    accepted_list = room.filter(status='accepted')
+
+    context = {'total_room': total_room, 'review_left': review_left, 'total_rejected': total_rejected,
+               'total_accepted': total_accepted, 'review_list': review_list, 'accepted_list': accepted_list}
+    return render(request, 'adminPages/maindashboard.html', context)
 
 
 # adminPages login usersPages details views
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['adminGroup'])
 def dashboard_users(request):
-    return render(request, 'adminPages/userdashboard.html')
+    users = UsersAccount.objects.all()
+
+    total_users = users.count()
+
+    context = {'total_users': total_users, 'users': users}
+    return render(request, 'adminPages/userdashboard.html', context)
 
 
 # adminPages login profile views
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['adminGroup'])
 def admin_profile(request):
-    return render(request, 'adminPages/admin_profile.html')
+    user = request.user
+    form = RegistrationForms(instance=user)
+
+    if request.method == 'POST':
+        form = RegistrationForms(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect("dashboard")
+        else:
+            messages.info(request, "Please enter a valid information. Email and Contact No. should be unique."
+                                   " And both password should be same.")
+            return redirect("dashboardAdminProfile")
+
+    context = {"form": form, 'rooms': rooms}
+    return render(request, 'adminPages/admin_profile.html', context)
 
 
 # usersPages Registration views
@@ -212,3 +268,29 @@ def verification_page(request):
 
     context = {}
     return render(request, 'redirect.html', context)
+
+
+#
+@login_required(login_url='login')
+def edit_room_status(request, pk):
+    get_room_id = Rooms.objects.get(id=pk)
+
+    context = {'get_room_id': get_room_id}
+    return render(request, 'adminPages/update_status.html', context)
+
+
+# # rooms update status page
+@login_required(login_url='login')
+# @allowed_users(allowed_roles=['adminGroup'])
+def update_room_status(request, pk):
+    get_room_id = Rooms.objects.get(id=pk)
+    update_room = RoomForms(request.POST, instance=get_room_id)
+
+    if request.method == 'POST':
+        update_room = RoomForms(request.POST, request.FILES, instance=get_room_id)
+        if update_room.is_valid():
+            update_room.save()
+            return redirect('dashboard')
+
+    context = {'get_room_id': get_room_id, 'update_room': update_room}
+    return render(request, 'adminPages/update_status.html', context)
