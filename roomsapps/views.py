@@ -8,6 +8,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from .decorators import unauthenticated_user, allowed_users
 from .models import *
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 # Create your views here.
@@ -201,9 +202,16 @@ def dashboard_main(request):
 @allowed_users(allowed_roles=['adminGroup'])
 def dashboard_users(request):
     users = UsersAccount.objects.all()
+    page = request.GET.get('page', 1)
 
     total_users = users.count()
-
+    paginator = Paginator(users, 10)
+    try:
+        users = paginator.page(page)
+    except PageNotAnInteger:
+        users = paginator.page(1)
+    except EmptyPage:
+        users = paginator.page(paginator.num_pages)
     context = {'total_users': total_users, 'users': users}
     return render(request, 'adminPages/userdashboard.html', context)
 
