@@ -172,8 +172,12 @@
                             </form>
                         {% endfor %}
                     <div class="d-flex justify-content-center">
-                        <button type="submit" name="submit" class="btn btnOnly col-5">Rent</button>
-                    </div>
+                        <button type="submit" name="submit" class="btn btnOnly col-5" onclick="pop_msg()">Rent</button>
+                    <script>
+                        function pop_msg() {
+                          alert("Your request is sent for review! We will contact you after it is reviewed.");
+                        }
+                    </script>
                 {% endblock content %}
             </div>
         </div>
