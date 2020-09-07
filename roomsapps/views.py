@@ -21,7 +21,25 @@ def index(request):
 # rooms.html views
 @unauthenticated_user
 def rooms(request):
-    return render(request, 'rooms.html')
+    room_list = Rooms.objects.all()
+
+    ktm_rooms = room_list.filter(district='Kathmandu', status='accepted')
+    bkt_rooms = room_list.filter(district='Bhaktapur', status='accepted')
+    btw_rooms = room_list.filter(district='Butwal', status='accepted')
+    pkh_rooms = room_list.filter(district='Pokhara', status='accepted')
+
+    context = {'room_list': room_list, 'ktm_rooms': ktm_rooms, 'bkt_rooms': bkt_rooms, 'btw_rooms': btw_rooms,
+               'pkh_rooms': pkh_rooms}
+    return render(request, 'rooms.html', context)
+
+
+@unauthenticated_user
+def room_details(request, id):
+    room = Rooms.objects.filter(id=id)
+    imgs = RoomsImage.objects.filter(rooms_id=id)
+
+    context = {'imgs': imgs, 'room': room}
+    return render(request, 'rooms.html', context)
 
 
 # aboutUs.html views
@@ -132,11 +150,10 @@ def user_profile(request):
 @login_required(login_url='login')
 # @allowed_users(allowed_roles=['userGroup'])
 def user_rooms_details(request, id):
-    rooms = "Rooms"
     room = Rooms.objects.filter(id=id)
     imgs = RoomsImage.objects.filter(rooms_id=id)
 
-    context = {'rooms': rooms, 'imgs': imgs, 'room': room}
+    context = {'imgs': imgs, 'room': room}
     return render(request, 'usersPages/rooms_details.html', context)
 
 
