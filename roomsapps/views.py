@@ -19,13 +19,14 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 def index(request):
     room = Rooms.objects.all()
 
+    show = room.filter(status='accepted')
     count_bkt = room.filter(district='Bhaktapur').count()
     count_ktm = room.filter(district='Kathmandu').count()
     count_btw = room.filter(district='Butwal').count()
     count_pkh = room.filter(district='Pokhara').count()
 
     context = {'room': room, 'count_bkt': count_bkt, 'count_ktm': count_ktm, 'count_btw': count_btw,
-               'count_pkh': count_pkh}
+               'count_pkh': count_pkh, 'show': show}
     return render(request, 'index.html', context)
 
 
