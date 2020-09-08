@@ -51,7 +51,7 @@ class UsersAccount(AbstractBaseUser, PermissionsMixin):
     is_superuser = models.BooleanField(default=False)
     is_user = models.BooleanField(default=True)
     fullName = models.CharField(verbose_name="Full Name", max_length=120, unique=False)
-    contactNo = models.CharField(verbose_name='Contact Number', unique=True, max_length=10)
+    contactNo = models.CharField(verbose_name='Contact Number', unique=True, max_length=10, null=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']

@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Rooms Details</title>
     <!-- CSS here -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/details.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap.min.css' %}">
@@ -72,7 +72,9 @@
     <div class="container py-xl-4 py-lg-2">
         <!-- tittle heading -->
         <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-1">
-            Title</h3>
+            {% for room in room %}
+                {{ room.title }}</h3>
+            {% endfor %}
         <hr>
         <!-- //tittle heading -->
         <div class="row">
@@ -145,8 +147,15 @@
                             </p>
                         </div>
 
-                        <div class="snipcart-details mt-20">
-                            <input type="submit" name="submit" value="Rent" class="button"/>
+                        <div class="snipcart-details mt-20 d-flex justify-content-center">
+                            <button type="submit" name="submit" value="Rent" class="btn btnOnly col-5"
+                                    onclick="pop_mg()"> Rent
+                            </button>
+                            <script>
+                                function pop_mg() {
+                                    alert("Please login first!");
+                                }
+                            </script>
                         </div>
 
                     </div>
