@@ -45,7 +45,7 @@
                                 <li><a href="{% url 'index' %}">Home</a></li>
                                 <li><a href="{% url 'rooms' %}">Rooms</a></li>
                                 <li><a href="{% url 'aboutUs' %}">About Us</a></li>
-                             <a href="{% url 'signup' %}" class="mobile_sign">Sign up</a>
+                                <a href="{% url 'signup' %}" class="mobile_sign">Sign up</a>
                                 <a href="{% url 'login' %}" class="mobile_sign">Login </a>
                             </ul>
                         </nav>
@@ -74,7 +74,7 @@
 <!-- Header End -->
 
 
-<div class="limiter">
+<div class="limiter mt-50">
     <div class="container-login100">
         <div class="wrap-login100">
             {% block content %}
@@ -84,18 +84,19 @@
                     <span class="login100-form-title p-b-26">
 						Welcome
 					</span>
-
-                    {% if messages %}
-                        <ul class="messages">
-                            {% for msg in messages %}
-                                <li>
-                                    <div class="alert alert-{{ msg.level_tag }}" role="alert">
-                                        {{ msg.message }}
-                                    </div>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
+                    <div>
+                        {% if messages %}
+                            <ul class="messages">
+                                {% for msg in messages %}
+                                    <li>
+                                        <div class="alert alert-{{ msg.level_tag }}" role="alert">
+                                            <p>{{ msg.message }}</p>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
                         <input class="input100" type="text" name="email">
@@ -140,8 +141,10 @@
                         <div class="socialMedia-caption socialMedia-caption2">
                             <p>Easy rooms will completely reduce the old tiresome process of physical travel for the
                                 search of room.
-                                Without such burden, the clients will get all facilities of <a href="{% url 'index'%}" target="_blank">www.easyrooms.com</a>
-                                in a single click. Also check our <a href="{% url 'privacy' %}" target="_blank">privacy policy </a>
+                                Without such burden, the clients will get all facilities of <a href="{% url 'index' %}"
+                                                                                               target="_blank">www.easyrooms.com</a>
+                                in a single click. Also check our <a href="{% url 'privacy' %}" target="_blank">privacy
+                                    policy </a>
                             </p>
                         </div>
                     </div>

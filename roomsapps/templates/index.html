@@ -127,7 +127,7 @@
                         </div>
                         <div class="location-details">
                             <p>Pokhara</p>
-                            <a href="#" class="location-btn">{{ count_pkh }} <i class="ti-plus"></i>Rooms</a>
+                            <a class="location-btn">{{ count_pkh }} <i class="ti-plus"></i>Rooms</a>
                         </div>
                     </div>
                 </div>
@@ -140,7 +140,7 @@
                         </div>
                         <div class="location-details">
                             <p>Butwal</p>
-                            <a href="#" class="location-btn">{{ count_btw }} <i class="ti-plus"></i>Rooms</a>
+                            <a class="location-btn">{{ count_btw }} <i class="ti-plus"></i>Rooms</a>
                         </div>
                     </div>
                 </div>
@@ -152,7 +152,7 @@
                         </div>
                         <div class="location-details">
                             <p>Bhaktapur</p>
-                            <a href="#" class="location-btn">{{ count_bkt }} <i class="ti-plus"></i>Rooms</a>
+                            <a class="location-btn">{{ count_bkt }} <i class="ti-plus"></i>Rooms</a>
                         </div>
                     </div>
                 </div>
@@ -164,7 +164,7 @@
                         </div>
                         <div class="location-details">
                             <p>Kathmandu</p>
-                            <a href="#" class="location-btn">{{ count_ktm }} <i class="ti-plus"></i>Rooms</a>
+                            <a class="location-btn">{{ count_ktm }} <i class="ti-plus"></i>Rooms</a>
                         </div>
                     </div>
                 </div>
@@ -196,7 +196,7 @@
                     <div class="roomsCard">
                         <!-- Room Img -->
                         <div class="roomsImg overlay1">
-                            <a href="#"><img src="{% static 'img/cities/kathmandu.jpg' %}" alt=""></a>
+                            <a><img src="{% static 'img/cities/kathmandu.jpg' %}" alt=""></a>
                             <div class="img-text">
                                 <span>RS.</span> <!-- Price -->
                                 <span>Rent</span> <!-- Rent Status -->
@@ -206,7 +206,7 @@
 
                         <!-- Room Address -->
                         <div class="rooms_caption">
-                            <h3><a href="#">123, Kathmandu</a></h3> <!-- rooms address -->
+                            <h3><a>123, Kathmandu</a></h3> <!-- rooms address -->
                             <p>One Rooms</p> <!-- Describe about rooms -->
                         </div>
                         <!-- Room Address End -->
@@ -219,7 +219,12 @@
 
 
                             <div class="">
-                                <a href="#" class="btnOnly">Rent</a>
+                                <a href="#" class="btnOnly" onclick="pop()">Rent</a>
+                                <script>
+                                    function pop() {
+                                        alert("Load Database.");
+                                    }
+                                </script>
                             </div>
                         </div>
                         <!-- Room Footer End -->
@@ -233,7 +238,7 @@
                     <div class="roomsCard">
                         <!-- Room Img -->
                         <div class="roomsImg overlay1">
-                            <a href="#"><img src="{% static 'img/cities/kathmandu.jpg' %}" alt=""></a>
+                            <a><img src="{% static 'img/cities/kathmandu.jpg' %}" alt=""></a>
                             <div class="img-text">
                                 <span>RS.</span> <!-- Price -->
                                 <span>Rent</span> <!-- Rent Status -->
@@ -243,7 +248,7 @@
 
                         <!-- Room Address -->
                         <div class="rooms_caption">
-                            <h3><a href="#">123, Kathmandu</a></h3> <!-- rooms address -->
+                            <h3><a>123, Kathmandu</a></h3> <!-- rooms address -->
                             <p>One Rooms</p> <!-- Describe about rooms -->
                         </div>
                         <!-- Room Address End -->
@@ -256,45 +261,12 @@
 
 
                             <div class="">
-                                <a href="#" class="btnOnly">Rent</a>
-                            </div>
-                        </div>
-                        <!-- Room Footer End -->
-
-                    </div>
-                </div>
-                <!-- Single Room Added End -->
-
-                <!-- Single Room Added Start -->
-                <div class="roomsBox pb-20">
-                    <div class="roomsCard">
-
-                        <!-- Room Img -->
-                        <div class="roomsImg overlay1">
-                            <a href="#"><img src="{% static 'img/cities/kathmandu.jpg' %}" alt=""></a>
-                            <div class="img-text">
-                                <span>RS.</span> <!-- Price -->
-                                <span>Rent</span> <!-- Rent Status -->
-                            </div>
-                        </div>
-                        <!-- Room Img End -->
-
-                        <!-- Room Address -->
-                        <div class="rooms_caption">
-                            <h3><a href="#">123, Kathmandu</a></h3> <!-- rooms address -->
-                            <p>One Rooms</p> <!-- Describe about rooms -->
-                        </div>
-                        <!-- Room Address End -->
-
-                        <!-- Room Footer -->
-                        <div class="roomsBoxFooter d-flex justify-content-between align-items-center">
-                            <div class="roomsFooterLocation">
-                                <h3>Kathmandu</h3>
-                            </div>
-
-
-                            <div class="">
-                                <a href="#" class="btnOnly">Rent</a>
+                                <a href="#" class="btnOnly" onclick="pop()">Rent</a>
+                                <script>
+                                    function pop() {
+                                        alert("Load Database.");
+                                    }
+                                </script>
                             </div>
                         </div>
                         <!-- Room Footer End -->
@@ -309,7 +281,7 @@
 
                         <!-- Room Img -->
                         <div class="roomsImg overlay1">
-                            <a href="#"><img src="{% static 'img/cities/kathmandu.jpg' %}" alt=""></a>
+                            <a><img src="{% static 'img/cities/kathmandu.jpg' %}" alt=""></a>
                             <div class="img-text">
                                 <span>RS.</span> <!-- Price -->
                                 <span>Rent</span> <!-- Rent Status -->
@@ -319,7 +291,7 @@
 
                         <!-- Room Address -->
                         <div class="rooms_caption">
-                            <h3><a href="#">123, Kathmandu</a></h3> <!-- rooms address -->
+                            <h3><a>123, Kathmandu</a></h3> <!-- rooms address -->
                             <p>One Rooms</p> <!-- Describe about rooms -->
                         </div>
                         <!-- Room Address End -->
@@ -332,7 +304,55 @@
 
 
                             <div class="">
-                                <a href="#" class="btnOnly">Rent</a>
+                                <a href="#" class="btnOnly" onclick="pop()">Rent</a>
+                                <script>
+                                    function pop() {
+                                        alert("Load Database.");
+                                    }
+                                </script>
+                            </div>
+                        </div>
+                        <!-- Room Footer End -->
+
+                    </div>
+                </div>
+                <!-- Single Room Added End -->
+
+                <!-- Single Room Added Start -->
+                <div class="roomsBox pb-20">
+                    <div class="roomsCard">
+
+                        <!-- Room Img -->
+                        <div class="roomsImg overlay1">
+                            <a><img src="{% static 'img/cities/kathmandu.jpg' %}" alt=""></a>
+                            <div class="img-text">
+                                <span>RS.</span> <!-- Price -->
+                                <span>Rent</span> <!-- Rent Status -->
+                            </div>
+                        </div>
+                        <!-- Room Img End -->
+
+                        <!-- Room Address -->
+                        <div class="rooms_caption">
+                            <h3><a>123, Kathmandu</a></h3> <!-- rooms address -->
+                            <p>One Rooms</p> <!-- Describe about rooms -->
+                        </div>
+                        <!-- Room Address End -->
+
+                        <!-- Room Footer -->
+                        <div class="roomsBoxFooter d-flex justify-content-between align-items-center">
+                            <div class="roomsFooterLocation">
+                                <h3>Kathmandu</h3>
+                            </div>
+
+
+                            <div class="">
+                                <a href="#" class="btnOnly" onclick="pop()">Rent</a>
+                                <script>
+                                    function pop() {
+                                        alert("Load Database.");
+                                    }
+                                </script>
                             </div>
                         </div>
                         <!-- Room Footer End -->
@@ -358,7 +378,7 @@
 
                             <!-- Room Address -->
                             <div class="rooms_caption">
-                                <h3><a href="#">{{ all_room.title }}</a></h3> <!-- rooms address -->
+                                <h3><a>{{ all_room.title }}</a></h3> <!-- rooms address -->
                                 <p>{{ all_room.price }}</p> <!-- Describe about rooms -->
                             </div>
                             <!-- Room Address End -->
