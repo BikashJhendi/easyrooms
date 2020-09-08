@@ -87,7 +87,10 @@
     <div class="container py-xl-4 py-lg-2">
         <!-- tittle heading -->
         <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-1">
-            Title</h3>
+            {% for room in room %}
+                {{ room.title }}</h3>
+            {% endfor %}
+        </h3>
         <hr>
         <!-- //tittle heading -->
         <div class="row">
@@ -172,94 +175,94 @@
                             </form>
                         {% endfor %}
                     <div class="d-flex justify-content-center">
-                        <button type="submit" name="submit" class="btn btnOnly col-5" onclick="pop_msg()">Rent</button>
+                    <button type="submit" name="submit" class="btn btnOnly col-5" onclick="pop_msg()">Rent</button>
                     <script>
                         function pop_msg() {
-                          alert("Your request is sent for review! We will contact you after it is reviewed.");
+                            alert("Your request is sent for review! We will contact you after it is reviewed.");
                         }
                     </script>
                 {% endblock content %}
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<hr>
-
-<!-- Social Media Link start -->
-<section class="socialMedia-area">
-    <div class="container">
-        <div class="wants-wrapper w-padding2">
-            <div class="row justify-content-between">
-                <div class="col-xl-8 col-lg-8 col-md-7">
-                    <div class="socialMedia-caption socialMedia-caption2">
-                        <p>Easy rooms will completely reduce the old tiresome process of physical travel for the
-                            search
-                            of room.
-                            Without such burden, the clients will get all facilities of <a
-                                    href="{% url 'userRooms' %}"
-                                    target="_blank">www.easyrooms.com</a>
-                            in a single click. Also check our <a href="{% url 'userPrivacy' %}" target="_blank">privacy
-                                policy </a>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-5">
-                    <div class="footer-social f-right sm-left">
-                        <a href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.google.com/gmail/about/#" target="_blank"><i class="fab fa-google"></i></a>
-                        <a href="https://www.instagram.com/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
-                    </div>
                 </div>
             </div>
+
         </div>
     </div>
-</section>
+
+    <hr>
+
+    <!-- Social Media Link start -->
+    <section class="socialMedia-area">
+        <div class="container">
+            <div class="wants-wrapper w-padding2">
+                <div class="row justify-content-between">
+                    <div class="col-xl-8 col-lg-8 col-md-7">
+                        <div class="socialMedia-caption socialMedia-caption2">
+                            <p>Easy rooms will completely reduce the old tiresome process of physical travel for the
+                                search
+                                of room.
+                                Without such burden, the clients will get all facilities of <a
+                                        href="{% url 'userRooms' %}"
+                                        target="_blank">www.easyrooms.com</a>
+                                in a single click. Also check our <a href="{% url 'userPrivacy' %}" target="_blank">privacy
+                                    policy </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-5">
+                        <div class="footer-social f-right sm-left">
+                            <a href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.google.com/gmail/about/#" target="_blank"><i class="fab fa-google"></i></a>
+                            <a href="https://www.instagram.com/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
-<footer>
-    <div class="footer-copyright">
-        <div class="footer-bottom-area">
-            <div class="container">
-                <div class="footer-border">
-                    <div class="row d-flex justify-content-between align-items-center">
-                        <div class="col-xl-12 col-lg-12 ">
-                            <div class="footer-copy-right">
-                                <p>Copyright &copy; All rights reserved to
-                                    <a href="{% url 'userRooms' %}" target="_blank">Easy Rooms</a>
-                                </p>
+    <footer>
+        <div class="footer-copyright">
+            <div class="footer-bottom-area">
+                <div class="container">
+                    <div class="footer-border">
+                        <div class="row d-flex justify-content-between align-items-center">
+                            <div class="col-xl-12 col-lg-12 ">
+                                <div class="footer-copy-right">
+                                    <p>Copyright &copy; All rights reserved to
+                                        <a href="{% url 'userRooms' %}" target="_blank">Easy Rooms</a>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </footer>
+    <!-- footer Copyright End -->
+
+
+    <!-- Scroll Up Start -->
+    <div id="backToTop">
+        <a title="Move To Top" href="#">
+            <i class="fas fa-level-up-alt"></i>
+        </a>
     </div>
-</footer>
-<!-- footer Copyright End -->
+    <!-- Scroll Up End -->
 
 
-<!-- Scroll Up Start -->
-<div id="backToTop">
-    <a title="Move To Top" href="#">
-        <i class="fas fa-level-up-alt"></i>
-    </a>
-</div>
-<!-- Scroll Up End -->
+    <!-- js-files -->
+    <!-- jquery -->
+    <script src="{% static 'js/jquery-2.2.3.min.js' %}"></script>
+    <!-- //jquery -->
 
+    <!-- flexslider -->
 
-<!-- js-files -->
-<!-- jquery -->
-<script src="{% static 'js/jquery-2.2.3.min.js' %}"></script>
-<!-- //jquery -->
+    <script src="{% static 'js/jquery.flexslider.js' %}"></script>
 
-<!-- flexslider -->
-
-<script src="{% static 'js/jquery.flexslider.js' %}"></script>
-
-<script src="{% static 'js/details.js' %}"></script>
+    <script src="{% static 'js/details.js' %}"></script>
 
 
 </body>

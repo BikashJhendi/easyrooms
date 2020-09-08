@@ -1,3 +1,5 @@
+from itertools import starmap
+
 from django.contrib.auth.models import Group
 from django.shortcuts import render, redirect
 from django.urls import reverse
@@ -15,7 +17,16 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # index.html views
 @unauthenticated_user
 def index(request):
-    return render(request, 'index.html')
+    room = Rooms.objects.all()
+
+    count_bkt = room.filter(district='Bhaktapur').count()
+    count_ktm = room.filter(district='Kathmandu').count()
+    count_btw = room.filter(district='Butwal').count()
+    count_pkh = room.filter(district='Pokhara').count()
+
+    context = {'room': room, 'count_bkt': count_bkt, 'count_ktm': count_ktm, 'count_btw': count_btw,
+               'count_pkh': count_pkh}
+    return render(request, 'index.html', context)
 
 
 # rooms.html views
@@ -61,16 +72,16 @@ def user_rooms(request):
     show_rooms = Rooms.objects.all()
     # ktm_img = {}
 
-    ktm_rooms = show_rooms.filter(district='Kathmandu')  # , status='accepted')
+    ktm = show_rooms.filter(district='Kathmandu', status='accepted')
     # for ktm in ktm_rooms:
     #     ktm_img[ktm.id] = RoomsImage.objects.filter(rooms_id=ktm.id).first()
 
-    bkt_rooms = show_rooms.filter(district='Bhaktapur')
-    btw_rooms = show_rooms.filter(district='Butwal')
-    pkh_rooms = show_rooms.filter(district='Pokhara')
+    bkt = show_rooms.filter(district='Bhaktapur', status='accepted')
+    btw = show_rooms.filter(district='Butwal', status='accepted')
+    pkh = show_rooms.filter(district='Pokhara', status='accepted')
 
-    context = {'S_rooms': show_rooms, 'ktm_rooms': ktm_rooms, 'bkt_rooms': bkt_rooms, 'btw_rooms': btw_rooms,
-               'pkh_rooms': pkh_rooms}
+    context = {'show_rooms': show_rooms, 'ktm_rooms': ktm, 'bkt_rooms': bkt, 'btw_rooms': btw,
+               'pkh': pkh}
     return render(request, 'usersPages/users_rooms.html', context)
 
 
