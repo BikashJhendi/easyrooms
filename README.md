@@ -19,3 +19,7 @@ Password: user
 For other user login.
 Email is in database.
 Password is User1234 for all user account.
+
+
+# Group Member: 
+## Anil Subedi, Abhishek Chapagai, Bikash Jhendi, Rajesh Kasula, Yogesh Shrestha
